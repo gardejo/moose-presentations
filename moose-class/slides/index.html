@@ -25,7 +25,9 @@
 <style type="text/css" media="all">
 .en {display: none;}
 .annotation {border: 1px dashed #999; font-size: 80%; color: #666;}
-#.memorandum {display: none;}
+/*
+.memorandum {display: none;}
+*/
 .memorandum {color: #f00;}
 strong, em {text-decoration: underline;}
 .imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
@@ -415,7 +417,7 @@ use Moose;
 
 has blog_uri =&gt; (<span class="ja"> # ブログURI</span>
     is      =&gt; 'rw',
-    isa     =&gt; 'URI',<span class="ja"> # URIオブジェクト型</span>
+    isa     =&gt; 'URI',<span class="ja"> # URIクラス型</span>
     <span class="highlight">handles =&gt; { 'blog_host' =&gt; 'host' },</span>
 );
 
@@ -1781,7 +1783,7 @@ use Moose;
   </ul>
   <ul class="ja">
     <li>ロールによって提供されているメソッドを改名します</li>
-    <li>このままでは衝突したままなので、さらに<code>排除(exclude)</code>が必要です</li>
+    <li>このままでは衝突したままなので、さらに排除(<code>exclude</code>)が必要です</li>
   </ul>
 </div>
 
@@ -2859,7 +2861,7 @@ Iterate til this passes all its tests
     <li>Roles can provide modifiers that are applied at composition time</li>
   </ul>
   <ul class="ja">
-    <li>既存のメソッドへ適用するもの</li>
+    <li>既存のメソッドへ適用するものです</li>
     <li>……そのメソッドは親クラスや、当該クラスや、ロールに由来するものです</li>
     <li>ロールは、それがクラスへ合成されるタイミングで適用されるようなメソッドモディファイヤーを提供できます</li>
   </ul>
@@ -2936,7 +2938,7 @@ before work =&gt; sub {<span class="ja"> # 働く前に</span>
     my $self = shift;
     return unless $DEBUG;
 
-    <span class="ja"> # 「○○のworkは引数@_つきで呼ばれた」</span>
+    <span class="ja"># 「○○のworkは引数@_つきで呼ばれた」</span>
     warn "Called work on ",
          $self-&gt;full_name,
          "with the arguments: [@_]\n";
