@@ -1,10 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
 
 <head>
-<title>Introduction to Moose</title>
+<title>Moose入門（日本語版）</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
 <!-- metadata -->
 <meta name="generator" content="S5" />
 <meta name="version" content="S5 1.2a2" />
@@ -20,6 +23,11 @@
 <link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
 <!-- embedded styles -->
 <style type="text/css" media="all">
+.en {display: none;}
+.annotation {border: 1px dashed #999; font-size: 80%; color: #666;}
+#.memorandum {display: none;}
+.memorandum {color: #f00;}
+strong, em {text-decoration: underline;}
 .imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
 #anim {width: 270px; height: 320px; position: relative; margin-top: 0.5em;}
 #anim img {position: absolute; top: 42px; left: 24px;}
@@ -42,61 +50,86 @@ img#me05 {top: 43px;left: 36px;}
   <div id="license">
     <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="ui/creative-commons.png" /></a>
     <br /><span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type">Introduction to Moose</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">David Rolsky</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/us/">Creative Commons Attribution-Share Alike 3.0 United States License</a>.
+    <br /><span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" property="dc:title" rel="dc:type">Moose入門（日本語版）</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">MORIYA Masaki</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/us/">Creative Commons Attribution-Share Alike 3.0 United States License</a>.
   </div>
 
-  <h2>Introduction to Moose</h2>
+  <h2>Moose入門（日本語版）</h2>
 </div>
 </div>
 
 <div class="presentation">
 
 <div class="slide">
-  <h1>Introduction to Moose</h1>
-  <h2><a href="git://git.moose.perl.org/moose-presentations.git"><tt>git://git.moose.perl.org/moose-presentations.git</tt></a></h2>
+  <h1 class="en">Introduction to Moose</h1>
+  <h1 class="ja">Moose入門（日本語版）</h1>
+  <h2 class="en"><a href="git://git.moose.perl.org/moose-presentations.git"><code>git://git.moose.perl.org/moose-presentations.git</code></a></h2>
+  <h2 class="ja"><a href="git://git.moose.perl.org/moose-presentations.git"><code>git://git.moose.perl.org/moose-presentations.git</code></a></h2>
+  <h2 class="annotation">訳注：日本語版は<a href="git://github.com/gardejo/moose-presentations.git"><code>git://github.com/gardejo/moose-presentations.git</code></a></h2>
 </div>
 
 <div class="slide">
-  <h1>Introduce Yourselves</h1>
+  <h1 class="en">Introduce Yourselves</h1>
+  <h1 class="ja">自己紹介してください</h1>
 
-  <ul>
+  <ul class="en">
     <li>Your name</li>
     <li>What you do with Perl</li>
     <li>Why you're here today (optional)</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Moose Summed Up</h1>
-
-  <ul>
-    <li><strong>Declarative</strong> OO sugar</li>
-    <li>Introspectable</li>
-    <li>Extensible (MooseX::* on CPAN)</li>
+  <ul class="ja">
+    <li>名前</li>
+    <li>Perlで何をしているか</li>
+    <li>（任意で）なぜ研修を受講したか</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Moose Background</h1>
+  <h1 class="en">Moose Summed Up</h1>
+  <h1 class="ja">Mooseの概要</h1>
 
-  <ul>
+  <ul class="en">
+    <li><strong>Declarative</strong> OO sugar</li>
+    <li>Introspectable</li>
+    <li>Extensible (MooseX::* on CPAN)</li>
+  </ul>
+  <ul class="ja">
+    <li><strong>宣言型の(declarative)</strong>オブジェクト指向シュガー（構文糖）です</li>
+    <li>内観<span class="annotation">（訳注：introspect, イントロスペクト。プログラム実行時にオブジェクトの中の情報を参照すること）</span>可能です</li>
+    <li>拡張可能です (CPANにあるMooseX::*モジュールによります）</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Moose Background</h1>
+  <h1 class="ja">Mooseのバックグラウンド</h1>
+
+  <ul class="en">
     <li>Created by Stevan Little, first released in 2006</li>
     <li>Moose builds on Perl 5's native OO</li>
     <li>Borrows ideas from other languages, notably Perl 6</li>
     <li>Provides semantics for common operations</li>
   </ul>
+  <ul class="ja">
+    <li>Stevan Littleさんによって作成され、2006年に最初のリリースがありました</li>
+    <li>MooseはPerl 5の世界にネイティブなオブジェクト指向プログラミング環境を追加します</li>
+    <li>他の言語、特にPerl 6からアイデアを取り入れました</li>
+    <li>幅広い操作にセマンティクスを提供します<span class="annotation">（訳注：データに意味付けすることで、防衛的プログラミングができるようになります）</span></li>
+  </ul>
 </div>
 
 <div class="slide fake-slide0">
-  <h1>Part 0: Moose Concepts</h1>
+  <h1 class="en">Part 0: Moose Concepts</h1>
+  <h1 class="ja">Part 0: Mooseの基本的な考え方</h1>
 </div>
 
 <div class="slide">
-  <h1>Classes</h1>
+  <h1 class="en">Classes</h1>
+  <h1 class="ja">クラス(class)</h1>
 
-  <ul>
+  <ul class="en">
     <li>
       Classes have ...
-      <ul>
+      <ul class="en">
         <li>Attributes</li>
         <li>Methods</li>
         <li>Superclasses</li>
@@ -107,35 +140,59 @@ img#me05 {top: 43px;left: 36px;}
     </li>
     <li>Classes do roles</li>
   </ul>
+  <ul class="ja">
+    <li>
+      クラスは以下を備えています……
+      <ul class="ja">
+        <li>アトリビュート(attribute)</li>
+        <li>メソッド(method)</li>
+        <li>スーパークラス(superclass)</li>
+        <li>メソッドモディファイヤー(method modifier)</li>
+        <li>コンストラクター(constructor)とデストラクター(destructor)</li>
+        <li>ひとつのメタクラスオブジェクト(metaclass object)</li>
+      </ul>
+    </li>
+    <li>クラスはロール（で定義された役割）をこなせます</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Class Example</h1>
+  <h1 class="en">Class Example</h1>
+  <h1 class="ja">クラスの例</h1>
 
   <pre><code>package Person;
 <span class="highlight">use Moose;</span></code></pre>
 
-  <ul>
+  <ul class="en">
     <li>Poof, a Moose-based class!</li>
+  </ul>
+  <ul class="ja">
+    <li>ほら、これだけでMooseベースのクラスが作られました！</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Attributes</h1>
+  <h1 class="en">Attributes</h1>
+  <h1 class="ja">アトリビュート(attribute)</h1>
 
-  <ul>
+  <ul class="en">
     <li>Aka property, slot, field, member variable</li>
     <li>A piece of data owned by an object</li>
   </ul>
+  <ul class="ja">
+    <li>他の言語でのプロパティー(property), スロット(slot), フィールド(field), メンバー変数(member variable)として知られるものです</li>
+    <li>オブジェクトが持つデータの一部分です</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Attributes</h1>
+  <h1 class="en">Attributes</h1>
+  <h1 class="ja">アトリビュート(attribute)</h1>
 
-  <ul>
+  <ul class="en">
     <li>
       Attributes have ...
-      <ul>
+      <ul class="en">
         <li>Mutability (read-only vs read-write)</li>
         <li>An optional type</li>
         <li>Accessor methods</li>
@@ -146,187 +203,259 @@ img#me05 {top: 43px;left: 36px;}
     </li>
     <li>Stored in the object, but don't worry about that</li>
   </ul>
+  <ul class="ja">
+    <li>
+      アトリビュートは以下の機能を備えています……
+      <ul class="ja">
+        <li>変異性 (読み込み専用、または読み書き両用)</li>
+        <li>任意の型(type)</li>
+        <li>アクセッサー(accessor)メソッド</li>
+        <li>委譲(delegation)メソッド</li>
+        <li>任意のデフォルト(default)値</li>
+        <li>他のたくさんの機能</li>
+      </ul>
+    </li>
+    <li>アトリビュートはオブジェクト内に格納されますが、そのことを特に意識する必要はありません</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Attribute Example</h1>
+  <h1 class="en">Attribute Example</h1>
+  <h1 class="ja">アトリビュートの例</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-<span class="highlight">has first_name =&gt; ( is =&gt; 'rw' );</span></code></pre>
+<span class="highlight">has first_name =&gt; ( is =&gt; 'rw' );<span class="ja"> # 名</span></span></code></pre>
 
 </div>
 
 <div class="slide">
-  <h1>Methods</h1>
+  <h1 class="en">Methods</h1>
+  <h1 class="ja">メソッド(method)</h1>
 
-  <ul>
+  <ul class="en">
     <li>Nothing fancy here, just Perl subroutines</li>
   </ul>
+  <ul class="ja">
+    <li>手の込んだことは何もしていない、ただのPerlのサブルーチンです</li>
+  </ul>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-<span class="highlight">sub greet { ... }</span></code></pre>
+<span class="highlight">sub greet { ... }<span class="ja"> # 挨拶する</span></span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Roles</h1>
+  <h1 class="en">Roles</h1>
+  <h1 class="ja">ロール(role)</h1>
 
-  <ul>
+  <ul class="en">
     <li>Classes <strong>do</strong> (or consume) roles</li>
     <li>Similar to mixins and Java interfaces</li>
   </ul>
+  <ul class="ja">
+    <li>クラスは役割(ロール, role)を<strong>こなす</strong>（ロールの内容を消費する）ことができます</li>
+    <li>これは<span class="annotation">（訳注：Rubyなどの）</span>ミックスイン(mixin)やJavaのインターフェース(interface)に似ています</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Roles</h1>
+  <h1 class="en">Roles</h1>
+  <h1 class="ja">ロール(role)</h1>
 
-  <ul>
+  <ul class="en">
     <li>Like classes, can have attributes, methods, do roles</li>
     <li>Roles can require methods</li>
     <li>Roles are composed (flattened) into classes</li>
   </ul>
+  <ul class="ja">
+    <li>クラスのように使えて、アトリビュート(attribute)とメソッド(method)を持てますし、ロール(role)もこなせます</li>
+    <li>ロールは（使用元のクラスやロールに）メソッドが実装されていることを要求できます</li>
+    <li>ロールはクラスの中にまとめられます（平らにされます<span class="annotation">（訳注：コピーアンドペーストされたかのようにそのまま取り込まれます）</span>）</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Role Example</h1>
+  <h1 class="en">Role Example</h1>
+  <h1 class="ja">ロールの例</h1>
 
-<pre><code>package HasPermissions;
+<pre><code>package HasPermissions;<span class="ja"> # 許可（パーミッション）を持つ</span>
 <span class="highlight">use Moose::Role;</span>
 
-has is_admin =&gt; ( is =&gt; 'rw' );</code></pre>
+has is_admin =&gt; ( is =&gt; 'rw' );<span class="ja"> # 管理者であるか</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Role Example</h1>
+  <h1 class="en">Role Example</h1>
+  <h1 class="ja">ロールの例</h1>
 
-  <p>
+  <p class="en">
     And then ...
   </p>
+  <p class="ja">
+    そうした後で……
+  </p>
   
-<pre><code>package Person;
+<pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-<span class="highlight">with 'HasPermissions';</span></code></pre>
+<span class="highlight">with 'HasPermissions';<span class="ja"> # 許可（パーミッション）を持つ</span></span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Method Modifiers</h1>
+  <h1 class="en">Method Modifiers</h1>
+  <h1 class="ja">メソッドモディファイヤー(method modifier)</h1>
 
-  <ul>
+  <ul class="en">
     <li>AKA advice</li>
     <li>&quot;<strong>Before</strong> foo(), do this first&quot;</li>
     <li>&quot;Do this <strong>after</strong> foo()</li>
     <li>&quot;Put this code <strong>around</strong> foo()&quot;</li>
   </ul>
+  <ul class="ja">
+    <li><span class="annotation">（訳注：アスペクト志向における）</span>アドバイス(advice)として知られているものです</li>
+    <li><code>foo()</code>をする<strong>前に(before)</strong>何かをする</li>
+    <li>何かをした<strong>後に(after)</strong><code>foo()</code>をする</li>
+    <li><code>foo()</code>の<strong>周りで(around)</strong>何かをする</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Before and After</h1>
+  <h1 class="en">Before and After</h1>
+  <h1 class="ja"><code>before</code>と<code>after</code></h1>
 
 <pre><code>before 'foo'
-    =&gt; sub { warn 'About to call foo()' };
+    =&gt; sub { warn 'About to call foo()' }; 
+    <span class="ja"># 「まさにfoo()が呼ばれようとしています」</span>
 
 after  'foo'
-    =&gt; sub { warn 'Leaving foo()' };</code></pre>
+    =&gt; sub { warn 'Leaving foo()' }; 
+    <span class="ja"># 「foo()の処理から抜けようとしています」</span>
+    </code></pre>
 
 </div>
 
 <div class="slide">
-  <h1>Around</h1>
+  <h1 class="en">Around</h1>
+  <h1 class="ja"><code>around</code></h1>
 
 <pre><code>around 'foo' =&gt; sub {
     my $real_foo = shift;
     my $self     = shift;
 
-    warn 'Just before foo()';
+    warn 'Just before foo()';<span class="ja"> # 「foo()の直前です」</span>
     my @return =
-        $self-&gt;$real_foo( @_, bar =&gt; 42 );
+        $self-&gt;$real_foo( @_, bar =&gt; 42 );<span class="ja"> # 引数の変更</span>
 
     return (
         @return,
-        'modify return values'
+        'modify return values'<span class="ja"> # 戻り値の変更</span>
     );
 };</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Type Constraints</h1>
+  <h1 class="en">Type Constraints</h1>
+  <h1 class="ja">型制約(type constraint)</h1>
 
-  <ul>
+  <ul class="en">
     <li>NOT A FULL-BLOWN TYPE SYSTEM!</li>
     <li>But still darn useful</li>
     <li>Constrain attribute values</li>
     <li>Coerce from other types</li>
   </ul>
+  <ul class="ja">
+    <li>本格的な型システムではありません！</li>
+    <li>ですが型を便利に取り繕うことはできます<span class="memorandum">＜★ちょっと怪しい訳＞</span></li>
+    <li>アトリビュート(attribute)の値(value)に制約(constraint)をかけられます</li>
+    <li>他の型からの変換を強要する(coerce; 型変換)こともできます</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Type Constraint Example</h1>
+  <h1 class="en">Type Constraint Example</h1>
+  <h1 class="ja">型制約の例</h1>
 
-<pre><code>package Person;
+<pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has weight =&gt; (
+has weight =&gt; (<span class="ja"> # 体重</span>
     is  =&gt; 'ro',
-    <span class="highlight">isa =&gt; 'Int'</span>,
+    <span class="highlight">isa =&gt; 'Int'<span class="ja"> # 整数であること</span></span>,
 );
 
-# kaboom
-Person-&gt;new( weight =&gt; 'heavy' );</code></pre>
+# <span class="en">kaboom</span><span class="ja">どっかーん！　これは実行時エラー</span>
+Person-&gt;new( weight =&gt; 'fat' );<span class="ja"> # 体重 =&gt; 太め</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Delegation</h1>
+  <h1 class="en">Delegation</h1>
+  <h1 class="ja">委譲(delegation)</h1>
 
-  <ul>
+  <ul class="en">
     <li>Attributes can define delegations</li>
     <li>Lets you hide some implementation details</li>
     <li>Fewer objects to chase around</li>
   </ul>
+  <ul class="ja">
+    <li>アトリビュート(attribute)は委譲(delegation)を定義できます</li>
+    <li>それによって実装(implementation)の詳細を隠せます</li>
+    <li>中身を利用者が知らなければならないオブジェクトを少なくできます</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Delegation</h1>
+  <h1 class="en">Delegation</h1>
+  <h1 class="ja">委譲(delegation)</h1>
 
-<pre><code>package Person;
+<pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has blog_uri =&gt; (
+has blog_uri =&gt; (<span class="ja"> # ブログURI</span>
     is      =&gt; 'rw',
-    isa     =&gt; 'URI',
+    isa     =&gt; 'URI',<span class="ja"> # URIオブジェクト型</span>
     <span class="highlight">handles =&gt; { 'blog_host' =&gt; 'host' },</span>
 );
 
-<span class="highlight">$person->blog_host;</span>
-# really calls $person->blog_uri->host</code></pre>
+<span class="highlight">$person-&gt;blog_host;</span>
+# <span class="en">really calls $person-&gt;log_uri-&gt;host</span><span class="ja">これは実際には$person-&gt;blog_uri-&gt;hostが呼ばれます</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Constructors</h1>
+  <h1 class="en">Constructors</h1>
+  <h1 class="ja">コンストラクター(constructor)</h1>
 
-  <ul>
+  <ul class="en">
     <li>Moose creates <code>new()</code> for you</li>
-    <li>Provide an optional <code>BUILDARGS()</code> and <code>BUILD()</code></li>
+    <li>Provide an optional <code>BUIDARGS()</code> and <code>BUILD()</code></li>
+  </ul>
+  <ul class="ja">
+    <li>Mooseは<code>new()</code>メソッドを作ります</li>
+    <li><code>BUIDARGS()</code>と<code>BUILD()</code>のメソッドで任意にフックすることもできます</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Destructors</h1>
+  <h1 class="en">Destructors</h1>
+  <h1 class="ja">デストラクター(destructor)</h1>
 
-  <ul>
+  <ul class="en">
     <li>Provide an optional <code>DEMOLISH()</code></li>
   </ul>
+  <ul class="ja">
+    <li><code>DEMOLISH()</code>のメソッドで任意にフックすることもできます</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Moose Meta-API</h1>
+  <h1 class="en">Moose Meta-API</h1>
+  <h1 class="ja">MooseのメタAPI(Meta-API)</h1>
 
-  <ul>
+  <ul class="en">
     <li>Answers questions like ...
-      <ul>
+      <ul class="en">
         <li>What methods does this class have?</li>
         <li>What are its parents?</li>
         <li>What attributes does it have (including inherited attributes)?</li>
@@ -335,43 +464,69 @@ has blog_uri =&gt; (
       </ul>
     </li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Moose Meta-API</h1>
-
-  <ul>
-    <li>Not just for introspection ...
-      <ul>
-        <li>Add methods, attributes, roles, etc</li>
-        <li>Extend and alter core features</li>
+  <ul class="ja">
+    <li>以下のような疑問に答えます……
+      <ul class="ja">
+        <li>このクラスにはどんなメソッドが生えている？</li>
+        <li>このクラスの親<span class="annotation">（訳注：親クラス。スーパークラス。基底クラス）</span>は何？</li>
+        <li>このクラスには（継承されたものを含めて）どんなアトリビュートがある？</li>
+        <li>このクラスはどんな役割(ロール, role)をこなせる？</li>
+        <li>まだまだ他にもたくさん</li>
       </ul>
     </li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Why Moose?</h1>
+  <h1 class="en">Moose Meta-API</h1>
+  <h1 class="ja">MooseのメタAPI(Meta-API)</h1>
 
-  <ul>
-    <li>A quick bit of propaganda ...</li>
+  <ul class="en">
+    <li>Not just for introspection ...
+      <ul class="en">
+        <li>Add methods, attributes, roles, etc</li>
+        <li>Extend and alter core features</li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="ja">
+    <li>内観<span class="annotation">（訳注：introspection, イントロスペクション。プログラム実行時にオブジェクトの中の情報を参照すること）</span>だけではなく、他にも……
+      <ul class="ja">
+        <li>メソッド, アトリビュート, ロールなどなどを追加できます</li>
+        <li>Mooseのコア機能を拡張したり作り替えたりもできます</li>
+      </ul>
+    </li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>With Moose</h1>
+  <h1 class="en">Why Moose?</h1>
+  <h1 class="ja">なぜMooseを使うのでしょうか？</h1>
 
-  <pre><code>package Person;
+  <ul class="en">
+    <li>A quick bit of propaganda ...</li>
+  </ul>
+  <ul class="ja">
+    <li>簡単な宣伝をご紹介しましょう……</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">With Moose</h1>
+  <h1 class="ja">Mooseを使って書くなら</h1>
+
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has last_name =&gt; (
-    is  =&gt; 'rw',
-    isa =&gt; 'Str',
+has last_name =&gt; (<span class="ja"> # 苗字（ラストネーム）</span>
+    is  =&gt; 'rw',<span class="ja">   # 読み書き両用</span>
+    isa =&gt; 'Str',<span class="ja">  # 文字列</span>
 );</code></pre>
 </div>
 
 <div class="slide">
-    <h1>Without Moose</h1>
+    <h1 class="en">Without Moose</h1>
+    <h1 class="ja">Mooseなしで書くなら</h1>
 
     <pre class="small"><code>package Person;
 use strict;
@@ -410,9 +565,10 @@ sub last_name {
 </div>
 
 <div class="slide">
-    <h1>Side by side</h1>
+    <h1 class="en">Side by side</h1>
+    <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side">
+    <table class="side-by-side" summary="comparison of Moose class and common class">
         <tr>
           <td>
             <pre><code>package Person;
@@ -464,9 +620,10 @@ sub last_name {
 </div>
 
 <div class="slide">
-    <h1>Side by side</h1>
+    <h1 class="en">Side by side</h1>
+    <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side">
+    <table class="side-by-side" summary="comparison of Moose class and common class">
         <tr>
             <td>
                 <pre><code><span class="match-moose">package Person;</span>
@@ -517,9 +674,10 @@ sub last_name {
 </div>
 
 <div class="slide">
-    <h1>Side by side</h1>
+    <h1 class="en">Side by side</h1>
+    <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side">
+    <table class="side-by-side" summary="comparison of Moose class and common class">
         <tr>
             <td>
                 <pre><code>package Person;
@@ -570,9 +728,10 @@ sub last_name {
 </div>
 
 <div class="slide">
-    <h1>Side by side</h1>
+    <h1 class="en">Side by side</h1>
+    <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side">
+    <table class="side-by-side" summary="comparison of Moose class and common class">
         <tr>
             <td>
                 <pre><code>package Person;
@@ -623,9 +782,10 @@ sub last_name {
 </div>
 
 <div class="slide">
-    <h1>Side by side</h1>
+    <h1 class="en">Side by side</h1>
+    <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side">
+    <table class="side-by-side" summary="comparison of Moose class and common class">
         <tr>
             <td>
                 <pre><code>package Person;
@@ -676,9 +836,10 @@ sub new {
 </div>
 
 <div class="slide">
-    <h1>Side by side</h1>
+    <h1 class="en">Side by side</h1>
+    <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side">
+    <table class="side-by-side" summary="comparison of Moose class and common class">
         <tr>
             <td>
                 <pre><code>package Person;
@@ -729,9 +890,10 @@ sub last_name {
 </div>
 
 <div class="slide">
-    <h1>Side by side</h1>
+    <h1 class="en">Side by side</h1>
+    <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side">
+    <table class="side-by-side" summary="comparison of Moose class and common class">
         <tr class="incremental">
             <td>5 lines</td>
             <td>21 lines</td>
@@ -790,7 +952,8 @@ sub last_name {
 </div>
 
 <div class="slide">
-    <h1>Typo?</h1>
+    <h1 class="en">Typo?</h1>
+    <h1 class="ja">誤植がある？</h1>
 
     <pre class="small"><code>sub new {
     my $class = shift;
@@ -809,7 +972,8 @@ sub last_name {
 </div>
 
 <div class="slide">
-    <h1>Typo?</h1>
+    <h1 class="en">Typo?</h1>
+    <h1 class="ja">誤植がある？</h1>
 
     <pre class="small"><code>if (exists $args{last_name}) {
     confess &quot;Attribute (last_name) does not pass the type constraint because: &quot;
@@ -820,18 +984,21 @@ sub last_name {
 </div>
 
 <div class="slide">
-    <h1>Typo?</h1>
+    <h1 class="en">Typo?</h1>
+    <h1 class="ja">誤植がある？</h1>
 
     <code>$self-&gt;{last_nane} = $args{last_name};</code>
 </div>
 
 <div class="slide">
-    <h1>Typo?</h1>
+    <h1 class="en">Typo?</h1>
+    <h1 class="ja">誤植がある？</h1>
     <code>$self-&gt;{last_na<span class="wrong">n</span>e}</code>
 </div>
 
 <div class="slide">
-    <h1>Why Moose?</h1>
+    <h1 class="en">Why Moose?</h1>
+    <h1 class="ja">誤植がある？</h1>
 
     <pre><code>package Person;
 use Moose;
@@ -839,77 +1006,97 @@ use Moose;
 has last_name =&gt; (
     is  =&gt; 'rw',
     isa =&gt; 'Str',
-);</code></pre>
-</div>
-
-<div class="slide">
-    <h1>More Why Moose?</h1>
-
-    <ul>
-      <li>Less code == fewer bugs</li>
-      <li>Moose is well-tested, test your own code, not Moose</li>
-      <li>Focus on <strong>what</strong>, not <strong>how</strong></li>
-    </ul>
+);
+<span class="annotation"># Mooseなら間違えにくいですし、
+# 間違えても気付きやすいです</span>
+<span class="annotation"># コーディング量にかかわらずバグ発生率はほぼ一定なので、
+# コーディング量が減ればバグも自ずと減ります</span></code></pre>
 </div>
 
 <div class="slide fake-slide0">
-  <h1>Part 1: Moose Classes</h1>
+  <h1 class="en">Part 1: Moose Classes</h1>
+  <h1 class="ja">Part 1: Mooseのクラス(class)</h1>
 </div>
 
 <div class="slide">
-  <h1>Moose Classes</h1>
+  <h1 class="en">Moose Classes</h1>
+  <h1 class="ja">Mooseのクラス(class)</h1>
 
-  <ul>
+  <ul class="en">
     <li>Moose classes are Perl packages which <code>use Moose</code></li>
+  </ul>
+  <ul class="ja">
+    <li>Mooseのクラスとは<code>use Moose</code>したPerlパッケージ(package)のことです</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Moose.pm and Your Class</h1>
+  <h1 class="en">Moose.pm and Your Class</h1>
+  <h1 class="ja">Moose.pmとあなたのクラスの関係</h1>
 
   <pre><code>package Person;
 use Moose;</code></pre>
 
-  <ul>
+  <ul class="en">
     <li><code>Moose.pm</code> provides declarative sugar</li>
     <li>Turns on <code>strict</code> and <code>warnings</code></li>
     <li>Creates metaclasses for your class: <code>Person-&gt;meta</code></li>
     <li>Moose classes automatically inherit from <code>Moose::Object</code></li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>What <code>Moose::Object</code> Provides</h1>
-
-  <ul>
-    <li>Constructor - <code>new()</code></li>
-    <li>Calls your <code>BUILDARGS()</code> and/or <code>BUILD()</code></li>
-    <li>Calls your <code>DEMOLISH</code> during object destruction</li>
+  <ul class="ja">
+    <li><code>Moose.pm</code>は宣言型(declarative)のシュガー（構文糖）を提供します</li>
+    <li><code>strict</code>と<code>warnings</code>のプラグマを有効にします</li>
+    <li>メタクラス(metaclass)を作成します: <code>Person-&gt;meta</code></li>
+    <li>Mooseクラスは自動的に<code>Moose::Object</code>クラスを継承します</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>BUILDARGS</h1>
+  <h1 class="en">What <code>Moose::Object</code> Provides</h1>
+  <h1 class="ja"><code>Moose::Object</code>が提供する機能</h1>
 
-  <ul>
+  <ul class="en">
+    <li>Constructor - <code>new()</code></li>
+    <li>Calls your <code>BUILDARGS()</code> and/or <code>BUILD()</code></li>
+    <li>Calls your <code>DEMOLISH</code> during object destruction</li>
+  </ul>
+  <ul class="ja">
+    <li>コンストラクター(constructor) - <code>new()</code></li>
+    <li>オブジェクト生成時に、あなたが書いた<code>BUILDARGS()</code>と<code>BUILD()</code>フックのいずれか、または両方を呼び出します</li>
+    <li>オブジェクト破壊時に、あなたが書いた<code>DEMOLISH</code>フックを呼び出します</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">BUILDARGS</h1>
+  <h1 class="ja"><code>BUILDARGS</code>フック</h1>
+
+  <ul class="en">
     <li>Takes <code>@_</code>, returns a hash reference of attribute names/value</li>
     <li>Accepts a hash or hashref; throws otherwise</li>
     <li>Provide your own for other cases</li>
     <li><strong>Always</strong> call <code>$class-&gt;SUPER::BUILDARGS(@_)</code> as a fallback!</li>
   </ul>
+  <ul class="ja">
+    <li>引数として<code>@_</code>を得て、戻り値としてアトリビュートの名前/値のハッシュリファレンスを返します</li>
+    <li>ハッシュかハッシュリファレンスを受け付けますが、その他のデータ型の場合には例外を送出します</li>
+    <li>その他のデータ型を受け付けるには自分で処理を実装してください</li>
+    <li>フォールバックとしての<code>$class-&gt;SUPER::BUILDARGS(@_)</code>を<strong>常に</strong>呼んでください！</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>BUILDARGS Example</h1>
+  <h1 class="en">BUILDARGS Example</h1>
+  <h1 class="ja"><code>BUILDARGS</code>の例</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
 sub BUILDARGS {
     my $class = shift;
 
     if ( @_ == 1 &amp;&amp; ! ref $_[0] ) {
-        <span class="highlight">return { ssn =&gt; $_[0] };</span>
+        <span class="highlight">return { ssn =&gt; $_[0] };<span class="ja"> # 社会保障番号</span></span>
     }
     <span class="highlight">return $class-&gt;SUPER::BUILDARGS(@_)</span>;
 }
@@ -918,112 +1105,152 @@ sub BUILDARGS {
 </div>
 
 <div class="slide">
-  <h1>BUILD</h1>
+  <h1 class="en">BUILD</h1>
+  <h1 class="ja"><code>BUILD</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Called after object is created, before <code>new</code> returns</li>
     <li>Chance to do more complex validation, set complex attributes</li>
     <li>Called in reverse inheritance order, parents to children</li>
     <li>Return value is ignored</li>
   </ul>
+  <ul class="ja">
+    <li>オブジェクトが生成された後、<code>new</code>の結果を返す前に呼ばれます</li>
+    <li>複数のアトリビュートに跨ったさらなる検証（バリデーション）や、複合的なアトリビュートの設定を行う機会です</li>
+    <li>継承の逆順で、つまり親から子へと呼ばれます</li>
+    <li>戻り値は無視されます</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>BUILD Example</h1>
+  <h1 class="en">BUILD Example</h1>
+  <h1 class="ja"><code>BUILD</code>の例</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
 sub BUILD {
     my $self = shift;
 
-    if ( $self-&gt;country_of_residence
-         eq 'USA' ) {
+    if ( $self-&gt;country_of_residence<span class="ja"> # 居住国</span>
+         eq 'USA' ) {<span class="ja">                # が米国である</span>
+        <span class="ja"># 「米国の全居住者は社会保障番号を持たねばならない」</span>
         die 'All US residents'
             . ' must have an SSN'
-            unless $self-&gt;has_ssn;
+            unless $self-&gt;has_ssn;<span class="ja"> # 社会保障番号がない</span>
     }
 }</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Object Construction a la Moose</h1>
+  <h1 class="en">Object Construction a la Moose</h1>
+  <h1 class="ja">Moose流のオブジェクトの生成</h1>
 
   <pre><code>Person-&gt;new(@_)</code></pre>
 
-  <ol>
+  <ol class="en">
     <li>Calls <code>Person-&gt;BUILDARGS(@_)</code> to turn <code>@_</code> into a hashref</li>
     <li>Blesses a reference</li>
     <li>Populates attributes based on the hashref from #1</li>
-    <li>Calls <code>$new_object->BUILDALL($constructor_args)</code>
+    <li>Calls <code>$new_object-&gt;BUILDALL($constructor_args)</code>
         <br />... which calls all <code>BUILD</code> methods</li>    
     <li>Returns the object</li>
+  </ol>
+  <ol class="ja">
+    <li>引数の<code>@_</code>をハッシュリファレンスに変換するために<code>Person-&gt;BUILDARGS(@_)</code>を呼びます</li>
+    <li>ハッシュリファレンスをブレス(bless)します</li>
+    <li>ハッシュリファレンスに基づいてアトリビュートを設定します</li>
+    <li><code>$new_object-&gt;BUILDALL($constructor_args)</code>を呼びます
+        <br />……これは（クラス継承ツリーにある）全ての<code>BUILD</code>メソッドを呼ぶものです</li>    
+    <li>オブジェクトを返します</li>
   </ol>
 </div>
 
 <div class="slide">
-  <h1>The Object is Opaque</h1>
+  <h1 class="en">The Object is Opaque</h1>
+  <h1 class="ja">オブジェクトは「不透明」(opaque)なものです</h1>
 
-  <ul>
+  <ul class="en">
     <li>Technically it's a hash reference</li>
     <li><span class="wrong">If you <em>ever</em> treat it as one <strong>you are doing it wrong!</strong></span></li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>DEMOLISH</h1>
-
-  <ul>
-    <li>Like <code>DESTROY</code>, but Moose makes sure all <code>DEMOLISH</code> methods in a hierarchy are called</li>
-    <li>Called in normal inheritance order, children to parents</li>
+  <ul class="ja">
+    <li><span class="annotation">（訳注：Mooseクラスのオブジェクトは）</span>技術的にはハッシュリファレンスであるに過ぎません</li>
+    <li><span class="wrong">このオブジェクトをハッシュリファレンスとして<em>常に</em>透過的に取り扱うのは、<strong>悪い使い方です！</strong></span></li>
+    <li class="annotation">訳注：（例えば、配列リファレンスの実装がサポートされるかもしれませんので）内部がハッシュであることを前提とした<code>$person-&gt;{last_name}</code>のようなアクセスはせずに、カプセル化の原則に従って必ずメソッドを使ってアクセスしてください</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>extends</h1>
+  <h1 class="en">DEMOLISH</h1>
+  <h1 class="ja"><code>DEMOLISH</code></h1>
 
-  <ul>
+  <ul class="en">
+    <li>Like <code>DESTROY</code>, but Moose makes sure all <code>DEMOLISH</code> methods in a hierarchy are called</li>
+    <li>Called in normal inheritance order, children to parents</li>
+  </ul>
+  <ul class="ja">
+    <li><span class="annotation">（訳注：Perlクラスのデストラクターである）</span><code>DESTROY</code>のようなものですが、Mooseはクラス継承ツリーにある全ての<code>DEMOLISH</code>メソッドを正しく呼びます</li>
+    <li>通常の継承順で、つまり子から親へと呼ばれます</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">extends</h1>
+  <h1 class="ja"><code>extends</code></h1>
+
+  <ul class="en">
     <li><code>extends</code> is sugar for declaring parent classes</li>
     <li>Also ensures metaclass compatibility between parent and child</li>
     <li>Do not <code>use base</code></li>
   </ul>
-
-  <pre><code>package Employee;
-use Moose;
-<span class="highlight">extends 'Person';</span></code></pre>
-</div>
-
-<div class="slide">
-  <h1>extends</h1>
-
-  <ul>
-    <li>Each call to <code>extends</code> <strong>resets</strong> your parents</li>
+  <ul class="ja">
+    <li><code>extends</code>は親クラスを宣言するためのシュガー（構文糖）です</li>
+    <li>親クラスと子クラスの間でメタクラスの互換性があることを保証します</li>
+    <li><code>use base</code>と書かないでください</li>
   </ul>
 
-  <h2 class="wrong">Wrong</h2>
-
-  <pre><code>package EvilEmployee;
+  <pre><code>package Employee;<span class="ja"> # 従業員</span>
 use Moose;
-extends 'Person';
-extends 'Thief';</code></pre>
-
-  <h2 class="right">Right</h2>
-
-  <pre><code>package EvilEmployee;
-use Moose;
-extends 'Person', 'Thief';</code></pre>
+<span class="highlight">extends 'Person';<span class="ja"> # 人間クラスを継承</span></span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Extending un-Moose-y Parents</h1>
+  <h1 class="en">extends</h1>
+  <h1 class="ja"><code>extends</code></h1>
+
+  <ul class="en">
+    <li>Each call to <code>extends</code> <strong>resets</strong> your parents</li>
+  </ul>
+  <ul class="ja">
+    <li><code>extends</code>を別々に呼ぶと、親クラスが<strong>リセット</strong> されてしまいます</li>
+  </ul>
+
+  <h2 class="wrong"><span class="en">Wrong</span><span class="ja">悪い例</span></h2>
+
+  <pre><code>package EvilEmployee;<span class="ja"> # 邪悪な従業員</span>
+use Moose;
+extends 'Person';<span class="ja"> # 人間を継承</span>
+extends 'Thief';<span class="ja">  # 泥棒を継承（人間の継承は無効）</span></code></pre>
+
+  <h2 class="right"><span class="en">Right</span><span class="ja">良い例</span></h2>
+
+  <pre><code>package EvilEmployee;<span class="ja"> # 邪悪な従業員</span>
+use Moose;
+extends 'Person', 'Thief';<span class="ja"> # 人間と泥棒を継承</span></code></pre>
+</div>
+
+<div class="slide">
+  <h1 class="en">Extending un-Moose-y Parents</h1>
+  <h1 class="ja">非Mooseクラスである親の継承</h1>
 
   <pre><code>package My::LWP;
 use Moose;
-extends 'LWP';</code></pre>
+extends 'LWP';<span class="ja"> # LWP(libwww-perl)を継承</span></code></pre>
 
-  <ul>
+  <ul class="en">
     <li>No <code>Moose::Object</code>, so ...
-      <ul>
+      <ul class="en">
         <li>No attribute-handling <code>new()</code></li>
         <li>No <code>BUILDARGS()</code> or <code>BUILD()</code></li>
         <li>No <code>DEMOLISH()</code></li>
@@ -1031,61 +1258,92 @@ extends 'LWP';</code></pre>
     </li>
     <li>But see <code>MooseX::NonMoose</code> for a workaround</li>
   </ul>
+  <ul class="ja">
+    <li><code>Moose::Object</code>がないので……
+      <ul class="ja">
+        <li><code>new()</code>メソッド中でアトリビュートを取り扱う処理がありません</li>
+        <li><code>BUILDARGS()</code>や<code>BUILD()</code>でフックできません</li>
+        <li><code>DEMOLISH()</code>でフックできません</li>
+      </ul>
+    </li>
+    <li>ですが、回避方法として<code>MooseX::NonMoose</code>を使えます<span class="annotation">（訳注：これにより上記の処理もできるようになります）</span></li>
+  </ul>
 </div>  
 
 <div class="slide">
-  <h1><code>override</code> and <code>super</code></h1>
+  <h1 class="en"><code>override</code> and <code>super</code></h1>
+  <h1 class="ja"><code>override</code>と<code>super</code></h1>
 
-  <ul>
+  <ul class="en">
     <li><code>override</code> is another method modifier</li>
     <li>An alternative to Perl's <code>SUPER::</code></li>
+  </ul>
+  <ul class="ja">
+    <li><code>override</code>はメソッドモディファイヤー(method modifier)と同様のものです</li>
+    <li>Perlクラスの<code>SUPER::</code>の代わりに使えます</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1><code>override</code> and <code>super</code></h1>
+  <h1 class="en"><code>override</code> and <code>super</code></h1>
+  <h1 class="ja"><code>override</code>と<code>super</code></h1>
 
-  <pre><code>package Employee;
+  <pre><code>package Employee;<span class="ja"> # 従業員</span>
 use Moose;
 
-<span class="current incremental">extends 'Person';</span>
+<span class="current incremental">extends 'Person';<span class="ja"> # 人間を拡張</span></span>
 
-<span class="incremental">override</span> work =&gt; sub {
+<span class="incremental">override</span> work =&gt; sub {<span class="ja"> # 「働かせる」をオーバーライド</span>
     my $self = shift;
 
+    <span class="ja"># 「私を働かせる前に賃金を払って！」</span>
     die "Pay me first"
-        unless $self-&gt;got_paid;
+        unless $self-&gt;got_paid;<span class="ja"> # 未払い</span>
     <span class="incremental">super();</span>
-}<span class="incremental">;</span></code></pre>
+}<span class="incremental">;</span><span class="annotation"> # 訳注：セミコロンをお忘れなく！</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Caveat <code>super</code></h1>
+  <h1 class="en">Caveat <code>super</code></h1>
+  <h1 class="ja"><code>super</code>の注意点</h1>
 
-  <ul>
+  <ul class="en">
     <li>Mostly like <code>$self-&gt;SUPER::work(@_)</code></li>
     <li><strong>But</strong> cannot change <code>@_</code>!</li>
     <li>Binds the parent's method at compile time</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Minimal Attributes</h1>
-
-  <ul>
-    <li><code>has 'foo'</code></li>
-    <li>Use <code>is =&gt; 'ro'</code> or <code>is =&gt; 'rw'</code></li>
-    <li>Attributes without "is" have no accessors</li>
+  <ul class="ja">
+    <li>たいていは<code>$self-&gt;SUPER::work(@_)</code>と同様に動きます</li>
+    <li><strong>しかし</strong>引数<code>@_</code>は変更できません！</li>
+    <li>親メソッドに与えられた引数を、コンパイル時に紐付けます</li>
+    <li class="annotation">訳注：一旦<code>my $self = shift; my $foo = shift;</code>した場合でも、<code>super();</code>と書きさえすれば、<code>$self-&gt;SUPER::work($foo, @_)</code>のように引数を再構築しなくても済みます</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Read-write attributes</h1>
+  <h1 class="en">Minimal Attributes</h1>
+  <h1 class="ja">最小限のアトリビュート</h1>
 
-  <pre><code>package Person;
+  <ul class="en">
+    <li><code>has 'foo'</code></li>
+    <li>Use <code>is =&gt; 'ro'</code> or <code>is =&gt; 'rw'</code></li>
+    <li>Attributes without "is" have no accessors</li>
+  </ul>
+  <ul class="ja">
+    <li><code>has 'foo'</code></li>
+    <li><code>is =&gt; 'ro'</code>（読み取り専用）か<code>is =&gt; 'rw'</code>（読み書き両用）を使ってください</li>
+    <li>"is"がないアトリビュートはアクセッサーを持ちません</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Read-write attributes</h1>
+  <h1 class="ja">読み書き両用なアトリビュート</h1>
+
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has first_name =&gt; ( <span class="highlight">is =&gt; 'rw'</span> );
+has first_name =&gt; (<span class="highlight">is =&gt; 'rw'</span> );<span class="ja"> # 名前（ファーストネーム）</span>
 
 my $person =
     Person-&gt;new( first_name =&gt; 'Dave' );
@@ -1096,12 +1354,13 @@ print $person-&gt;first_name; # Stevan</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Read-only attributes</h1>
+  <h1 class="en">Read-only attributes</h1>
+  <h1 class="ja">読み込み専用なアトリビュート</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has first_name =&gt; ( <span class="highlight">is =&gt; 'ro'</span> );
+has first_name =&gt; ( <span class="highlight">is =&gt; 'ro'</span> );<span class="ja"> # 名前（ファーストネーム）</span>
 
 my $person =
     Person-&gt;new( first_name =&gt; 'Dave' );
@@ -1112,89 +1371,123 @@ print $person-&gt;first_name; # Dave</code></pre>
 </div>
 
 <div class="slide">
-  <h1>There is More to Come</h1>
+  <h1 class="en">There is More to Come</h1>
+  <h1 class="ja">まだまだ他にもあります</h1>
 
-  <ul>
+  <ul class="en">
     <li>Attributes have a <em>lot</em> of features</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Cleaning Up Moose Droppings</h1>
-
-  <pre><code>package Person;
-use Moose;
-
-# true
-Person->can('extends');</code></pre>
-
-  <ul>
-    <li>Not very hygienic</li>
+  <ul class="ja">
+    <li>アトリビュートには<em>たくさんの</em>機能があります</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Cleaning Up Moose Droppings</h1>
+  <h1 class="en">Cleaning Up Moose Droppings</h1>
+  <h1 class="ja">Moose（ヘラジカ）のフンの掃除</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
+use Moose;
+
+<span class="en"># true</span><span class="ja"># 真</span>
+Person-&gt;can('extends');</code></pre>
+
+  <ul class="en">
+    <li>Not very hygienic</li>
+  </ul>
+  <ul class="ja">
+    <li>これはとても不衛生です</li>
+    <li class="annotation">訳注：名前空間が汚染されたままです。クラス構築時にのみ必要な<code>extends</code>という関数などを、メソッドとしてクラスの外部から呼べてしまいます</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Cleaning Up Moose Droppings</h1>
+  <h1 class="ja">Moose（ヘラジカ）のフンの掃除</h1>
+
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
 ...
 
-no Moose;
+no Moose;<span class="ja"> # Moose関数を名前空間から除去</span>
 
-# false
-Person->can('extends');</code></pre>
+<span class="en"># false</span><span class="ja"># 偽</span>
+Person-&gt;can('extends');</code></pre>
 </div>
 
 <div class="slide">
-  <h1>No Moose</h1>
+  <h1 class="en">No Moose</h1>
+  <h1 class="ja"><code>no Moose</code></h1>
 
-  <ul>
+  <ul class="en">
     <li><code>no Moose</code> at the end of a package is a best practice</li>
     <li>Or <code>use namespace::autoclean</code> at the top</li>
     <li>Just do it</li>
   </ul>
+  <ul class="ja">
+    <li>パッケージの末尾で<code>no Moose</code>することがベストプラクティスです</li>
+    <li>もしくは<code>use namespace::autoclean</code>をパッケージの冒頭に書いてください</li>
+    <li>とにかくそうしてください</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Immutability</h1>
+  <h1 class="en">Immutability</h1>
+  <h1 class="ja">不変性(immutability)</h1>
 
-  <ul>
+  <ul class="en">
     <li><span style="font-family: URW Chancery L; font-size: 140%">Stevan's Incantation of Fleet-Footedness</span></li>
   </ul>
+  <ul class="ja">
+    <li><span style="font-family: URW Chancery L; font-size: 140%">Stevanによる高速化のおまじない</span></li>
+  </ul>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-<span class="highlight">__PACKAGE__->meta->make_immutable;</span></code></pre>
+<span class="highlight">__PACKAGE__-&gt;meta-&gt;make_immutable;</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>What <code>make_immutable</code> does</h1>
+  <h1 class="en">What <code>make_immutable</code> does</h1>
+  <h1 class="ja"><code>make_immutable</code>とは</h1>
 
-  <ul>
+  <ul class="en">
     <li>Magic</li>
     <li>Uses <code>eval</code> to "inline" a constructor</li>
     <li>Memoizes a lot of meta-information</li>
     <li>Makes loading your class slower</li>
     <li>Makes object creation <em>much</em> faster</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>When to Immutabilize?</h1>
-
-  <ul>
-    <li><em>Almost</em> always</li>
-    <li>Startup time vs execution time</li>
+  <ul class="ja">
+    <li>魔術です</li>
+    <li>コンストラクターをインライン展開するために<code>eval</code>を使います</li>
+    <li>たくさんのメタ情報をメモ化<span class="annotation">（訳注：memoize(メモワイズ)とは、初回実行時の結果をキャッシュして、次回以降はそのキャッシュを返すことで処理の効率化を図るテクニックです）</span>します</li>
+    <li>クラスのロード時間は遅くなりますが……</li>
+    <li>オブジェクトの生成は<em>はるかに</em>速くなります</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Classes Summary</h1>
+  <h1 class="en">When to Immutabilize?</h1>
+  <h1 class="ja">いつ不変化(immutabilize)すべきでしょうか？</h1>
 
-  <ul>
+  <ul class="en">
+    <li><em>Almost</em> always</li>
+    <li>Startup time vs execution time</li>
+  </ul>
+  <ul class="ja">
+    <li><em>ほとんど</em>いつもしてください</li>
+    <li>起動時間と実効時間のどちらに重きを置くか次第です</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Classes Summary</h1>
+  <h1 class="ja">クラスの概要（おさらい）</h1>
+
+  <ul class="en">
     <li><code>use Moose</code></li>
     <li><code>Class-&gt;meta</code></li>
     <li><code>Moose::Object</code> base class</li>
@@ -1203,14 +1496,25 @@ use Moose;
     <li><code>no Moose</code></li>
     <li><code>__PACKAGE__-&gt;meta-&gt;make_immutable</code></li>
   </ul>
+  <ul class="ja">
+    <li><code>use Moose</code></li>
+    <li><code>Class-&gt;meta</code></li>
+    <li><code>Moose::Object</code>が基底クラス</li>
+    <li><code>extends</code>と<code>override</code>と<code>super</code></li>
+    <li>簡単なアトリビュート: <code>has</code>, <code>is&nbsp;=&gt;&nbsp;'ro'</code>, &amp; <code>is&nbsp;=&gt;&nbsp;'rw'</code></li>
+    <li><code>no Moose</code></li>
+    <li><code>__PACKAGE__-&gt;meta-&gt;make_immutable</code></li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Questions?</h1>
+  <h1 class="en">Questions?</h1>
+  <h1 class="ja">質問はありますか？</h1>
 </div>  
 
 <div class="slide">
-  <h1>Exercises</h1>
+  <h1 class="en">Exercises</h1>
+  <h1 class="ja">演習</h1>
 
   <pre># cd exercises
 
@@ -1222,32 +1526,40 @@ use Moose;
 
 # edit lib/Person.pm and lib/Employee.pm
 
-Iterate til this passes all its tests</pre>
+Iterate til this passes all its tests
+<span class="ja">全てのテストにパスするまで繰り返してください</span></pre>
 </div>
 
 <div class="slide fake-slide0">
-  <h1>Part 2: Roles</h1>
+  <h1 class="en">Part 2: Roles</h1>
+  <h1 class="ja">Part 2: ロール(role)</h1>
 </div>
 
 <div class="slide">
-  <h1>Just What Is a Role?</h1>
+  <h1 class="en">Just What Is a Role?</h1>
+  <h1 class="ja">ロール(role)とは一体何なのでしょうか？</h1>
 
-  <ul>
+  <ul class="en">
     <li>Mixin? Interface? Trait?</li>
     <li>Yes ... and more!</li>
+  </ul>
+  <ul class="ja">
+    <li>ミックスイン(mixin)？　インターフェース(interface)？　トレート(trait)？</li>
+    <li>そうです……しかしそれ以上のものです！</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Roles - State <strong>and</strong> Behavior</h1>
+  <h1 class="en">Roles - State <strong>and</strong> Behavior</h1>
+  <h1 class="ja">ロール - 状態(state)<strong>と</strong>振る舞い(behavior)</h1>
 
-  <pre><code>package HasPermissions;
+  <pre><code>package HasPermissions;<span class="ja"> # 許可を持つ</span>
 use Moose::Role;
-<span class="current incremental"># state
-has access_level =&gt; ( is =&gt; 'rw' );</span>
+<span class="current incremental"># state<span class="ja"> / 状態</span>
+has access_level =&gt; ( is =&gt; 'rw' );<span class="ja"> # アクセスレベル</span></span>
 
-<span class="incremental"># behavior
-sub can_access {
+<span class="incremental"># behavior<span class="ja"> / 振る舞い</span>
+sub can_access {<span class="ja"> # アクセス可能か調べる</span>
     my $self     = shift;
     my $required = shift;
 
@@ -1258,25 +1570,29 @@ sub can_access {
 </div>
 
 <div class="slide">
-  <h1>Roles Can Define Interfaces</h1>
+  <h1 class="en">Roles Can Define Interfaces</h1>
+  <h1 class="ja">インターフェース(interface)も定義可能</h1>
 
-  <pre><code>package Printable;
-use Moose::Role;
-
-requires 'as_string';</code></pre>
-</div>
-
-<div class="slide">
-  <h1>Roles Can Do All Three</h1>
-
-  <pre><code>package Printable;
+  <pre><code>package Printable;<span class="ja"> # 印刷可能</span>
 use Moose::Role;
 
 requires 'as_string';
+<span class="ja"># 呼び元でas_stringメソッドが使えることを要求</span></code></pre>
+</div>
 
-has has_been_printed =&gt; ( is =&gt; 'rw'  );
+<div class="slide">
+  <h1 class="en">Roles Can Do All Three</h1>
+  <h1 class="ja">ロールはこれら3つの全てをできます</h1>
 
-sub print {
+  <pre><code>package Printable;<span class="ja"> # 印刷可能</span>
+use Moose::Role;
+
+requires 'as_string';
+<span class="ja"># 呼び元でas_stringメソッドが使えることを要求</span>
+
+has has_been_printed =&gt; ( is =&gt; 'rw'  );<span class="ja"> # 印刷済み</span>
+
+sub print {<span class="ja"> # 印刷する</span>
     my $self = shift;
     print $self-&gt;as_string;
     $self-&gt;has_been_printed(1);
@@ -1284,21 +1600,23 @@ sub print {
 </div>
 
 <div class="slide">
-  <h1>Classes Consume Roles</h1>
+  <h1 class="en">Classes Consume Roles</h1>
+  <h1 class="ja">クラスはロールを消費(consume)します</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-with 'HasPermissions';</code></pre>
+with 'HasPermissions';<span class="ja"> # 許可を持つ</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Classes Consume Roles</h1>
+  <h1 class="en">Classes Consume Roles</h1>
+  <h1 class="ja">クラスはロールを消費(consume)します</h1>
 
 <pre><code>my $person = Person-&gt;new(
-    first_name   =&gt; 'Kenichi',
-    last_name    =&gt; 'Asai',
-    access_level =&gt; 42,
+    first_name   =&gt; 'Kenichi',<span class="ja"> # 名前（ファーストネーム）</span>
+    last_name    =&gt; 'Asai',<span class="ja">    # 苗字（ラストネーム）</span>
+    access_level =&gt; 42,<span class="ja">        # アクセス水準</span>
 );
 
 print $person-&gt;full_name
@@ -1309,33 +1627,39 @@ print $person-&gt;full_name
 </div>
 
 <div class="slide">
-  <h1>Roles in Practice</h1>
+  <h1 class="en">Roles in Practice</h1>
+  <h1 class="ja">実行時のロール</h1>
 
-  <ul>
+  <ul class="en">
     <li>Consuming a role =~ inlining the role</li>
+  </ul>
+  <ul class="ja">
+    <li>ロールを消費する(consuming) =~ ロールをインライン展開する(inlining)</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>In Other Words ...</h1>
+  <h1 class="en">In Other Words ...</h1>
+  <h1 class="ja">言い換えれば……</h1>
 
-<pre><code>package Person;
+<pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-<span class="highlight">with 'Printable';</span></code></pre>
+<span class="highlight">with 'Printable';<span class="ja"> # 印刷可能</span></span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>In Other Words ...</h1>
+  <h1 class="en">In Other Words ...</h1>
+  <h1 class="ja">言い換えれば……</h1>
 
-<pre><code>package Person;
+<pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-<span class="delete">with 'Printable';</span>
+<span class="delete">with 'Printable';<span class="ja"> # 印刷可能</span></span>
 
-<span class="highlight">has has_been_printed =&gt; ( is =&gt; 'rw'  );
+<span class="highlight">has has_been_printed =&gt; ( is =&gt; 'rw'  );<span class="ja"> # 印刷済み</span>
 
-sub print {
+sub print {<span class="ja"> # 印刷する</span>
     my $self = shift;
     print $self-&gt;as_string;
     $self-&gt;has_been_printed(1);
@@ -1343,10 +1667,14 @@ sub print {
 </div>
 
 <div class="slide">
-  <h1>Except</h1>
+  <h1 class="en">Except</h1>
+  <h1 class="ja">単なるインライン展開ではありません</h1>
 
-  <ul>
+  <ul class="en">
     <li>Role consumption is introspectable</li>
+  </ul>
+  <ul class="ja">
+    <li>ロールが消費されていることは内観<span class="annotation">（訳注：introspect, イントロスペクト。プログラム実行時にオブジェクトの中の情報を参照すること）</span>可能です</li>
   </ul>
 
   <pre><code>if ( Person-&gt;does('Printable') ) { ... }
@@ -1358,299 +1686,378 @@ Person-&gt;meta-&gt;does('Printable')</code></pre>
 </div>
 
 <div class="slide">
-  <h1>These Names Are the Same</h1>
+  <h1 class="en">These Names Are the Same</h1>
+  <h1 class="ja">同時に3箇所で同じ名前が使われたら</h1>
 
-  <ul>
+  <ul class="en">
     <li>What if a role and class define the same method?</li>
     <li>A class's <em>local</em> methods win over the role's</li>
     <li>The role's methods win over the class's <em>inherited</em> methods</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Conflicts Between Roles</h1>
-
-  <ul>
-    <li>Two roles with a method of the same name</li>
-    <li>Generates a compile-time error when consumed by a class</li>
+  <ul class="ja">
+    <li>ロールとクラスで同名のメソッドを定義していたら？</li>
+    <li>クラスにある<em>ローカルな<span class="annotation">（訳注：クラス自身が持つ）</span></em>メソッドが使われ、ロールにあるメソッドは使われません</li>
+    <li>ロールにあるメソッドが使われ、クラスにある<em>継承された</em>メソッドは使われなません</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Conflict Example</h1>
+  <h1 class="en">Conflicts Between Roles</h1>
+  <h1 class="ja">ロール同士の衝突(conflict)</h1>
 
-  <pre><code>package IsFragile;
-use Moose::Role;
-
-sub break { ... }
-
-package CanBreakdance;
-use Moose::Role;
-
-sub break { ... }</code></pre>
+  <ul class="en">
+    <li>Two roles with a method of the same name</li>
+    <li>Generates a compile-time error when consumed by a class</li>
+  </ul>
+  <ul class="ja">
+    <li>2つのロールが同名のメソッドを持っていたら、</li>
+    <li>それらのロールを消費するクラスでコンパイル時エラーが発生します</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Conflict Example</h1>
+  <h1 class="en">Conflict Example</h1>
+  <h1 class="ja">衝突の例</h1>
 
-  <pre><code>package FragileDancer;
+  <pre><code>package IsFragile;<span class="ja"> # 虚弱である</span>
+use Moose::Role;
+
+sub break { ... }<span class="ja"> # 骨折する</span>
+
+package CanBreakdance;<span class="ja"> # ブレイクダンスを踊れる</span>
+use Moose::Role;
+
+sub break { ... }<span class="ja"> # 踊る</span></code></pre>
+</div>
+
+<div class="slide">
+  <h1 class="en">Conflict Example</h1>
+  <h1 class="ja">衝突の例</h1>
+
+  <pre><code>package FragileDancer;<span class="ja"> # 虚弱な舞踏家</span>
 use Moose;
 
 <span class="highlight">with 'IsFragile', 'CanBreakdance';</span></code></pre>
 
-  <ul>
+  <ul class="en">
     <li>Only one <code>with</code>!</li>
+  </ul>
+  <ul class="ja">
+    <li><code>with</code>は1文でのみ書いてください！</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Conflict Resolution</h1>
+  <h1 class="en">Conflict Resolution</h1>
+  <h1 class="ja">衝突の解決</h1>
 
-  <ul>
+  <ul class="en">
     <li>The consuming class must resolve the conflict by implementing the method</li>
     <li>Can use some combination of method exclusion and aliasing</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Method Aliasing</h1>
-
-  <pre><code>package FragileDancer;
-use Moose;
-
-<span class="highlight">with 'IsFragile' =>
-         { -alias =>
-               { break => 'break_bone' } },
-     'CanBreakdance' =>
-         { -alias =>
-               { break => 'break_it_down' } };</span></code></pre>
-
-  <ul>
-    <li>Renames the roles' methods</li>
-    <li>Still conflicts, need to <code>exclude</code> as well</li>
+  <ul class="ja">
+    <li>ロールを消費するクラスは、メソッドの実装によって衝突を解決しなければなりません<span class="annotation">（訳注：クラスにあるメソッドがロールにあるメソッドより優先されるため）</span></li>
+    <li>メソッドの排除(exclusion)と別名化(aliasing)の組み合わせでも解決できます</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Method Exclusion</h1>
+  <h1 class="en">Method Aliasing</h1>
+  <h1 class="ja">メソッドの別名化(aliasing)</h1>
 
-  <pre><code>package FragileDancer;
+  <pre><code>package FragileDancer;<span class="ja">  # 虚弱な舞踏家</span>
 use Moose;
 
-<span class="highlight">with 'IsFragile' =>
-         { -alias =>
-               { break => 'break_bone' },
-           -excludes => 'break' },
-     'CanBreakdance' =>
-         { -alias =>
-               { break => 'break_it_down' },
-           -excludes => 'break' };</span></code></pre>
+<span class="highlight">with 'IsFragile' =&gt;<span class="ja">     # 虚弱である</span>
+         { -alias =&gt;
+               { break =&gt; 'break_bone' } },<span class="ja">    # 骨折する</span>
+     'CanBreakdance' =&gt;<span class="ja"> # ブレイクダンスを踊れる</span>
+         { -alias =&gt;
+               { break =&gt; 'break_it_down' } };<span class="ja"> # 踊る</span></span></code></pre>
+
+  <ul class="en">
+    <li>Renames the roles' methods</li>
+    <li>Still conflicts, need to <code>exclude</code> as well</li>
+  </ul>
+  <ul class="ja">
+    <li>ロールによって提供されているメソッドを改名します</li>
+    <li>このままでは衝突したままなので、さらに<code>排除(exclude)</code>が必要です</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>And then ...</h1>
+  <h1 class="en">Method Exclusion</h1>
+  <h1 class="ja">メソッドの排除(exclusion)</h1>
 
-  <pre><code>package FragileDancer;
+  <pre><code>package FragileDancer;<span class="ja">  # 虚弱な舞踏家</span>
 use Moose;
 
-sub break {
+<span class="highlight">with 'IsFragile' =&gt;<span class="ja">     # 虚弱である</span>
+         { -alias =&gt;
+               { break =&gt; 'break_bone' },<span class="ja">    # 骨折する</span>
+           -excludes =&gt; 'break' },<span class="ja"> # （breakを排除）</span>
+     'CanBreakdance' =&gt;<span class="ja"> # ブレイクダンスを踊れる</span>
+         { -alias =&gt;
+               { break =&gt; 'break_it_down' },<span class="ja"> # 踊る</span>
+           -excludes =&gt; 'break' };<span class="ja"> # （breakを排除）</span></span></code></pre>
+</div>
+
+<div class="slide">
+  <h1 class="en">And then ...</h1>
+  <h1 class="ja">こうすれば……</h1>
+
+  <pre><code>package FragileDancer;<span class="ja">     # 虚弱な舞踏家</span>
+use Moose;
+
+sub break {<span class="ja">                # ブレイクする</span>
     my $self = shift;
 
-    $self->break_it_down;
-    if ( rand(1) &lt; 0.5 ) {
-        $self->break_bone;
+    $self-&gt;break_it_down;<span class="ja">  # 踊る</span>
+    if ( rand(1) &lt; 0.5 ) {<span class="ja"> # その際、半分の確率で</span>
+        $self-&gt;break_bone;<span class="ja"> # 骨折する</span>
     }
 }</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Still Full of Fail</h1>
+  <h1 class="en">Still Full of Fail</h1>
+  <h1 class="ja">まだたくさんの失敗に満ちています</h1>
 
-  <ul>
+  <ul class="en">
     <li>Roles are also about semantics!</li>
     <li>We've fulfilled the letter and lost the spirit</li>
     <li>Roles have a <em>meaning</em></li>
     <li>Think twice before blindly aliasing and excluding methods!</li>
   </ul>
+  <ul class="ja">
+    <li>ロールにもまたセマンティクス<span class="annotation">（訳注：semanticsはデータに紐付く意味のこと）</span>があります！</li>
+    <li><span class="annotation">（衝突回避策によって）</span>字面としては充足されましたが、ロールの精神は失われてしまいました</li>
+    <li>ロールは<em>意味</em>を持っています</li>
+    <li>やみくもに別名化と排除をする前に、もう一度よく考えてください！</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Hot Role-on-Role Action</h1>
+  <h1 class="en">Hot Role-on-Role Action</h1>
+  <h1 class="ja">上手なロール中ロールの使い方</h1>
 
-  <pre><code>package Comparable;
+  <pre><code>package Comparable;<span class="ja"> # 比較可能</span>
 use Moose::Role;
 
 requires 'compare';</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Hot Role-on-Role Action</h1>
+  <h1 class="en">Hot Role-on-Role Action</h1>
+  <h1 class="ja">上手なロール中ロールの使い方</h1>
 
-  <pre><code>package TestsEquality;
+  <pre><code>package TestsEquality;<span class="ja"> # 均一性検査可能</span>
 use Moose::Role;
 
 with 'Comparable';
 
-sub is_equal {
+sub is_equal {<span class="ja"> # 均一であるか</span>
     my $self = shift;
-    return $self->compare(@_) == 0;
+    return $self-&gt;compare(@_) == 0;
 }</code></pre>
 </div>
 
 <div class="slide">
-  <h1>And then ...</h1>
+  <h1 class="en">And then ...</h1>
+  <h1 class="ja">これによって……</h1>
 
-  <pre><code>package Integer;
+  <pre><code>package Integer;<span class="ja"> # 整数</span>
 use Moose;
 
-with 'TestsEquality';
+with 'TestsEquality';<span class="ja"> # 均一性検査可能</span>
 
-# Satisfies the Comparable role
+<span class="en"># Satisfies the Comparable role</span><span class="ja"># Comparableロールが充足された</span>
 sub compare { ... }
 
-Integer->does('TestsEquality'); # true
-Integer->does('Comparable'); # also true!</code></pre>
+Integer-&gt;does('TestsEquality');<span class="en"> # true</span><span class="ja"> # 真</span>
+Integer-&gt;does('Comparable');<span class="en"> # also true</span><span class="ja"> # これもまた真！</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Name Conflicts Between Roles</h1>
+  <h1 class="en">Name Conflicts Between Roles</h1>
+  <h1 class="ja">ロール間の名前の衝突</h1>
 
-  <pre><code>package HasSubProcess;
+  <pre><code>package HasSubProcess;<span class="ja"> # サブプロセスを持つ</span>
 use Moose::Role;
 
-<span class="highlight">sub execute { ... }</span>
+<span class="highlight">sub execute { ... }<span class="ja"> # 実行する</span></span>
 
-package Killer;
+package Killer;<span class="ja"> # 殺し屋</span>
 use Moose::Role;
 
-with 'HasSubProcess';
+with 'HasSubProcess';<span class="ja"> # サブプロセスを持つ</span>
 
-<span class="highlight">sub execute { ... }</span></code></pre>
+<span class="highlight">sub execute { ... }<span class="ja"> # 処刑する</span></span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Delayed Conflict</h1>
+  <h1 class="en">Delayed Conflict</h1>
+  <h1 class="ja">遅延衝突</h1>
 
-  <pre><code>package StateOfTexas;
-with 'Killer';</code></pre>
+  <pre><code>package StateOfTexas;<span class="ja"> # テキサス州</span>
+with 'Killer';<span class="ja"> # 殺し屋の役割をこなせる</span></code></pre>
 
-  <ul>
+  <ul class="en">
     <li><code>StateOfTexas</code> must implement its own <code>execute</code></li>
     <li>But loading the <code>Killer</code> role by itself does not cause an error</li>
+  </ul>
+  <ul class="ja">
+    <li><code>StateOfTexas</code>（テキサス州）は自身で<code>execute</code>（執行）メソッドを実装しなければなりません</li>
+    <li class="annotation">訳注：ロール内で<code>execute</code>が競合しているため、優先的に呼ばれる自分のクラス自体の<code>execute</code>メソッドを実装しなければ、<code>execute</code>の実行時にエラーになります</li>
+    <li>しかし<code>Killer</code>（殺し屋）ロールをロードしてもエラーは起きません</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Roles as Interfaces</h1>
+  <h1 class="en">Roles as Interfaces</h1>
+  <h1 class="ja">インターフェース(interface)としてのロール</h1>
 
-  <ul>
+  <ul class="en">
     <li>Roles can <code>require</code> methods of their consumers</li>
     <li>Compile-time checks</li>
     <li>Method must exist when the role is consumed</li>
   </ul>
+  <ul class="ja">
+    <li>ロールは、消費元のメソッドを<code>requires</code>で要求できます</li>
+    <li>コンパイル時にインターフェースが検査されます</li>
+    <li>ロールが消費される際に既にメソッドが存在していなければなりません</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>The Attribute Gotcha</h1>
+  <h1 class="en">The Attribute Gotcha</h1>
+  <h1 class="ja">アトリビュートの発見<span class="memorandum">＜★「～の補足」？＞</span>(attribute gotcha)</h1>
 
-<pre><code>package HasSize;
+<pre><code>package HasSize;<span class="ja"> # 寸法がある</span>
 use Moose::Role;
 
-<span class="current incremental">requires 'size';</span>
+<span class="current incremental">requires 'size';<span class="ja"> # sizeメソッドを要求</span></span>
 
-package Shirt;
+package Shirt;<span class="ja"> # シャツ</span>
 use Moose;
 
-<span class="incremental">with 'HasSize';
-
-has size => ( is => 'ro' );</span></code></pre>
+<span class="incremental">with 'HasSize';<span class="ja"> # 寸法がある</span>
+<span class="annotation"># （訳注：sizeメソッドは未定義なのでインターフェース違反）</span>
+has size =&gt; ( is =&gt; 'ro' );<span class="ja"> # 寸法アトリビュート</span></span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>The Attribute Gotcha Workaround</h1>
+  <h1 class="en">The Attribute Gotcha Workaround</h1>
+  <h1 class="ja">アトリビュート発見の回避方法</h1>
 
-  <pre><code>package HasSize;
+  <pre><code>package HasSize;<span class="ja"> # 寸法がある</span>
 use Moose::Role;
 
-requires 'size';
+requires 'size';<span class="ja"> # sizeメソッドを要求</span>
 
-package Shirt;
+package Shirt;<span class="ja"> # シャツ</span>
 use Moose;
 
-has size => ( is => 'ro' );
+has size =&gt; ( is =&gt; 'ro' );<span class="ja"> # 寸法アトリビュート</span>
 
-with 'HasSize';</code></pre>
+with 'HasSize';<span class="ja"> # 寸法がある</span>
+<span class="annotation"># （訳注：has sizeの後に書けばよい）</span>
+</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Compile-time Is a Lie</h1>
+  <h1 class="en">Compile-time Is a Lie</h1>
+  <h1 class="ja">コンパイル時というのは厳密には嘘です</h1>
 
-  <ul>
+  <ul class="en">
     <li>Really, it's <em>package load</em> time</li>
     <li>That's run-time, but before the "real" run-time</li>
     <li>Moose does not rewire Perl, it's just sugar!</li>
     <li>(but <code>MooseX::Declare</code> <em>does</em> rewire Perl)</li>
   </ul>
+  <ul class="ja">
+    <li>実際には、その<em>パッケージのロード</em>時です</li>
+    <li>これは実行時ですが、本当の意味での実行時ではありません</li>
+    <li>MooseはPerlを書き換えることのできない、ただのシュガー（構文糖）なのです！</li>
+    <li>（ただし<code>MooseX::Declare</code>ならばPerlを書き換えることが<em>できます</em>）</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Enforcing Roles</h1>
+  <h1 class="en">Enforcing Roles</h1>
+  <h1 class="ja">ロールの強要(enforcing)</h1>
 
-  <pre><code>package Comparison;
+  <pre><code>package Comparison;<span class="ja"> # 比較</span>
 use Moose;
 
-has [ 'left', 'right' ] => (
-    is   => 'ro',
-    <span class="highlight">does => 'Comparable',</span>
+has [ 'left', 'right' ] =&gt; (<span class="ja"> # 左辺と右辺</span>
+    is   =&gt; 'ro',
+    <span class="highlight">does =&gt; 'Comparable',<span class="ja"> # 比較可能であるべき</span></span>
 );
 </code></pre>
 
-  <ul>
+  <ul class="en">
     <li>A sneak peek at type constraints</li>
+  </ul>
+  <ul class="ja">
+    <li>ここではアトリビュートの型制約(type constraint)をちらっとお見せしています</li>
   </ul>
 </div>
 
 
 <div class="slide">
-  <h1>Roles Can Be Applied to Objects</h1>
+  <h1 class="en">Roles Can Be Applied to Objects</h1>
+  <h1 class="ja">ロールはオブジェクトにも適用可能です</h1>
 
   <pre><code>use Moose::Util qw( apply_all_roles );
 
-my $fragile_person = Person->new( ... );
+my $fragile_person = Person-&gt;new( ... );<span class="ja"> # 虚弱な人</span>
 apply_all_roles( $fragile_person,
-                 'IsFragile' );</code></pre>
+                 'IsFragile' );<span class="ja"> # 虚弱である役割を後付け</span></code></pre>
 
-  <ul>
+  <ul class="en">
     <li>Does not change the <code>Person</code> class</li>
     <li>Works with non-Moose classes, great for monkey-patching!</li>
   </ul>
+  <ul class="ja">
+    <li>これは<code>Person</code>クラスを自分で書き換えられない場合に役立つテクニックです<span class="annotation">（訳注：クラスではなくオブジェクトに適用できます）</span></li>
+    <li><code>Person</code>クラスが非Mooseクラスである場合には、「やっつけパッチ」をあてる(monkey-patching)ためのとてもよい方法です！</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Roles Are Dirty Too</h1>
+  <h1 class="en">Roles Are Dirty Too</h1>
+  <h1 class="ja">ロールもまた不潔です</h1>
 
-  <ul>
+  <ul class="en">
     <li>Once again, clean up those Moose droppings</li>
   </ul>
+  <ul class="ja">
+    <li>またしても、Moose（ヘラジカ）のフンを掃除してください<span class="annotation">（訳注：名前空間の掃除のこと）</span></li>
+  </ul>
 
-  <pre><code>package Comparable;
+  <pre><code>package Comparable;<span class="ja"> # 比較可能</span>
 use Moose::Role;
 
-requires 'compare';
+requires 'compare';<span class="ja"> # compareメソッドを要求</span>
 
-<span class="highlight">no Moose::Role;</span></code></pre>
+<span class="highlight">no Moose::Role;<span class="ja"> # Moose関数を名前空間から除去</span></span></code></pre>
 
-  <ul>
+  <ul class="en">
     <li>But roles cannot be made immutable</li>
+  </ul>
+  <ul class="ja">
+    <li>ただしロールは不変化(immutable)できません<span class="annotation">（訳注：<code>new()</code>がないので）</span></li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>The Zen of Roles</h1>
+  <h1 class="en">The Zen of Roles</h1>
+  <h1 class="ja">ロールの禅(Zen)</h1>
 
-  <ul>
+  <ul class="en">
     <li>Roles represent discrete units of ...
-      <ul>
+      <ul class="en">
         <li>state</li>
         <li>behavior</li>
         <li>interface</li>
@@ -1660,48 +2067,85 @@ requires 'compare';
     <li>Roles are what a class <em>does</em>, not what it <em>is</em></li>
     <li>Roles <em>add</em> functionality, inheritance <em>specializes</em></li>
   </ul>
+  <ul class="ja">
+    <li>ロールはそれぞれ以下の別個の部分を演じます……
+      <ul class="ja">
+        <li>状態(state)</li>
+        <li>振る舞い(behavior)</li>
+        <li>インターフェース(interface)</li>
+      </ul>
+    </li>
+    <li>ロールはそれぞれに無関係なクラス間でも共有できます</li>
+    <li>ロールはクラスが何を<em>できる</em>かを規定するもので、クラスが何<em>である</em>かは規定しません</li>
+    <li>ロールが機能性を<em>追加</em>するのに対して、継承は<em>特化</em>するものです<span class="annotation">（訳注：前者はできることの幅を抽象化によって拡げて、後者はできることの幅を具象化によって狭めます）</span></li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Abstract Examples</h1>
+  <h1 class="en">Abstract Examples</h1>
+  <h1 class="ja">抽象的な例</h1>
 
-  <ul>
+  <ul class="en">
     <li>Human <em>@ISA</em> Animal</li>
     <li>Human <em>does</em> Toolmaker (as <em>does</em> Chimpanzee)</li>
     <li>Car <em>@ISA</em> Vehicle</li>
     <li>Car <em>does</em> HasEngine</li>
   </ul>
+  <ul class="ja">
+    <li>人間は動物<em>である(@ISA)</em></li>
+    <li>人間は道具作成者(Toolmaker)という役割を<em>こなせる</em>（チンパンジーが<em>こなせる</em>のと同様に）</li>
+    <li>自動車は乗り物<em>である(@ISA)</em></li>
+    <li>自動車はエンジンを持つという役割を<em>こなせる</em></li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Real Examples</h1>
+  <h1 class="en">Real Examples</h1>
+  <h1 class="ja">具体的な例</h1>
 
-  <ul>
+  <ul class="en">
     <li>Objects representing SQL database components and queries
-      <ul>
+      <ul class="en">
         <li>Schema, Table, Column, ColumnAlias</li>
         <li>Select, Insert, Update, Delete</li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="ja">
+    <li>オブジェクトはSQLデータベースの部品やクエリーを象徴するものとします
+      <ul class="ja">
+        <li>スキーマ(Schema)クラス, 表(Table)クラス, 列(Column)クラス, 列の別名(ColumnAlias)クラス</li>
+        <li>抽出クエリー(Select)クラス, 追加クエリー(Insert)クラス, 更新クエリー(Update)クラス, 削除クエリー(Delete)クラス</li>
       </ul>
     </li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Real Examples</h1>
+  <h1 class="en">Real Examples</h1>
+  <h1 class="ja">具体的な例</h1>
 
-  <ul>
+  <ul class="en">
     <li>Column and ColumnAlias both <em>do</em> ColumnLike</li>
     <li>ColumnLike things can be used in certain parts of queries</li>
     <li>All queries <em>do</em> HasWhereClause</li>
     <li>Select <em>does</em> Comparable and Selectable (for subselects)</li>
     <li>A where clause requires its components to <em>do</em> Comparable</li>
   </ul>
+  <ul class="ja">
+    <li>列(Column)クラスと列の別名(ColumnAlias)クラスの両方は、列のような(ColumnLike)ロールの役割を<em>こなします</em></li>
+    <li>列のような(ColumnLike)ロールでは、クエリーの中のいくつかのものを使えます</li>
+    <li>全てのクエリークラスはWHERE句を（アトリビュートとして）持つという(HasWhereClause)ロールの役割を<em>こなせます</em></li>
+    <li>選択(Select)クエリークラスは（副問い合わせをするために）比較可能(Comparable)ロールと選択可能(Selectable)ロールの役割を<em>こなせます</em></li>
+    <li>WHERE句は、それをアトリビュートとして使うクエリークラスが比較可能(Comparable)ロールを<em>こなせる</em>ことを要求します<span class="memorandum">＜★怪しげな訳＞</span></li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Roles Summary</h1>
+  <h1 class="en">Roles Summary</h1>
+  <h1 class="ja">ロールの概要（おさらい）</h1>
 
-  <ul>
+  <ul class="en">
     <li>Roles can define an interface with <code>requires</code></li>
     <li>Roles can have state (attributes) and behavior (methods)</li>
     <li>Roles can mix interface, state, &amp; behavior</li>
@@ -1709,376 +2153,496 @@ requires 'compare';
     <li>Roles can do other roles</li>
     <li>Roles can be used as a type in APIs (must do Comparable)</li>
   </ul>
+  <ul class="ja">
+    <li>ロールは<code>requires</code>によってインターフェースを定義できます</li>
+    <li>ロールは状態（アトリビュート）と振る舞い（メソッド）を持てます</li>
+    <li>ロールはインターフェースや状態や振る舞いを混ぜられます</li>
+    <li>ロールはクラスの中にまとめられます（平らにされます<span class="annotation">（訳注：コピーアンドペーストされたかのようにそのまま取り込まれます）</span>）</li>
+    <li>ロールは他のロールの役割をこなせます</li>
+    <li>ロールはクラスのAPIとして、型(type)のように使えます（例えば、あるアトリビュートはComparable（比較可能）であるべき、など）</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Questions?</h1>
+  <h1 class="en">Questions?</h1>
+  <h1 class="ja">質問はありますか？</h1>
 </div>  
 
 <div class="slide">
-  <h1>Exercises</h1>
+  <h1 class="en">Exercises</h1>
+  <h1 class="ja">演習</h1>
 
   <pre># cd exercises
 # perl bin/prove -lv t/02-roles.t
 
-Iterate til this passes all its tests</pre>
+Iterate til this passes all its tests
+<span class="ja">全てのテストにパスするまで繰り返してください</span></pre>
 </div>
 
 <div class="slide fake-slide0">
-  <h1>Part 3: Basic Attributes</h1>
+  <h1 class="en">Part 3: Basic Attributes</h1>
+  <h1 class="ja">Part 3: 基本的なアトリビュート(attribute)</h1>
 </div>
 
 <div class="slide">
-  <h1>Attributes Are Huge</h1>
+  <h1 class="en">Attributes Are Huge</h1>
+  <h1 class="ja">アトリビュートは巨大です</h1>
 
-  <ul>
+  <ul class="en">
     <li>Moose's biggest feature</li>
     <li>The target of <em>many</em> MooseX modules</li>
   </ul>
+  <ul class="ja">
+    <li>Mooseの一番大きな特徴です</li>
+    <li><em>多くの</em>MooseXモジュールの拡張対象になっています</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Quick Review</h1>
+  <h1 class="en">Quick Review</h1>
+  <h1 class="ja">端的な復習</h1>
 
-  <ul>
+  <ul class="en">
     <li>Declared with <code>has</code></li>
     <li>Read-only or read-write</li>
   </ul>
+  <ul class="ja">
+    <li><code>has</code>によるアトリビュートの宣言</li>
+    <li>読み込み専用、または読み書き両用</li>
+  </ul>
 
-  <pre><code>package Shirt;
+  <pre><code>package Shirt;<span class="ja"> # シャツ</span>
 use Moose;
 
-has 'color'     =&gt; ( is =&gt; 'ro' );
-has 'is_ripped' =&gt; ( is =&gt; 'rw' );</code></pre>
+has 'color'     =&gt; ( is =&gt; 'ro' );<span class="ja"> # 色</span>
+has 'is_ripped' =&gt; ( is =&gt; 'rw' );<span class="ja"> # 破れているか</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Required-ness</h1>
+  <h1 class="en">Required-ness</h1>
+  <h1 class="ja">必須性</h1>
 
-  <ul>
+  <ul class="en">
     <li>Required means "must be passed to the constructor"</li>
     <li>But can be <code>undef</code></li>
+  </ul>
+  <ul class="ja">
+    <li>必須である(required)というのは、「コンストラクターに渡さなければならない」ことを意味します</li>
+    <li>ただし<code>undef</code>であることも可能です</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Required-ness</h1>
+  <h1 class="en">Required-ness</h1>
+  <h1 class="ja">必須性</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has first_name =&gt; (
+has first_name =&gt; (<span class="ja"> # 名前（ファーストネーム）</span>
     is       =&gt; 'ro',
     <span class="current incremental">required =&gt; 1,</span>
 );
 
-<span class="incremental">Person->new( first_name =&gt; undef ); # ok
-Person->new(); # kaboom</span></code></pre>
+<span class="incremental">Person-&gt;new( first_name =&gt; undef ); # ok
+Person-&gt;new(); <span class="en"># kaboom</span><span class="ja"># どっかーん！　これは実行時エラー</span></span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Default and Builder</h1>
+  <h1 class="en">Default and Builder</h1>
+  <h1 class="ja"><code>default</code>と<code>builder</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Attributes can have defaults</li>
     <li>Simple non-reference scalars (number, string)</li>
     <li>Subroutine reference</li>
     <li>A builder method</li>
   </ul>
+  <ul class="ja">
+    <li>アトリビュートにはデフォルト値(default)を設定できます</li>
+    <li><code>default</code>にはリファレンスでない単純なスカラー値（数値や文字列）を設定できます</li>
+    <li><code>default</code>にはサブルーチンリファレンスも設定できます</li>
+    <li><code>builder</code>には値を構築するメソッド名も指定できます</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Default</h1>
+  <h1 class="en">Default</h1>
+  <h1 class="ja"><code>default</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Can be a non-reference scalar (including <code>undef</code>)</li>
   </ul>
+  <ul class="ja">
+    <li>リファレンスでない単純なスカラー値(<code>undef</code>を含みます)を設定できます</li>
+  </ul>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has bank =&gt; (
+has bank =&gt; (<span class="ja"> # 銀行</span>
     is      =&gt; 'rw',
-    default =&gt; 'Spire FCU',
-);</code></pre>
+    default =&gt; 'Spire FCU',<span class="ja"> # 「SPIRE信組」という文字列</span>
+);
+<span class="annotation"># 訳注：FCU(Federal Credit Union)とは、日本の信用組合に相当します</span>
+</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Default</h1>
+  <h1 class="en">Default</h1>
+  <h1 class="ja"><code>default</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Can be a subroutine reference</li>
   </ul>
+  <ul class="ja">
+    <li>サブルーチンリファレンスを設定できます</li>
+  </ul>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has bank =&gt; (
+has bank =&gt; (<span class="ja"> # 銀行</span>
     is      =&gt; 'rw',
     default =&gt;
         sub { Bank-&gt;new(
-                  name =&gt; 'Spire FCU' ) },
+                  name =&gt; 'Spire FCU' ) },<span class="ja"> # SPIRE信組の
+                                           # オブジェクト</span>
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Subroutine Reference Default</h1>
+  <h1 class="en">Subroutine Reference Default</h1>
+  <h1 class="ja">サブルーチンリファレンスによるデフォルト値</h1>
 
-  <ul>
+  <ul class="en">
     <li>Called as a method on the object</li>
     <li>Called anew for each object</li>
+  </ul>
+  <ul class="ja">
+    <li>オブジェクトのメソッドとして呼ばれます</li>
+    <li>オブジェクトの生成ごとに毎回新たに呼ばれます</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Why No Other Reference Types?</h1>
+  <h1 class="en">Why No Other Reference Types?</h1>
+  <h1 class="ja">なぜ他のリファレンス型はだめなのでしょうか？</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間クラス</span>
 use Moose;
 
-has bank =&gt; (
+has bank =&gt; (<span class="ja"> # 銀行</span>
     is      =&gt; 'rw',
     <span class="wrong">default =&gt; Bank-&gt;new(
                    name =&gt; 'Spire FCU' ),</span>
 );</code></pre>
 
-  <ul>
+  <ul class="en">
     <li>Now <strong>every</strong> person shares the <strong>same</strong> Bank object!</li>
+  </ul>
+  <ul class="ja">
+    <li>これだと、<strong>全ての</strong>人間は<strong>同じ</strong>銀行オブジェクトを共有してしまいます！</li>
   </ul>
 </div>
 
 <div class="slide">
-     <h1>Defaulting to an Empty Reference</h1>
+     <h1 class="en">Defaulting to an Empty Reference</h1>
+     <h1 class="ja">デフォルト値への空リファレンスの設定</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has packages =&gt; (
+has packages =&gt; (<span class="ja"> # パッケージ</span>
     is      =&gt; 'rw',
     default =&gt; <span class="highlight">sub { [] }</span>,
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>What if I Want to Share?</h1>
+  <h1 class="en">What if I Want to Share?</h1>
+  <h1 class="ja">本当に共有したい場合には？</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
 my $highlander_bank =
-    Bank-&gt;new( name =&gt; 'Spire FCU' );
+    Bank-&gt;new( name =&gt; 'Spire FCU' );<span class="ja"> # 高地人の銀行</span>
 
-has bank =&gt; (
+has bank =&gt; (<span class="ja"> # 銀行</span>
     is      =&gt; 'rw',
-    default =&gt; sub { $highlander_bank },
+    default =&gt; sub { $highlander_bank },<span class="ja"> # 高地人の銀行</span>
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Builder</h1>
+  <h1 class="en">Builder</h1>
+  <h1 class="ja"><code>builder</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>A method <em>name</em> which returns the default</li>
   </ul>
+  <ul class="ja">
+    <li>デフォルト値に設定したい値を返すメソッドの<em>名称</em>を設定します</li>  </ul>
 </div>
 
 <div class="slide">
-  <h1>Builder</h1>
+  <h1 class="en">Builder</h1>
+  <h1 class="ja"><code>builder</code></h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has bank =&gt; (
+has bank =&gt; (<span class="ja"> # 銀行</span>
     is      =&gt; 'rw',
     builder =&gt; '_build_bank',
 );
 
-sub _build_bank {
+sub _build_bank {<span class="ja"> # 銀行のデフォルト値を構築する</span>
     my $self = shift;
     return Bank-&gt;new(
-        name => 'Spire FCU' );
+        name =&gt; 'Spire FCU' );
 }</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Default vs Builder</h1>
+  <h1 class="en">Default vs Builder</h1>
+  <h1 class="ja"><code>default</code>と<code>builder</code>の使い分け</h1>
 
-  <ul>
+  <ul class="en">
     <li>Use default for simple scalars</li>
     <li>Use default to return empty references</li>
     <li>Use default for <em>very</em> trivial subroutine references</li>
     <li>Use builder for everything else</li>
   </ul>
+  <ul class="ja">
+    <li>単純なスカラー値の場合には<code>default</code>を使いましょう</li>
+    <li>空リファレンスを返す場合は<code>default</code>を使いましょう</li>
+    <li><em>極めて</em>些細なサブルーチンリファレンスの場合には<code>default</code>を使いましょう</li>
+    <li>そうでない全ての場合には<code>builder</code>を使いましょう</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Builder Bonuses</h1>
+  <h1 class="en">Builder Bonuses</h1>
+  <h1 class="ja"><code>builder</code>の特典</h1>
 
-  <ul>
+  <ul class="en">
     <li>Can be overridden and method modified, because it's called by <em>name</em></li>
     <li>Roles can require a builder</li>
+  </ul>
+  <ul class="ja">
+    <li>メソッドの<em>名称</em>で呼べるので、オーバーライドやメソッドモディファイヤーによる修飾ができます</li>
+    <li><code>builder</code>メソッドを備えていることをロールが要求できます(<code>requires</code>)</li>
   </ul>
 </div>
       
 <div class="slide">
-  <h1>Role Requires Builder</h1>
+  <h1 class="en">Role Requires Builder</h1>
+  <h1 class="ja">ロールが<code>builder</code>を要求する例</h1>
 
-  <pre><code>package HasBank;
+  <pre><code>package HasBank;<span class="ja"> # 銀行口座を持っている</span>
 use Moose::Role;
 
-requires '_build_bank';
+requires '_build_bank';<span class="ja"> # _build_bankを要求</span>
 
-has bank =&gt; (
+has bank =&gt; (<span class="ja"> # 銀行</span>
     is      =&gt; 'ro',
-    builder =&gt; '_build_bank',
+    builder =&gt; '_build_bank',<span class="ja"> # デフォルト値のビルダー</span>
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Lazy, Good for Nothin' Attributes</h1>
+  <h1 class="en">Lazy, Good for Nothin' Attributes</h1>
+  <h1 class="ja">空アトリビュートに最適な<code>lazy</code>（遅延設定）</h1>
 
-  <ul>
+  <ul class="en">
     <li>Normally, defaults are generated during object construction</li>
     <li>This can be expensive</li>
     <li>We want to default to <code>$self-&gt;size * 2</code>, but attribute initialization order is unpredictable</li>
     <li>Use lazy attributes!</li>
   </ul>
+  <ul class="ja">
+    <li>デフォルト値は、通常はオブジェクトのコンストラクト時に生成されます</li>
+    <li>この処理は「高価」になることがあります</li>
+    <li>また、デフォルト値に<code>$self-&gt;size * 2</code>を設定したい場合でも、アトリビュートの初期化の順番は固定ではありません<span class="annotation">（訳注：従って、うまく設定できない場合があります）</span></li>
+    <li><code>lazy</code>アトリビュートを使いましょう！</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>The Power of Dynamic Defaults</h1>
+  <h1 class="en">The Power of Dynamic Defaults</h1>
+  <h1 class="ja">動的なデフォルト値の効力</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has shoe_size =&gt; (
+has shoe_size =&gt; (<span class="ja"> # 靴の寸法</span>
     is =&gt; 'ro',
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>The Power of Dynamic Defaults</h1>
+  <h1 class="en">The Power of Dynamic Defaults</h1>
+  <h1 class="ja">動的なデフォルト値の効力</h1>
 
-  <pre><code>has shoes =&gt; (
+  <pre><code>has shoes =&gt; (<span class="ja"> # 靴</span>
     is      =&gt; 'ro',
     <span class="highlight">lazy    =&gt; 1,</span>
-    builder => '_build_shoes',
+    builder =&gt; '_build_shoes',
 );
 
-sub _build_shoes {
+sub _build_shoes {<span class="ja"> # 靴のデフォルト値のビルダー</span>
     my $self = shift;
 
     return Shoes-&gt;new(
         size =&gt; <span class="highlight">$self-&gt;shoe_size</span> );
+        <span class="ja"># 履く人の靴のサイズに合わせて靴オブジェクトを生成</span>
 }</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Lazy is Good</h1>
+  <h1 class="en">Lazy is Good</h1>
+  <h1 class="ja"><code>lazy</code>は便利です</h1>
 
-  <ul>
+  <ul class="en">
     <li>Lazy defaults are executed when the attribute is read</li>
     <li>Can see other object attributes</li>
     <li>Still need to watch out for circular laziness</li>
   </ul>
+  <ul class="ja">
+    <li>遅延設定される(<code>lazy</code>な)デフォルト値は、そのアトリビュートが読み込みされる時点で決定されます</li>
+    <li>オブジェクトの他のアトリビュートを使うことができます</li>
+    <li>ただし循環参照(circular laziness)には注意が必要です<span class="annotation">（訳注：AがBを、BがAを参照する場合など）</span></li>
+  </ul>
 </div>    
 
 <div class="slide">
-  <h1>Clearer and Predicate</h1>
+  <h1 class="en">Clearer and Predicate</h1>
+  <h1 class="ja"><code>clearer</code>と<code>predicate</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Attributes can have a value, including <code>undef</code>, or not</li>
     <li>Can clear the value with a clearer method</li>
     <li>Can check for the existence of a value with a predicate method</li>
     <li>By default, these methods are not created</li>
   </ul>
+  <ul class="ja">
+    <li>アトリビュートは<code>undef</code>を含む値を持つことも、持たないこともあります</li>
+    <li><code>clearer</code>メソッドによってアトリビュートの値を取り除くことができます</li>
+    <li><code>predicate</code>メソッドによってアトリビュートに値が設定されているかどうかを確認することができます</li>
+    <li>何もしない場合、これらのメソッドは作成されません。</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Clearer and Predicate</h1>
+  <h1 class="en">Clearer and Predicate</h1>
+  <h1 class="ja"><code>clearer</code>と<code>predicate</code></h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has account =&gt; (
+has account =&gt; (<span class="ja"> # アカウント</span>
     is        =&gt; 'ro',
     lazy      =&gt; 1,
-    builder   =&gt; '_build_account',
-    <span class="highlight">clearer   =&gt; '_clear_account',
-    predicate =&gt; 'has_account',</span>
+    builder   =&gt; '_build_account',<span class="ja"> # デフォルト値を構築する</span>
+    <span class="highlight">clearer   =&gt; '_clear_account',<span class="ja"> # クリアする</span>
+    predicate =&gt; 'has_account',<span class="ja">    # 設定されているか</span></span>
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Clearer and Lazy Defaults</h1>
+  <h1 class="en">Clearer and Lazy Defaults</h1>
+  <h1 class="ja"><code>clearer</code>と、<code>lazy</code>によるデフォルト値</h1>
 
-  <ul>
+  <ul class="en">
     <li>Lazy defaults are good for computed attributes</li>
     <li>Clear the attribute when the source data changes</li>
     <li>Recalculated at next access</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Renaming constructor arguments</h1>
-
-  <ul>
-    <li>By default, constructor names = attribute names</li>
-    <li>Use <code>init_arg</code> to change this</li>
-    <li>Set <code>init_arg =&gt; undef</code> to make it unconstructable</li>
+  <ul class="ja">
+    <li><code>lazy</code>によるデフォルト値は<span class="annotation">（訳注：他の値に基づいて）</span>計算されるようなアトリビュートに適しています</li>
+    <li>算出根拠となるデータが変更された場合、アトリビュートは一旦きれいに取り除きましょう</li>
+    <li>次回そのアトリビュートにアクセスされた時点で、デフォルト値が再計算されます</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Some <code>init_arg</code> examples</h1>
+  <h1 class="en">Renaming constructor arguments</h1>
+  <h1 class="ja">コンストラクター引数の改名</h1>
 
-  <pre><code>package Person;
-use Moose;
-
-has shoe_size => (
-    is       =&gt; 'ro',
-    <span class="highlight">init_arg =&gt; 'foot_size',</span>
-);
-
-Person->new( <span class="wrong">shoe_size =&gt; 13</span> );
-
-my $person =
-    Person->new( <span class="right">foot_size =&gt; 13</span> );
-print $person->shoe_size;</code></pre>
+  <ul class="en">
+    <li>By default, constructor names = attribute names</li>
+    <li>Use <code>init_arg</code> to change this</li>
+    <li>Set <code>init_arg =&gt; undef</code> to make it unconstructable</li>
+  </ul>
+  <ul class="ja">
+    <li>何もしない場合、コンストラクター引数のキー名はアトリビュート名と同じです</li>
+    <li>これを変更したい場合、<code>init_arg</code>を使いましょう</li>
+    <li>コンストラクターで生成されたくない値には<code>init_arg =&gt; undef</code>と設定します</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Some <code>init_arg</code> examples</h1>
+  <h1 class="en">Some <code>init_arg</code> examples</h1>
+  <h1 class="ja">いくつかの<code>init_arg</code>の例</h1>
 
-<pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has shoes => (
+has shoe_size =&gt; (<span class="ja"> # 靴の寸法</span>
+    is       =&gt; 'ro',
+    <span class="highlight">init_arg =&gt; 'foot_size',<span class="ja"> # 足の寸法</span></span>
+);
+
+Person-&gt;new( <span class="wrong">shoe_size =&gt; 13</span> );<span class="ja">     # 誤り</span>
+
+my $person =
+    Person-&gt;new( <span class="right">foot_size =&gt; 13</span> );<span class="ja"> # 正しい</span>
+print $person-&gt;shoe_size;</code></pre>
+</div>
+
+<div class="slide">
+  <h1 class="en">Some <code>init_arg</code> examples</h1>
+  <h1 class="ja">いくつかの<code>init_arg</code>の例</h1>
+
+<pre><code>package Person;<span class="ja"> # 人間</span>
+use Moose;
+
+has shoes =&gt; (<span class="ja"> # 靴</span>
     is       =&gt; 'ro',
     <span class="highlight">init_arg =&gt; undef,</span>
 );
 
-Person->new( <span class="wrong">shoes =&gt; Shoes-&gt;new</span> );</code></pre>
+Person-&gt;new( <span class="wrong">shoes =&gt; Shoes-&gt;new</span> );<span class="ja"> # 誤り（指定不可）</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Why Set <code>init_arg =&gt; undef</code>?</h1>
+  <h1 class="en">Why Set <code>init_arg =&gt; undef</code>?</h1>
+  <h1 class="ja">なぜ<code>init_arg =&gt; undef</code>を設定するのでしょうか？</h1>
 
-  <ul>
+  <ul class="en">
     <li>Use this with a lazy default for attributes-as-cache</li>
     <li>Compute the value as needed</li>
     <li>Ensure that it is always generated correctly (not set by constructor)</li>
     <li>Use triggers or method modifiers (coming soon) to clear the value</li>
   </ul>
+  <ul class="ja">
+    <li>アトリビュートをキャッシュとして使うためにデフォルト値を遅延(<code>lazy</code>)設定したい場合に使います</li>
+    <li>必要な時に限って値を計算したい場合に使います</li>
+    <li>コンストラクターによらず、値が常に正しく生成されることを保証したい場合に使います</li>
+    <li>値を取り除く(<code>clear</code>)ためにトリガーまたはメソッドモディファイヤー（この後説明します）を使いましょう</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Attribute Inheritance</h1>
+  <h1 class="en">Attribute Inheritance</h1>
+  <h1 class="ja">アトリビュートの継承(inheritance)</h1>
 
-  <ul>
+  <ul class="en">
     <li>By default, subclasses inherit attribute as-is</li>
     <li>Can change some attribute parameters in subclasses
-      <ul>
+      <ul class="en">
         <li>default</li>
         <li>builder</li>
         <li>required</li>
@@ -2087,120 +2651,163 @@ Person->new( <span class="wrong">shoes =&gt; Shoes-&gt;new</span> );</code></pre
       </ul>
     </li>
   </ul>
+  <ul class="ja">
+    <li>何もしない場合、サブクラスはアトリビュートをそのまま継承します</li>
+    <li>サブクラスではアトリビュートのパラメーターをいくつか変更できます
+      <ul class="ja">
+        <li><code>default</code></li>
+        <li><code>builder</code></li>
+        <li><code>required</code></li>
+        <li><code>lazy</code></li>
+        <li>ここに挙げていない他のたくさんのパラメーターも</li>
+      </ul>
+    </li>
+  </ul>
 </div>   
 
 <div class="slide">
-  <h1>Attribute Inheritance Example</h1>
+  <h1 class="en">Attribute Inheritance Example</h1>
+  <h1 class="ja">アトリビュートの継承の例</h1>
 
-  <pre><code>package Employee;
+  <pre><code>package Employee;<span class="ja"> # 従業員</span>
 use Moose;
 
-extends 'Person';
+extends 'Person';<span class="ja"> # 人間を継承</span>
 
-has '<span class="highlight">+first_name</span>' =&gt; (
+has '<span class="highlight">+first_name</span>' =&gt; (<span class="ja"> # 名前（ファーストネーム）</span>
     default =&gt; 'Joe',
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Attribute Inheritance Warning</h1>
+  <h1 class="en">Attribute Inheritance Warning</h1>
+  <h1 class="ja">アトリビュート継承時の注意点</h1>
 
-  <ul>
+  <ul class="en">
     <li>An attribute is a contract about a class's API</li>
     <li>Don't break that contract in a subclass</li>
     <li>Especially important in the context of types</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Changing Accessor Names</h1>
-
-  <pre><code>package Person;
-use Moose;
-
-has first_name =&gt; (
-    <span class="highlight">accessor</span> =&gt; 'first_name',
-);</code></pre>
-
-  <ul>
-    <li>The long-hand version of <code>is =&gt; 'rw'</code></li>
+  <ul class="ja">
+    <li>アトリビュートとはクラスAPIについての<span class="annotation">（訳注：クラス作成者と利用者の間で取り交わされる）</span>契約です</li>
+    <li>サブクラスでその契約を反故にしてはいけません</li>
+    <li>型(type)についてはそれがとりわけ重要です</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Changing Accessor Names</h1>
+  <h1 class="en">Changing Accessor Names</h1>
+  <h1 class="ja">アクセッサー名の変更</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has first_name =&gt; (
+has first_name =&gt; (<span class="ja"> # 名前（ファーストネーム）</span>
+    <span class="highlight">accessor</span> =&gt; 'first_name',
+);</code></pre>
+
+  <ul class="en">
+    <li>The long-hand version of <code>is =&gt; 'rw'</code></li>
+  </ul>
+  <ul class="ja">
+    <li>これは<code>is =&gt; 'rw'</code>指定の冗長版です</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Changing Accessor Names</h1>
+  <h1 class="ja">アクセッサー名の変更</h1>
+
+  <pre><code>package Person;<span class="ja"> # 人間</span>
+use Moose;
+
+has first_name =&gt; (<span class="ja"> # 名前（ファーストネーム）</span>
     <span class="highlight">reader</span> =&gt; 'first_name',
     <span class="highlight">writer</span> =&gt; undef,
 );</code></pre>
 
-  <ul>
+  <ul class="en">
     <li>The long-hand version of <code>is =&gt; 'ro'</code></li>
+  </ul>
+  <ul class="ja">
+    <li>これは<code>is =&gt; 'ro'</code>指定の冗長版です</li>
   </ul>
 </div>
 
 
 <div class="slide">
-  <h1>Changing Accessor Names</h1>
+  <h1 class="en">Changing Accessor Names</h1>
+  <h1 class="ja">アクセッサー名の変更</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has first_name =&gt; (
-    <span class="highlight">reader</span> =&gt; 'get_first_name',
-    <span class="highlight">writer</span> =&gt; 'set_first_name',
+has first_name =&gt; (<span class="ja"> # 名前（ファーストネーム）</span>
+    <span class="highlight">reader</span> =&gt; 'get_first_name',<span class="ja"> # ゲッターを別名で</span>
+    <span class="highlight">writer</span> =&gt; 'set_first_name',<span class="ja"> # セッターを別名で</span>
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Changing Accessor Names</h1>
+  <h1 class="en">Changing Accessor Names</h1>
+  <h1 class="ja">アクセッサー名の変更</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has first_name =&gt; (
+has first_name =&gt; (<span class="ja"> # 名前（ファーストネーム）</span>
     <span class="highlight">is</span>     =&gt; 'rw',
     <span class="highlight">writer</span> =&gt; '_first_name',
 );</code></pre>
 
-  <ul>
+  <ul class="en">
     <li>Can also mix-and-match <code>is</code> and explicit names</li>
+  </ul>
+  <ul class="ja">
+    <li><code>is</code>と明示的な<span class="annotation">（訳注：アトリビュート名そのままの）</span>名前を組み合わせることもできます</li>
+    <li class="annotation">訳注：この場合、ゲッターは<code>first_name</code>で、セッターが<code>_first_name</code>になります</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>ETOOMUCHTYPING</h1>
+  <h1 class="en">ETOOMUCHTYPING</h1>
+  <h1 class="ja">打鍵量が多すぎる<span class="memorandum">＜★いまいち？＞</span></h1>
 
-  <ul>
+  <ul class="en">
     <li><code>MooseX::FollowPBP</code><br /><code>get_foo</code> and <code>set_foo</code></li>
     <li><code>MooseX::SemiAffordanceAccessor</code><br /><code>foo</code> and <code>set_foo</code></li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>ETOOMUCHTYPING</h1>
-
-  <pre><code>package Person;
-use Moose;
-<span class="highlight">use MooseX::SemiAffordanceAccessor;</span>
-
-has first_name =&gt; (
-    is =&gt; 'rw',
-);</code></pre>
-
-  <ul>
-    <li>Creates <code>first_name</code> and <code>set_first_name</code></li>
+  <ul class="ja">
+    <li><code>MooseX::FollowPBP</code><br />を使うと<code>get_foo</code>と<code>set_foo</code>を自動で設定できます</li>
+    <li><code>MooseX::SemiAffordanceAccessor</code><br />を使うと<code>foo</code>と<code>set_foo</code>を自動で設定できます</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Basic Attributes Summary</h1>
+  <h1 class="en">ETOOMUCHTYPING</h1>
+  <h1 class="ja">打鍵量が多すぎる<span class="memorandum">＜★いまいち？＞</span></h1>
 
-  <ul>
+  <pre><code>package Person;<span class="ja"> # 人間</span>
+use Moose;
+<span class="highlight">use MooseX::SemiAffordanceAccessor;</span>
+
+has first_name =&gt; (<span class="ja"> # 名前（ファーストネーム）</span>
+    is =&gt; 'rw',
+);</code></pre>
+
+  <ul class="en">
+    <li>Creates <code>first_name</code> and <code>set_first_name</code></li>
+  </ul>
+  <ul class="ja">
+    <li><code>first_name</code>と<code>set_first_name</code>のアクセッサーが生成されます</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Basic Attributes Summary</h1>
+  <h1 class="ja">基本的なアトリビュートの概要（おさらい）</h1>
+
+  <ul class="en">
     <li>Attributes can be <code>required</code></li>
     <li>Attributes can have a <code>default</code> or <code>builder</code></li>
     <li>Attributes with a default or builder can be <code>lazy</code></li>
@@ -2209,86 +2816,127 @@ has first_name =&gt; (
     <li>A subclass can alter its parents' attributes</li>
     <li>Attribute accessor names can be changed</li>
   </ul>
+  <ul class="ja">
+    <li>アトリビュートは<code>required</code>で必須指定できます</li>
+    <li>アトリビュートは<code>default</code>や<code>builder</code>でデフォルト値を設定できます</li>
+    <li><code>default</code>や<code>builder</code>設定されたアトリビュートは<code>lazy</code>で遅延設定できます</li>
+    <li>アトリビュートは<code>clearer</code>と<code>predicate</code>パラメーターのいずれか、または両方を持てます</li>
+    <li>アトリビュートのコンストラクター引数のキー名は<code>init_arg</code>によって変更できます</li>
+    <li>サブクラスはその親クラスのアトリビュートを改変することができます</li>
+    <li>アトリビュートのアクセッサー名は変更できます</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Questions?</h1>
+  <h1 class="en">Questions?</h1>
+  <h1 class="ja">質問はありますか？</h1>
 </div>  
 
 <div class="slide">
-  <h1>Exercises</h1>
+  <h1 class="en">Exercises</h1>
+  <h1 class="ja">演習</h1>
 
   <pre># cd exercises
 # perl bin/prove -lv \
       t/03-basic-attributes.t
 
-Iterate til this passes all its tests</pre>
+Iterate til this passes all its tests
+<span class="ja">全てのテストにパスするまで繰り返してください</span></pre>
 </div>
 
 <div class="slide fake-slide0">
-  <h1>Part 4: Method Modifiers</h1>
+  <h1 class="en">Part 4: Method Modifiers</h1>
+  <h1 class="ja">Part 4: メソッドモディファイヤー(method modifier)</h1>
 </div>
 
 <div class="slide">
-  <h1>What is a Method Modifier</h1>
+  <h1 class="en">What is a Method Modifier</h1>
+  <h1 class="ja">メソッドモディファイヤー(method modifier)とは</h1>
 
-  <ul>
+  <ul class="en">
     <li>Apply to an existing method</li>
     <li>... from a parent class, the current class, or a role</li>
     <li>Roles can provide modifiers that are applied at composition time</li>
   </ul>
+  <ul class="ja">
+    <li>既存のメソッドへ適用するもの</li>
+    <li>……そのメソッドは親クラスや、当該クラスや、ロールに由来するものです</li>
+    <li>ロールは、それがクラスへ合成されるタイミングで適用されるようなメソッドモディファイヤーを提供できます</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>What is a Method Modifier</h1>
+  <h1 class="en">What is a Method Modifier</h1>
+  <h1 class="ja">メソッドモディファイヤー(method modifier)とは</h1>
 
-  <ul>
+  <ul class="en">
     <li>"Inject" behavior</li>
     <li>Add behavior to generated methods (accessors, delegations)</li>
     <li>Provide roles which modify existing behavior</li>
   </ul>
+  <ul class="ja">
+    <li>「注入」(inject)という振る舞いです</li>
+    <li>生成されたメソッド（アクセッサーや委譲されたメソッドを含みます）に振る舞いを追加します</li>
+    <li>既存の振る舞いを変更するようなロールを実現できます</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Before and After</h1>
+  <h1 class="en">Before and After</h1>
+  <h1 class="ja"><code>before</code>と<code>after</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Simplest modifiers - <code>before</code> and <code>after</code></li>
     <li>Guess when they run!</li>
   </ul>
+  <ul class="ja">
+    <li>最も簡単なモディファイヤー - <code>before</code>と<code>after</code></li>
+    <li>それらがいつ動くか想像してみてください！</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Uses for <code>before</code></h1>
+  <h1 class="en">Uses for <code>before</code></h1>
+  <h1 class="ja"><code>before</code>の用途</h1>
 
-  <ul>
+  <ul class="en">
     <li>As a pre-call check</li>
   </ul>
+  <ul class="ja">
+    <li>呼び出し前の検査として</li>
+  </ul>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-before work =&gt; sub {
+before work =&gt; sub {<span class="ja"> # 働く前に</span>
     my $self = shift;
-    die 'I have no job!'
-        unless $self-&gt;has_title;
-};</code></pre>
+    die 'I have no job!'<span class="ja"> # 「職務がないので働けません！」</span>
+        unless $self-&gt;has_title;<span class="ja"> # 肩書きがない場合</span>
+};
+<span class="annotation"># 訳注：より自然な表現にするには、has_jobというメソッドに
+# した方がよいかも、とsartakさんが仰っていました</span></code></pre>
 </div>    
 
 <div class="slide">
-  <h1>Uses for <code>before</code></h1>
+  <h1 class="en">Uses for <code>before</code></h1>
+  <h1 class="ja"><code>before</code>の用途</h1>
 
-  <ul>
+  <ul class="en">
     <li>Logging/Debugging</li>
   </ul>
+  <ul class="ja">
+    <li>ログ取得やデバッグのために</li>
+  </ul>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-before work =&gt; sub {
+before work =&gt; sub {<span class="ja"> # 働く前に</span>
     my $self = shift;
     return unless $DEBUG;
 
+    <span class="ja"> # 「○○のworkは引数@_つきで呼ばれた」</span>
     warn "Called work on ",
          $self-&gt;full_name,
          "with the arguments: [@_]\n";
@@ -2296,99 +2944,130 @@ before work =&gt; sub {
 </div>    
 
 <div class="slide">
-  <h1>Uses for <code>after</code></h1>
+  <h1 class="en">Uses for <code>after</code></h1>
+  <h1 class="ja"><code>after</code>の用途</h1>
 
-  <ul>
+  <ul class="en">
     <li>Also works for logging/debugging</li>
     <li>Post-X side-effects (recording audit info)</li>
   </ul>
+  <ul class="ja">
+    <li>これもまたログ取得やデバッグのために</li>
+    <li>何かをした後の副作用として（例えば監査情報の保存など）</li>
+  </ul>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-after work =&gt; sub {
+after work =&gt; sub {<span class="ja"> # 働いた後に</span>
     my $self = shift;
-    $self-&gt;work_count(
+    $self-&gt;work_count(<span class="ja"> # 勤務回数を1追加</span>
         $self-&gt;work_count + 1 );
 };</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Other Uses</h1>
+  <h1 class="en">Other Uses</h1>
+  <h1 class="ja">その他の用途</h1>
 
-  <ul>
+  <ul class="en">
     <li>Modifiers are useful for adding behavior to generated methods</li>
+  </ul>
+  <ul class="ja">
+    <li>モディファイヤーは<span class="annotation">（訳注：Mooseによって）</span>生成されたメソッドへ振る舞いを追加するのに便利です</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>More Modifier Examples</h1>
+  <h1 class="en">More Modifier Examples</h1>
+  <h1 class="ja">モディファイヤーのさらなる例</h1>
 
-  <pre><code>has password =&gt; (
+  <pre><code>has password =&gt; (<span class="ja"> # パスワード</span>
      is      =&gt; 'rw',
      clearer =&gt; 'clear_password',
 );
-has hashed_password =&gt; (
+has hashed_password =&gt; (<span class="ja"> # ハッシュ化（≒暗号化）パスワード</span>
      is      =&gt; 'ro',
      builder =&gt; '_build_hashed_password',
      clearer =&gt; '_clear_hashed_password',
 );
-after clear_password =&gt; sub {
+after clear_password =&gt; sub {<span class="ja"> # パスワードを初期化する際には</span>
     my $self = shift;
-    $self-&gt;_clear_hashed_password;
+    $self-&gt;_clear_hashed_password;<span class="ja"> # ハッシュ化パスワードも</span>
 };</code></pre>
 </div>
 
 <div class="slide">
-  <h1><code>before</code> and <code>after</code> Limitations</h1>
+  <h1 class="en"><code>before</code> and <code>after</code> Limitations</h1>
+  <h1 class="ja"><code>before</code>と<code>after</code>の限界</h1>
 
-  <ul>
+  <ul class="en">
     <li>Cannot alter method parameters</li>
     <li>Cannot alter return value</li>
     <li>But <strong>can</strong> throw an exception</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>The <code>around</code> Modifier</h1>
-
-  <ul>
-    <li>The big gun</li>
-    <li>Can alter parameters <strong>and/or</strong> return values</li>
-    <li>Can skip calling the wrapped method entirely</li>
+  <ul class="ja">
+    <li>メソッドの引数を変えることはできません</li>
+    <li>メソッドの戻り値を変えることはできません</li>
+    <li>ですが例外(exception)を送出することは<strong>できます</strong></li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>The power of <code>around</code></h1>
+  <h1 class="en">The <code>around</code> Modifier</h1>
+  <h1 class="ja"><code>around</code>モディファイヤー</h1>
 
-  <pre><code>around insert =&gt; sub {
+  <ul class="en">
+    <li>The big gun</li>
+    <li>Can alter parameters <strong>and/or</strong> return values</li>
+    <li>Can skip calling the wrapped method entirely</li>
+  </ul>
+  <ul class="ja">
+    <li>とても巨大な武器です</li>
+    <li>引数と戻り値のいずれか、または両方を変えることができます</li>
+    <li>修飾対象のメソッドをまったく呼ばないこともできます</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">The power of <code>around</code></h1>
+  <h1 class="ja"><code>around</code>の効力</h1>
+
+  <pre><code>around insert =&gt; sub {<span class="ja"> # 挿入する前後で</span>
     my $orig = shift;
     my $self = shift;
 
-    $self-&gt;_validate_insert(@_);
-
+    $self-&gt;_validate_insert(@_);<span class="ja"> # 挿入対象の検証</span>
+    <span class="ja"># Modify Until Not Guessed Easily: 簡単に推測されないよう</span>
     my $new_user =
         $self-&gt;$orig(
             $self-&gt;_munge_insert(@_) );
-
-    $new_user->_assign_uri;
+    <span class="annotation"># セッションキーが（フォーム値やクッキーでなく）URIの場合、
+    # 簡単に推測されるようだとセキュリティー上の懸念があるため</span>
+    $new_user-&gt;_assign_uri;<span class="ja"> # URIを割り当てる</span>
     return $new_user;
 };</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Modifier Order</h1>
+  <h1 class="en">Modifier Order</h1>
+  <h1 class="ja">モディファイヤーの適用順</h1>
 
-  <ul>
+  <ul class="en">
     <li>Before runs in order from last to first</li>
     <li>After runs in order from first to last</li>
     <li>Around runs in order from last to first</li>
   </ul>
+  <ul class="ja">
+    <li><code>before</code>は最後から最初の順です</li>
+    <li><code>after</code>は最初から最後の順です</li>
+    <li><code>around</code>は最後から最初の順です</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Modifier Order Illustrated</h1>
+  <h1 class="en">Modifier Order Illustrated</h1>
+  <h1 class="ja">モディファイヤー適用順の図解</h1>
 
 <pre>
 <span class="current incremental">before 2
@@ -2404,67 +3083,96 @@ after 2</span>
 </div>
 
 <div class="slide">
-  <h1>Modifiers in Roles</h1>
+  <h1 class="en">Modifiers in Roles</h1>
+  <h1 class="ja">ロールにおけるモディファイヤー</h1>
 
-  <ul>
+  <ul class="en">
     <li>Roles can use these modifiers</li>
     <li>Very powerful!</li>
+  </ul>
+  <ul class="ja">
+    <li>ロールはメソッドモディファイヤーを使えます</li>
+    <li>これはとても強力です！</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Modifiers in Roles</h1>
+  <h1 class="en">Modifiers in Roles</h1>
+  <h1 class="ja">ロールにおけるモディファイヤー</h1>
 
-  <pre><code>package IsUnreliable;
+  <pre><code>package IsUnreliable;<span class="ja"> # 「あてにならない」ロール</span>
 use Moose::Role;
 
 <span class="highlight">requires 'run';
 
 around run</span> =&gt; sub {
-    my $orig = shift;
-    my $self = shift;
+    my $orig = shift;<span class="ja"> # 元メソッドのコードリファレンス</span>
+    my $self = shift;<span class="ja"> # オブジェクト</span>
 
-    return if rand(1) &lt; 0.5;
+    return if rand(1) &lt; 0.5;<span class="ja"> # 半々の確率で走らない</span>
 
     return $self-&gt;$orig(@_);
 };</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Augment and Inner</h1>
+  <h1 class="en">Augment and Inner</h1>
+  <h1 class="ja"><code>augment</code>と<code>inner</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Inverted <code>super</code></li>
     <li>From least- to most-specific</li>
     <li>Grandparent to parent to child</li>
     <li>Not allowed in roles</li>
   </ul>
+  <ul class="ja">
+    <li><code>super</code>の逆です</li>
+    <li>汎用クラスから専用クラスの順に呼び出されます</li>
+    <li>祖父母から親へ、親から子供へ</li>
+    <li>ロールの中で使用することはできません</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Augment and Inner</h1>
+  <h1 class="en">Augment and Inner</h1>
+  <h1 class="ja"><code>augment</code>と<code>inner</code></h1>
 
-  <pre><code>package Document;
+  <pre><code>package Document;<span class="ja"> # 「文書」クラス</span>
 
 sub xml { '&lt;doc&gt;' . <span class="highlight">inner()</span> . '&lt;/doc&gt;' }
 
-package Report;
+package Report;<span class="ja"> # 「報告書」サブクラス</span>
 extends 'Document';
 <span class="highlight">augment xml</span> =&gt;
     sub { title() . <span class="highlight">inner()</span> . summary() };
-
-package TPSReport;
+<span class="annotation"># 訳注：Transaction Per Second : 秒間処理件数</span>
+package TPSReport;<span class="ja"> # 「TPS報告書」サブクラス</span>
 extends 'Report';
 <span class="highlight">augment xml</span> =&gt;
     sub { tps_xml() . <span class="highlight">inner()</span> };</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Augment and Inner</h1>
+  <h1 class="en">Augment and Inner</h1>
+  <h1 class="ja"><code>augment</code>と<code>inner</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>When we call <code>$tps-&gt;xml</code> ...
-      <ul>
+      <ul class="en">
+        <li><code>Document-&gt;xml</code></li>
+        <li><code>Report-&gt;xml</code></li>
+        <li><code>TPSReport-&gt;xml</code></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="ja">
+    <li><code>$tps-&gt;xml</code>を呼ぶと……
+      <ul class="en">
+        <li><code>Document-&gt;xml</code></li>
+        <li><code>Report-&gt;xml</code></li>
+        <li><code>TPSReport-&gt;xml</code></li>
+      </ul>
+      <ul class="ja">
         <li><code>Document-&gt;xml</code></li>
         <li><code>Report-&gt;xml</code></li>
         <li><code>TPSReport-&gt;xml</code></li>
@@ -2474,21 +3182,28 @@ extends 'Report';
 </div>
 
 <div class="slide">
-  <h1>Augment and Inner Usage</h1>
+  <h1 class="en">Augment and Inner Usage</h1>
+  <h1 class="ja">augmentとinnerの使い方</h1>
 
-  <ul>
+  <ul class="en">
     <li>Call <code>inner()</code> to "fill in the blank"</li>
     <li>Requires designing for subclassing</li>
     <li>Call <code>inner()</code> in the terminal class, just in case</li>
   </ul>
+  <ul class="ja">
+    <li>「空白を埋める」ために<code>inner()</code>を使いましょう</li>
+    <li>サブクラス化する時の計画性が求められます</li>
+    <li>念のため、クラス継承ツリーの終端にあるクラスでも<code>inner()</code>を呼びましょう</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Method Modifiers Summary</h1>
+  <h1 class="en">Method Modifiers Summary</h1>
+  <h1 class="ja">メソッドモディファイヤーの概要（おさらい）</h1>
 
-  <ul>
+  <ul class="en">
     <li>Use <code>before</code> and <code>after</code> for ...
-      <ul>
+      <ul class="en">
         <li>logging</li>
         <li>pre- or post-validation</li>
         <li>to add behavior to generated methods</li>
@@ -2496,79 +3211,129 @@ extends 'Report';
     </li>
     <li>These two modifiers cannot change parameters or return values</li>
   </ul>
+  <ul class="ja">
+    <li>このような場合、<code>before</code>や<code>after</code>を使いましょう……
+      <ul class="ja">
+        <li>ログ取得</li>
+        <li>実行前後の検証</li>
+        <li>生成されたメソッドへの振る舞いの追加</li>
+      </ul>
+    </li>
+    <li>これら2つのモディファイヤーは引数や戻り値を変えられません</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Method Modifiers Summary</h1>
+  <h1 class="en">Method Modifiers Summary</h1>
+  <h1 class="ja">メソッドモディファイヤーの概要（おさらい）</h1>
 
-  <ul>
+  <ul class="en">
     <li>Use <code>around</code> to ...
-      <ul>
+      <ul class="en">
         <li>alter parameters passed to the original method</li>
         <li>alter the return value of the original method</li>
         <li>not call the original method at all (or call a <em>different</em> method)</li>
       </ul>
     </li>
   </ul>
+  <ul class="ja">
+    <li>このような場合、<code>around</code>を使いましょう……
+      <ul class="ja">
+        <li>元のメソッドへ渡される引数を変えたい場合</li>
+        <li>元のメソッドから返される戻り値を変えたい場合</li>
+        <li>元のメソッドを全く呼びたくない場合（または、<em>別の</em>メソッドを呼びたい場合）</li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Method Modifiers Summary</h1>
+  <h1 class="en">Method Modifiers Summary</h1>
+  <h1 class="ja">メソッドモディファイヤーの概要（おさらい）</h1>
 
-  <ul>
+  <ul class="en">
     <li>When using modifiers in a role, require the modified method</li>
     <li>Use <code>augment</code> and <code>inner</code> to invert the normal subclassing flow ...
-      <ul>
+      <ul class="en">
         <li>Least- to most-specific (parents to children)</li>
         <li>Build in "insertability" (stick more stuff in the "middle")</li>
       </ul>
     </li>
     <li>Always call <code>inner</code> in the most specific subclass to allow for future extension</li>
   </ul>
+  <ul class="ja">
+    <li>ロールの中でモディファイヤーを使う場合、修飾対象のメソッドを(<code>requires</code>で)要求してください</li>
+    <li><code>augment</code>と<code>inner</code>は通常のサブクラス化の手順を以下のように逆転させます……
+      <ul class="ja">
+        <li>汎用クラスから専用クラスへ（親から子へ）</li>
+        <li>「挿入されるように」メソッドを取り囲みます（メソッドの「真ん中」に処理を突っ込みます）</li>
+      </ul>
+    </li>
+    <li>最も具象的なクラスでも、今後の拡張のために、常に<code>inner</code>を呼んでください</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Questions?</h1>
+  <h1 class="en">Questions?</h1>
+  <h1 class="ja">質問はありますか？</h1>
 </div>  
 
 <div class="slide">
-  <h1>Exercises</h1>
+  <h1 class="en">Exercises</h1>
+  <h1 class="ja">演習</h1>
 
   <pre># cd exercises
 # perl bin/prove -lv \
       t/04-method-modifiers.t
 
-Iterate til this passes all its tests</pre>
+Iterate til this passes all its tests
+<span class="ja">全てのテストにパスするまで繰り返してください</span></pre>
 </div>
 
 <div class="slide fake-slide0">
-  <h1>Part 5: Types</h1>
+  <h1 class="en">Part 5: Types</h1>
+  <h1 class="ja">Part 5: 型(type)</h1>
 </div>
 
 <div class="slide">
-  <h1>A Type System for Perl</h1>
+  <h1 class="en">A Type System for Perl</h1>
+  <h1 class="ja">Perlへの型(type)システム</h1>
 
-  <ul>
+  <ul class="en">
     <li>Sort of ...</li>
     <li><em>Variables</em> are not typed</li>
     <li>Attributes can have types</li>
     <li>MooseX modules let you define method signatures</li>
   </ul>
+  <ul class="ja">
+    <li>これは以下のようなものです……</li>
+    <li><em>変数</em>には<span class="annotation">（Mooseを使っても、Perlそれ自体と同様に）</span>型付けがなされていません</li>
+    <li>アトリビュートは型(type)を持つことができます</li>
+    <li>ただし、MooseX拡張モジュールにはメソッドシグネチャーを定義できるものもあります</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Components of a Moose Type</h1>
+  <h1 class="en">Components of a Moose Type</h1>
+  <h1 class="ja">Mooseの型(type)の構成要素</h1>
 
-  <ul>
+  <ul class="en">
     <li>A type is a name and a constraint</li>
     <li>Types have a hierarchy</li>
     <li>Constraints are cumulative from parents</li>
     <li>Types can have associated coercions</li>
   </ul>
+  <ul class="ja">
+    <li>型(type)は名前(name)であり、制約(constraint)です</li>
+    <li>型は階層(hierarchy)を持ちます</li>
+    <li>制約は親の型から累積します</li>
+    <li>型に関連付けられた型変換(coercion)を行うことができます</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Built-in Type Hierarchy</h1>
+  <h1 class="en">Built-in Type Hierarchy</h1>
+  <h1 class="ja">組み込みの型階層(type hierarchy)</h1>
 
   <pre>
 Any
@@ -2587,7 +3352,8 @@ Item
 </div>
 
 <div class="slide">
-  <h1>Built-in Type Hierarchy</h1>
+  <h1 class="en">Built-in Type Hierarchy</h1>
+  <h1 class="ja">組み込みの型階層(type hierarchy) - 続き</h1>
 
 <pre>
 (Item)
@@ -2606,53 +3372,85 @@ Item
 </div>
 
 <div class="slide">
-  <h1>Bool</h1>
+  <h1 class="en">Bool</h1>
+  <h1 class="ja"><code>Bool</code>(ブール, 真偽値)</h1>
 
-  <h2>True</h2>
+  <h2 class="en">True</h2>
+  <h2 class="ja"><code>True</code>(真値)</h2>
   <pre><code>1
 924.1
 'true'
 {}</code></pre>
 
-  <h2>False</h2>
+  <h2 class="en">False</h2>
+  <h2 class="ja"><code>False</code>(偽値)</h2>
   <pre><code>0
 0.0
 '0'
 undef</code></pre>
 
-  <ul>
+  <ul class="en">
     <li>Like Perl's <code>if ($foo)</code></li>
+  </ul>
+  <ul class="ja">
+    <li><code>Bool</code>とはPerlの<code>if ($foo)</code>の評価と同様です</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Value (and subtypes)</h1>
+  <h1 class="en">Value (and subtypes)</h1>
+  <h1 class="ja"><code>Value</code>(値)およびそのサブタイプ(subtype)</h1>
 
-  <ul>
+  <ul class="en">
     <li><code>Value</code> is true when <code>! ref $thing</code></li>
     <li><code>Value</code> and <code>Str</code> are effectively the same, but <code>Str</code> is more expressive</li>
     <li>An overloaded object which numifies does not pass the <code>Num</code> constraint!</li>
     <li>Perl 5's overloading is hopelessly broken</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>ClassName and RoleName</h1>
-
-  <ul>
-    <li>A string with a package name</li>
-    <li>The package <strong>must already be loaded</strong></li>
+  <ul class="ja">
+    <li><code>Value</code>は<code>! ref $thing</code>のとき真です</li>
+    <li><code>Value</code>と<code>Str</code>は事実上同じですが、<code>Str</code>は値の性質をより多く表現しています<span class="annotation">（訳注：<code>Str</code>の方が、より自己説明的なコードになります）</span></li>
+    <li>数値化のオーバーロードがなされたオブジェクトは<code>Num</code>の制約に合格しません！</li>
+    <li><span class="annotation">（訳注：上記をうけて）</span>Perl 5のオーバーロード機構はどうしようもなく壊れています</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Parameterizable Types</h1>
+  <h1 class="en">ClassName and RoleName</h1>
+  <h1 class="ja"><code>ClassName</code>と<code>RoleName</code></h1>
 
-  <ul>
+  <ul class="en">
+    <li>A string with a package name</li>
+    <li>The package <strong>must already be loaded</strong></li>
+  </ul>
+  <ul class="ja">
+    <li>パッケージ名の文字列です</li>
+    <li>そのパッケージは<strong>事前にロードされている必要があります</strong></li>
+    <li class="annotation">訳注：クラス構築後に動的ロードするような場合には、<code>ClassName</code>などが使えませんので、<code>Str</code>などを使います</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Parameterizable Types</h1>
+  <h1 class="ja">パラメーター化可能な型(parameterizable type)</h1>
+
+  <ul class="en">
     <li>What does <code>ArrayRef[`a]</code> mean?</li>
     <li><code>s/`a/Int/</code> (or <code>Str</code> or ...)</li>
     <li>When you use it you can write ...
-      <ul>
+      <ul class="en">
+        <li><code>ArrayRef</code> (== <code>ArrayRef[Item]</code>)</li>
+        <li><code>ArrayRef[Str]</code></li>
+        <li><code>ArrayRef[MyTypeName]</code></li>
+        <li><code>ArrayRef[HashRef[Maybe[Int]]]</code></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="ja">
+    <li><code>ArrayRef[`a]</code>は何を意味しているのでしょうか？</li>
+    <li>それは<code>s/`a/Int/</code>や<code>s/`a/Str/</code>などなどを意味します</li>
+    <li>これを使うと、以下のように制約を表現できます……
+      <ul class="ja">
         <li><code>ArrayRef</code> (== <code>ArrayRef[Item]</code>)</li>
         <li><code>ArrayRef[Str]</code></li>
         <li><code>ArrayRef[MyTypeName]</code></li>
@@ -2663,76 +3461,98 @@ undef</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Maybe[`a]</h1>
+  <h1 class="en">Maybe[`a]</h1>
+  <h1 class="ja"><code>Maybe[`a]</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Maybe means either the named type or <code>undef</code></li>
     <li><code>Maybe[Int]</code> accepts integers or <code>undef</code></li>
+  </ul>
+  <ul class="ja">
+    <li><code>Maybe</code>は名前の付いた型か、<code>undef</code>のどちらかを意味します</li>
+    <li><code>Maybe[Int]</code>は整数か<code>undef</code>を受け容れます</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Type Union</h1>
+  <h1 class="en">Type Union</h1>
+  <h1 class="ja">型の合成(union)</h1>
 
-  <ul>
+  <ul class="en">
     <li>This or that (or that or ...)</li>
     <li><code>Int | ArrayRef[Int]</code></li>
     <li>But use a coercion instead when possible</li>
     <li>Or use a <code>role_type</code>,  <code>duck_type</code>, or anything not a union</li>
     <li>A union is often a code smell</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Making Your Own Types</h1>
-
-  <pre><code>use Moose::Util::TypeConstraints;
-
-<span class="incremental current">subtype 'PositiveInt',</span>
-    <span class="incremental">as      'Int',</span>
-    <span class="incremental">where   { $_ &gt; 0 },</span>
-    <span class="incremental">message
-        { "The value you provided ($_)"
-          . " was not a positive int." };</span>
-
-has size =&gt; (
-    is  =&gt; 'ro',
-    <span class="incremental">isa =&gt; 'PositiveInt',</span>
-);</code></pre>
-</div>
-
-<div class="slide">
-  <h1>Automatic Types</h1>
-
-  <ul>
-    <li>Moose creates a type for every Moose class and role</li>
-    <li>Unknown names are assumed to be classes</li>
+  <ul class="ja">
+    <li>これか、あれ（か、それか、……）</li>
+    <li><code>Int | ArrayRef[Int]</code></li>
+    <li>ただし、可能ならば、合成の代わりに型変換(coercion)を使ってください</li>
+    <li>または、<code>role_type</code>か、<code>duck_type</code>か、合成以外の何か他の型を使ってください</li>
+    <li>合成はしばしばコードに不吉な臭いをもたらします<span class="annotation">（訳注：バグの温床となります）</span></li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Automatic Types</h1>
+  <h1 class="en">Making Your Own Types</h1>
+  <h1 class="ja">自分自身の型を作る方法</h1>
 
-  <pre><code>package Employee;
-use Moose;
+  <pre><code>use Moose::Util::TypeConstraints;
 
-has manager =&gt; (
-    is  =&gt; 'rw',
-    <span class="highlight">isa =&gt; 'Employee',</span>
-);
+<span class="incremental current">subtype 'PositiveInt',<span class="ja">  # 「正の整数」型</span></span>
+    <span class="incremental">as      'Int',<span class="ja">      # 整数であって</span></span>
+    <span class="incremental">where   { $_ &gt; 0 },<span class="ja"> # 0を超える値であるべきで</span></span>
+    <span class="incremental">message<span class="ja">             # その条件にそぐわないと</span>
+        { "The value you provided ($_)"
+          . " was not a positive int." };
+        <span class="ja"># 「与えられた$_は正の整数ではありません」</span></span>
 
-has start_date =&gt; (
+has size =&gt; (<span class="ja"> # 寸法</span>
     is  =&gt; 'ro',
-    <span class="highlight">isa =&gt; 'DateTime',</span>
+    <span class="incremental">isa =&gt; 'PositiveInt',<span class="ja"> # 「正の整数」型であるべき</span></span>
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Subtype Shortcuts - <code>class_type</code></h1>
+  <h1 class="en">Automatic Types</h1>
+  <h1 class="ja">自動生成される型(automatic type)</h1>
+
+  <ul class="en">
+    <li>Moose creates a type for every Moose class and role</li>
+    <li>Unknown names are assumed to be classes</li>
+  </ul>
+  <ul class="ja">
+    <li>Mooseは全てのMooseクラスやMooseロールについての型を作成します</li>
+    <li>未定義の名前が型として与えられた場合、それはクラス名であると想定されます</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Automatic Types</h1>
+  <h1 class="ja">自動生成される型(automatic type)</h1>
+
+  <pre><code>package Employee;<span class="ja">   # 従業員</span>
+use Moose;
+
+has manager =&gt; (<span class="ja">    # 管理職（上司）</span>
+    is  =&gt; 'rw',
+    <span class="highlight">isa =&gt; 'Employee',<span class="ja"> # Employeeクラスであるべき</span></span>
+);
+
+has start_date =&gt; (<span class="ja"> # 入社日</span>
+    is  =&gt; 'ro',
+    <span class="highlight">isa =&gt; 'DateTime',<span class="ja"> # DateTimeクラスであるべき</span></span>
+);</code></pre>
+</div>
+
+<div class="slide">
+  <h1 class="en">Subtype Shortcuts - <code>class_type</code></h1>
+  <h1 class="ja">サブタイプ化のショートカット - <code>class_type</code></h1>
 
   <pre><code>use Moose::Util::TypeConstraints;
-class_type 'DateTime';
-
+class_type 'DateTime';<span class="ja"> # DateTimeクラス型</span>
+<span class="annotation"># 上記は下記の記述と同じです</span>
 subtype 'DateTime',
     as      'Object',
     where   { $_-&gt;isa('DateTime') },
@@ -2740,11 +3560,12 @@ subtype 'DateTime',
 </div>
 
 <div class="slide">
-  <h1>Subtype Shortcuts - <code>role_type</code></h1>
+  <h1 class="en">Subtype Shortcuts - <code>role_type</code></h1>
+  <h1 class="ja">サブタイプ化のショートカット - <code>role_type</code></h1>
 
   <pre><code>use Moose::Util::TypeConstraints;
-role_type 'Printable';
-
+role_type 'Printable';<span class="ja"> # 「印刷可能」ロール型</span>
+<span class="annotation"># 上記は下記の記述と同じです</span>
 subtype 'Printable',
     as      'Object',
     where
@@ -2754,11 +3575,13 @@ subtype 'Printable',
 </div>
 
 <div class="slide">
-  <h1>Subtype Shortcuts - <code>duck_type</code></h1>
+  <h1 class="en">Subtype Shortcuts - <code>duck_type</code></h1>
+  <h1 class="ja">サブタイプ化のショートカット - <code>duck_type</code></h1>
 
   <pre><code>use Moose::Util::TypeConstraints;
-duck_type Car =&gt; qw( run break_down );
-
+duck_type Car =&gt; qw( run break_down );<span class="ja"> # 「車」の特徴
+                                       #（走り、壊れる）</span>
+<span class="annotation"># 上記は下記の記述と同じです</span>
 subtype 'Car',
     as      'Object',
     where   { all { $_-&gt;can($_) }
@@ -2767,11 +3590,12 @@ subtype 'Car',
 </div>
 
 <div class="slide">
-  <h1>Subtype Shortcuts - <code>enum</code></h1>
+  <h1 class="en">Subtype Shortcuts - <code>enum</code></h1>
+  <h1 class="ja">サブタイプ化のショートカット - <code>enum</code></h1>
 
   <pre><code>use Moose::Util::TypeConstraints;
-enum Color =&gt; qw( red blue green ) );
-
+enum Color =&gt; qw( red blue green ) );<span class="ja"> # 色（赤か青か緑）</span>
+<span class="annotation"># 上記は下記の記述と同じです</span>
 my %ok = map { $_ =&gt; 1 }
              qw( red blue green );
 
@@ -2782,49 +3606,57 @@ subtype 'Color'
 </div>
 
 <div class="slide">
-  <h1>Anonymous Subtypes</h1>
+  <h1 class="en">Anonymous Subtypes</h1>
+  <h1 class="ja">匿名の型(anonymous subtype)</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 
-<span class="highlight">my $posint =
+<span class="highlight">my $posint =<span class="ja"> # 匿名型を変数に代入</span>
     subtype as 'Int', where { $_ &gt; 0 };</span>
 
-has size =&gt; (
+has size =&gt; (<span class="ja"> # 寸法</span>
     is  =&gt; 'ro',
-    <span class="highlight">isa =&gt; $posint,</span>
+    <span class="highlight">isa =&gt; $posint,<span class="ja"> # それを使用</span></span>
 );</code></pre>
 
-  <ul>
+  <ul class="en">
     <li>Shortcuts have anonymous forms as well</li>
+  </ul>
+  <ul class="ja">
+    <li>サブタイプ化ショートカットでも同様に匿名の型を持てます</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Coercions</h1>
+  <h1 class="en">Coercions</h1>
+  <h1 class="ja">型変換(coercion)</h1>
 
   <pre><code>use Moose::Util::TypeConstraints;
 
-subtype 'UCStr',
-    as    'Str',
-    where { ! /[a-z]/ };</code></pre>
+subtype 'UCStr',<span class="ja">         # 「大文字」(upper case string)型</span>
+    as    'Str',<span class="ja">         # Strであって</span>
+    where { ! /[a-z]/ };<span class="ja"> # 小文字が含まれていてはいけない</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Coercions</h1>
+  <h1 class="en">Coercions</h1>
+  <h1 class="ja">型変換(coercion)</h1>
 
-  <pre><code><span class="incremental current">coerce 'UCStr',</span>
-    <span class="incremental">from 'Str',</span>
-    <span class="incremental">via  { uc };</span>
+  <pre><code><span class="incremental current">coerce 'UCStr',<span class="ja">  # 「大文字」型の強制</span></span>
+    <span class="incremental">from 'Str',<span class="ja">  # Strが入ってきたら</span></span>
+    <span class="incremental">via  { uc };<span class="ja"> # uc関数を経由(via)した値を格納する</span></span>
 
-has shouty_name =&gt; (
+has shouty_name =&gt; (<span class="ja"> # 騒々しい名前</span>
     is     =&gt; 'ro',
     isa    =&gt; 'UCStr',
-    <span class="incremental">coerce =&gt; 1,</span>
-);</code></pre>
+    <span class="incremental">coerce =&gt; 1,<span class="ja"> # このアトリビュートでは型変換を有効化</span></span>
+);
+<span class="annotation">（訳注：欧米では大文字連打は大声でわめくことを意味します）</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Coercion Examples</h1>
+  <h1 class="en">Coercion Examples</h1>
+  <h1 class="ja">型変換の例</h1>
 
   <pre><code>subtype 'My::DateTime',
     as class_type 'DateTime';
@@ -2838,45 +3670,58 @@ coerce 'My::DateTime',
     via  { DateTime-&gt;from_epoch(
                epoch =&gt; $_ ) };</code></pre>
 
-  <ul>
+  <ul class="en">
     <li>Use coercion to inflate a value</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Coercion Examples</h1>
-
-  <pre><code>coerce 'ArrayRef[Int]',
-    from 'Int',
-    via  { [ $_ ] };</code></pre>
-
-  <ul>
-    <li>Instead of union - <code style="white-space: nowrap">Int | ArrayRef[Int]</code></li>
+  <ul class="ja">
+    <li>値を膨らませる<span class="annotation">（訳注：inflateとは、生の文字列などの単純なデータをオブジェクトに読み替えて取り出すこと）</span>ために型変換を使いましょう</li>
+    <li class="annotation">訳注：CPANにMooseX::Types::DateTimeモジュールがあります</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Using Types with Attributes</h1>
+  <h1 class="en">Coercion Examples</h1>
+  <h1 class="ja">型変換の例</h1>
 
-  <pre><code>package Person;
+  <pre><code>coerce 'ArrayRef[Int]',<span class="ja"> # 要素が整数である配列リファレンス</span>
+    from 'Int',<span class="ja">         # 単独の整数が入ってきたら</span>
+    via  { [ $_ ] };<span class="ja">    # それを単一要素とする配列リファレンスへ</span></code></pre>
 
-has height =&gt; (
+  <ul class="en">
+    <li>Coerce instead of a union like <code style="white-space: nowrap">Int | ArrayRef[Int]</code></li>
+  </ul>
+  <ul class="ja">
+    <li><code style="white-space: nowrap">Int | ArrayRef[Int]</code>のような型の合成(union)の代わりに、こうした型変換を使いましょう</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Using Types with Attributes</h1>
+  <h1 class="ja">アトリビュートへの型の適用</h1>
+
+  <pre><code>package Person;<span class="ja"> # 人間</span>
+
+has height =&gt; (<span class="ja">           # 身長</span>
     is  =&gt; 'rw',
-    <span class="highlight">isa =&gt; 'Num',</span>
+    <span class="highlight">isa =&gt; 'Num',<span class="ja">              # 数値であるべき</span></span>
 );
 
-has favorite_numbers =&gt; (
+has favorite_numbers =&gt; (<span class="ja"> # 好きな番号</span>
     is     =&gt; 'rw',
-    <span class="highlight">isa    =&gt; 'ArrayRef[Int]',
-    coerce =&gt; 1,</span>
+    <span class="highlight">isa    =&gt; 'ArrayRef[Int]',<span class="ja"> # 整数の集まりであるべき</span>
+    coerce =&gt; 1,<span class="ja">               # 型変換する</span></span>
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>More Droppings</h1>
+  <h1 class="en">More Droppings</h1>
+  <h1 class="ja">さらなるヘラジカのフン</h1>
 
-  <ul>
+  <ul class="en">
     <li><code>Moose::Util::TypeConstraints</code> also needs cleanup</li>
+  </ul>
+  <ul class="ja">
+    <li><code>Moose::Util::TypeConstraints</code>の使用時にも名前空間の掃除が必要です</li>
   </ul>
 
   <pre><code>package Person;
@@ -2887,15 +3732,16 @@ use Moose::Util::TypeConstraints;
 subtype ...;
 
 no Moose;
-<span class="highlight">no Moose::Util::TypeConstraints;</span></code></pre>
+<span class="highlight">no Moose::Util::TypeConstraints;<span class="ja"> # Moose関数を名前空間から除去</span></span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Typed Methods (Low-tech)</h1>
+  <h1 class="en">Typed Methods (Low-tech)</h1>
+  <h1 class="ja">引数が型付けされたメソッド（低水準版）</h1>
 
-  <pre class="medium"><code>package Person;
+  <pre class="medium"><code>package Person;<span class="ja"> # 人間</span>
 <span class="highlight">use MooseX::Params::Validate qw( validated_list );</span>
-
+<span class="annotation"># 訳注：Mooseの型をアトリビュート以外で使うためのMoose拡張モジュール</span>
 sub work {
     my $self = shift;
     <span class="highlight">my ( $tasks, $can_rest ) =
@@ -2903,7 +3749,7 @@ sub work {
             \@_,
             tasks    =&gt;
                 { isa    =&gt; 'ArrayRef[Task]',
-                  coerce =&gt; 1 },
+                  coerce =&gt;1 },
             can_rest =&gt;
                 { isa     =&gt; 'Bool',
                   default =&gt; 0 },
@@ -2913,12 +3759,12 @@ sub work {
 </div>
 
 <div class="slide">
-  <h1>Typed Methods (High-tech)</h1>
+  <h1 class="en">Typed Methods (High-tech)</h1>
+  <h1 class="ja">引数が型付けされたメソッド（高水準版）</h1>
 
-  <pre class="medium"><code>package Person;
-
+  <pre class="medium"><code>package Person;<span class="ja"> # 人間</span>
 <span class="highlight">use MooseX::Method::Signatures;</span>
-
+<span class="annotation"># 訳注：ソースフィルターで実現するMoose拡張モジュール</span>
 <span class="highlight">method work ( ArrayRef[Task] :$tasks,
                         Bool :$can_rest = 0 )</span> {
     my $self = shift;
@@ -2928,39 +3774,57 @@ sub work {
 </div>
 
 <div class="slide">
-  <h1>Digression: The Type Registry</h1>
+  <h1 class="en">Digression: The Type Registry</h1>
+  <h1 class="ja">余談: 型の登録簿(type registry)</h1>
 
-  <ul>
+  <ul class="en">
     <li>Types are actually <code>Moose::Meta::TypeConstraints</code> <em>objects</em></li>
     <li>Stored in an interpreter-global registry mapping names to objects</li>
+  </ul>
+  <ul class="ja">
+    <li>型というのは実は<code>Moose::Meta::TypeConstraints</code>の<em>オブジェクト</em>です</li>
+    <li>perlインタープリター内でグローバルな登録簿(registry)へ、名前でマッピングされた状態でオブジェクトが格納されます</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Danger!</h1>
+  <h1 class="en">Danger!</h1>
+  <h1 class="ja">危険！</h1>
 
-  <ul>
+  <ul class="en">
     <li>Coercions are attached to type objects</li>
     <li>Therefore also global</li>
     <li>Name conflicts between modules!</li>
     <li>Coercion conflicts between modules!</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Namespace Fix</h1>
-
-  <ul>
-    <li>Use some sort of pseudo-namespacing scheme</li>
-    <li>Never coerce directly to a class name, or <em>to</em> built-in types</li>
+  <ul class="ja">
+    <li>型変換は型オブジェクトに結びつけられます</li>
+    <li>したがって型変換はグローバルに影響を及ぼします</li>
+    <li>モジュール間で型の名前が衝突します！</li>
+    <li>モジュール間で型変換が衝突します！</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Namespace Fix</h1>
+  <h1 class="en">Namespace Fix</h1>
+  <h1 class="ja">名前空間(namespace)の調整</h1>
+
+  <ul class="en">
+    <li>Use some sort of pseudo-namespacing scheme</li>
+    <li>Never coerce directly to a class name, or <em>to</em> built-in types</li>
+  </ul>
+  <ul class="ja">
+    <li>何らかの疑似的な名前空間体系を使ってください</li>
+    <li>クラス名や組み込みの型<em>に対する</em>直接の型変換は決して行わないでください</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Namespace Fix</h1>
+  <h1 class="ja">名前空間(namespace)の調整</h1>
 
   <pre><code>use Moose::Util::TypeConstraints;
-subtype <span class="highlight">'MyApp::Type::DateTime',</span>
+subtype <span class="highlight">'MyApp::Type::DateTime',<span class="ja"> # MyApp::Type::*名前空間</span></span>
     as 'DateTime';
 
 <span class="highlight">coerce 'MyApp::Type::DateTime',</span>
@@ -2975,7 +3839,8 @@ has creation_date =&gt; (
 </div>
 
 <div class="slide">
-  <h1>Namespace Fix</h1>
+  <h1 class="en">Namespace Fix</h1>
+  <h1 class="ja">名前空間(namespace)の調整</h1>
 
   <pre><code>subtype 'MyApp::Type::ArrayOfInt',
     as 'ArrayRef[Int]';
@@ -2986,20 +3851,28 @@ coerce 'MyApp::Type::ArrayOfInt',
 </div>
 
 <div class="slide">
-  <h1>Namespace Fix Pros and Cons</h1>
+  <h1 class="en">Namespace Fix Pros and Cons</h1>
+  <h1 class="ja">名前空間を調整することの利点と欠点</h1>
 
-  <ul>
+  <ul class="en">
     <li><span class="right">Relatively simple</span></li>
     <li><span class="right">Already built into Moose</span></li>
     <li><span class="wrong">Conflates type and module namespaces</span></li>
     <li><span class="wrong">Type names are strings, so typos are easy to make and may be hard to find</span></li>
   </ul>
+  <ul class="ja">
+    <li><span class="right">比較的単純です</span></li>
+    <li><span class="right">Mooseコアに既に組み込まれている機能です</span></li>
+    <li><span class="wrong">型とモジュールの名前空間をごちゃごちゃにしてしまいます</span></li>
+    <li><span class="wrong">型の名前は文字列ですので、簡単に誤記してしまいますし、その場合に問題の発見がとても困難になります</span></li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>MooseX::Types</h1>
+  <h1 class="en">MooseX::Types</h1>
+  <h1 class="ja"><code>MooseX::Types</code></h1>
 
-  <pre><code>package MyApp::Types;
+  <pre><code>package MyApp::Types;<span class="ja"> # MyApp::Types::*名前空間</span>
 
 use MooseX::Types
     <span class="highlight">-declare =&gt; [ qw( ArrayOfInt ) ]</span>;
@@ -3015,34 +3888,44 @@ coerce <span class="highlight">ArrayOfInt</span>
 </div>
 
 <div class="slide">
-  <h1>MooseX::Types</h1>
+  <h1 class="en">MooseX::Types</h1>
+  <h1 class="ja"><code>MooseX::Types</code></h1>
 
-  <pre><code>package MyApp::Account;
+  <pre><code>package MyApp::Account;<span class="ja"> # アカウント</span>
 
-use MyApp::Types qw( ArrayOfInt );
+use MyApp::Types qw( ArrayOfInt );<span class="ja"> # ArrayOfInt関数をインポート</span>
 
-has transaction_history => (
-    is  => 'rw',
-    isa => ArrayOfInt,
+has transaction_history =&gt; (<span class="ja"> # 取引履歴</span>
+    is  =&gt; 'rw',
+    isa =&gt; ArrayOfInt,
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>MooseX::Types</h1>
+  <h1 class="en">MooseX::Types</h1>
+  <h1 class="ja"><code>MooseX::Types</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Type names are exported functions, catches typos early</li>
     <li>Types must be pre-declared</li>
     <li>Types are stored with namespaces internally, but externally are short</li>
     <li>Import existing Moose types as functions from <code>MooseX::Types::Moose</code></li>
     <li>Still need string names for things like <code>ArrayRef['Email::Address']</code></li>
   </ul>
+  <ul class="ja">
+    <li>型名は関数としてエクスポートされるので、誤記を早期に発見できます</li>
+    <li>型は予め宣言されていなければいけません</li>
+    <li>型は名前空間の内部に格納されますが、外部からは短い名前で呼び出せます</li>
+    <li>既存のMoose組み込み型を関数としてインポートするには、<code>MooseX::Types::Moose</code>を使いましょう</li>
+    <li>ただし<code>ArrayRef['Email::Address']</code>とするような場合は、名前の文字列が相変わらず必要です</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>MooseX::Types Pros and Cons</h1>
+  <h1 class="en">MooseX::Types Pros and Cons</h1>
+  <h1 class="ja"><code>MooseX::Types</code>の利点と欠点</h1>
 
-  <ul>
+  <ul class="en">
     <li><span class="right">Catches typos at compile time</span></li>
     <li><span class="right">Automatic namespacing</span></li>
     <li><span class="wrong">One more thing to install and learn</span></li>
@@ -3050,60 +3933,91 @@ has transaction_history => (
     <li><span class="wrong">Still stuck with strings when referring to class or role names</span></li>
     <li><span class="wrong">Coercion gotcha from earlier still applies to types exported from <code>MooseX::Types::Moose</code></span></li>
   </ul>
+  <ul class="ja">
+    <li><span class="right">コンパイル時に誤記を発見できます</span></li>
+    <li><span class="right">名前空間への紐付けを自動で行ってくれます</span></li>
+    <li><span class="wrong">さらにもう一つ<span class="annotation">（訳注：MooseX::Typesのこと）</span>、インストールして学ぶべきものが増えます</span></li>
+    <li><span class="wrong">全ての名前で型が2倍（宣言時と定義時）必要です</span><span class="memorandum">＜★ とても怪しい＞</span></li>
+    <li><span class="wrong">文字列がクラスやロールの名前に紐付いているというやっかいさは残ります</span></li>
+    <li><span class="wrong">型変換は<code>MooseX::Types::Moose</code>からエクスポートされる型に適用されるよりも早期の段階で行われます</span><span class="memorandum">＜★ とても怪しい＞</span></li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Recommendation</h1>
+  <h1 class="en">Recommendation</h1>
+  <h1 class="ja">勧告</h1>
 
-  <ul>
+  <ul class="en">
     <li>Use <code>MooseX::Types</code></li>
     <li>Compile time error catching and automatic namespacing are huge wins</li>
     <li>Docs from <code>Moose::Util::TypeConstraints</code> are 98% compatible with <code>MooseX::Types</code> anyway</li>
     <li>A function exported by a type library works wherever a type name would</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Questions?</h1>
-</div>  
-
-<div class="slide">
-  <h1>Exercises</h1>
-
-  <pre># cd exercises
-# perl bin/prove -lv t/05-types.t
-
-Iterate til this passes all its tests</pre>
-</div>
-
-<div class="slide fake-slide0">
-  <h1>Part 6: Advanced Attributes</h1>
-</div>
-
-<div class="slide">
-  <h1>Weak References</h1>
-
-  <ul>
-    <li>A weak reference lets you avoid circular references</li>
-    <li>Weak references do not increase the reference count</li>
+  <ul class="ja">
+    <li><code>MooseX::Types</code>を使ってください</li>
+    <li>コンパイル時のエラー発見と自動的な名前空間紐付けの利点は大きいです</li>
+    <li>いずれにせよ、<code>Moose::Util::TypeConstraints</code>のドキュメントは<code>MooseX::Types</code>に98%の互換性があります</li>
+    <li>
+    A function exported by a type library works wherever a type name would</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Circular Reference Illustrated</h1>
+  <h1 class="en">Questions?</h1>
+  <h1 class="ja">質問はありますか？</h1>
+</div>  
+
+<div class="slide">
+  <h1 class="en">Exercises</h1>
+  <h1 class="ja">演習</h1>
+
+  <pre># cd exercises
+# perl bin/prove -lv t/05-types.t
+
+Iterate til this passes all its tests
+<span class="ja">全てのテストにパスするまで繰り返してください</span></pre>
+</div>
+
+<div class="slide fake-slide0">
+  <h1 class="en">Part 6: Advanced Attributes</h1>
+  <h1 class="ja">Part 6: 高度なアトリビュート</h1>
+</div>
+
+<div class="slide">
+  <h1 class="en">Weak References</h1>
+  <h1 class="ja">「弱い」リファレンス(weak reference)</h1>
+
+  <ul class="en">
+    <li>A weak reference lets you avoid circular references</li>
+    <li>Weak references do not increase the reference count</li>
+  </ul>
+  <ul class="ja">
+    <li>「弱い」リファレンス(weak reference)は循環参照(circular reference)を回避してくれます</li>
+    <li>「弱い」リファレンスはリファレンスカウント(reference count)を増加させません</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Circular Reference Illustrated</h1>
+  <h1 class="ja">循環参照(circular reference)の図解</h1>
 
   <pre><code>my $foo = {};
 my $bar = { foo =&gt; $foo };
 $foo-&gt;{bar} = $bar;</code></pre>
 
-  <ul>
+  <ul class="en">
     <li>Neither <code>$foo</code> nor <code>$bar</code> go out of scope<br />
         (until the program exits)</li>
+  </ul>
+  <ul class="ja">
+    <li><code>$foo</code>も<code>$bar</code>もスコープから外れません<br />
+        （プログラムが終了するまでの間）</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Weakening Circular References</h1>
+  <h1 class="en">Weakening Circular References</h1>
+  <h1 class="ja">循環参照を「弱く」する</h1>
 
   <pre><code>use Scalar::Util qw( weaken );
 
@@ -3112,13 +4026,17 @@ my $bar = { foo =&gt; $foo };
 $foo-&gt;{bar} = $bar;
 weaken $foo-&gt;{bar}</code></pre>
 
-  <ul>
+  <ul class="en">
     <li>When <code>$bar</code> goes out of scope, <code>$foo-&gt;{bar}</code> becomes <code>undef</code></li>
+  </ul>
+  <ul class="ja">
+    <li><code>$bar</code>がスコープから外れるとき、<code>$foo-&gt;{bar}</code>は<code>undef</code>になります</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Circular References in Attributes</h1>
+  <h1 class="en">Circular References in Attributes</h1>
+  <h1 class="ja">アトリビュートにおける循環参照</h1>
 
   <pre><code>package Person;
 use Moose;
@@ -3133,7 +4051,8 @@ $alice-&gt;friend($bob);</code></pre>
 </div>
 
 <div class="slide">
-  <h1>The Fix</h1>
+  <h1 class="en">The Fix</h1>
+  <h1 class="ja">調整法</h1>
 
   <pre><code>package Person;
 use Moose;
@@ -3149,27 +4068,41 @@ $alice-&gt;friend($bob);</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Under the Hood</h1>
+  <h1 class="en">Under the Hood</h1>
+  <h1 class="ja">水面下の動き</h1>
 
-  <ul>
+  <ul class="en">
     <li>A <code>weak_ref</code> attribute calls <code>weaken</code> ...
-      <ul>
+      <ul class="en">
         <li>during object construction</li>
         <li>when the attribute is set via a writer</li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="ja">
+    <li><code>weak_ref</code>アトリビュートは以下の場合に<code>weaken</code>関数を呼びます……
+      <ul class="ja">
+        <li>オブジェクト生成の間に</li>
+        <li>アトリビュートが<code>writer</code>メソッドで設定された時に</li>
       </ul>
     </li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Triggers</h1>
+  <h1 class="en">Triggers</h1>
+  <h1 class="ja">トリガー(trigger)</h1>
 
-  <ul>
+  <ul class="en">
     <li>A code reference run after an attribute is <em>set</em></li>
     <li>Like an <code>after</code> modifier, but makes intentions clearer</li>
   </ul>
+  <ul class="ja">
+    <li>アトリビュートが<em>セット(set)</em>された後にコードリファレンスが実行されます</li>
+    <li><code>after</code>モディファイヤーと同様ですが、<code>clearer</code>の意図を込めて使えます</li>
+  </ul>
 
-  <h2 class="wrong">Gross</h2>
+  <h2 class="wrong"><span class="en">Gross</span><span class="ja">粗い処理</span></h2>
 
   <pre><code>after salary_level =&gt; {
     my $self = shift;
@@ -3179,9 +4112,10 @@ $alice-&gt;friend($bob);</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Use a Trigger Instead</h1>
+  <h1 class="en">Use a Trigger Instead</h1>
+  <h1 class="ja">トリガーを代わりに使ってください</h1>
 
-  <h2 class="right">Cleaner</h2>
+  <h2 class="right"><span class="en">Cleaner</span><span class="ja">きれいな処理</span></h2>
 
   <pre><code>has salary_level =&gt; (
     is      =&gt; 'rw',
@@ -3190,48 +4124,65 @@ $alice-&gt;friend($bob);</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Delegation</h1>
+  <h1 class="en">Delegation</h1>
+  <h1 class="ja">委譲(delegation)</h1>
 
-  <ul>
+  <ul class="en">
     <li>Attributes can be objects</li>
     <li>Delegation transparently calls methods on those objects</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Delegation Examples</h1>
-
-  <pre><code>package Person;
-
-has lungs =&gt; (
-    is      =&gt; 'ro',
-    isa     => 'Lungs',
-    <span class="highlight">handles =&gt; [ 'inhale', 'exhale' ],</span>
-);</code></pre>
-
-  <ul>
-    <li>Creates <code>$person-&gt;inhale</code> and <code>-&gt;exhale</code> methods</li>
-    <li>Internally calls <code>$person-&gt;lungs-&gt;inhale</code></li>
+  <ul class="ja">
+    <li>アトリビュートはオブジェクトであることができます</li>
+    <li>委譲によってそれらのオブジェクトのメソッドを透過的に呼び出せます</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Why Delegation?</h1>
+  <h1 class="en">Delegation Examples</h1>
+  <h1 class="ja">委譲の例</h1>
 
-  <ul>
+  <pre><code>package Person;<span class="ja"> # 「人」クラス</span>
+
+has lungs =&gt;<span class="ja"> # 「肺」アトリビュート</span>
+    is      =&gt; 'ro',
+    isa     =&gt; 'Lungs',<span class="ja"> # 「肺」オブジェクト</span>
+    <span class="highlight">handles =&gt; [ 'inhale', 'exhale' ],</span>
+);<span class="ja"> # 「吸い込む」「吐き出す」メソッド</span></code></pre>
+
+  <ul class="en">
+    <li>Creates <code>$person-&gt;inhale</code> and <code>-&gt;exhale</code> methods</li>
+    <li>Internally calls <code>$person-&gt;lungs-&gt;inhale</code></li>
+  </ul>
+  <ul class="ja">
+    <li><code>$person-&gt;inhale</code>と<code>-&gt;exhale</code>のメソッドを作成します</li>
+    <li><code>$person-&gt;lungs-&gt;inhale</code>メソッドを内部的に呼び出します</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Why Delegation?</h1>
+  <h1 class="ja">なぜ委譲するのでしょうか？</h1>
+
+  <ul class="en">
     <li>Reduce the number of classes exposed</li>
     <li>Re-arrange class internals -<br />
         turn a method into an attribute with delegation</li>
     <li>Provide convenenience methods</li>
   </ul>
+  <ul class="ja">
+    <li>外部に曝すクラスの数を減らせます</li>
+    <li>クラス内部を再整理します - メソッドを、委譲されたアトリビュートへ向けられます</li>
+    <li>便利なメソッドを提供できます</li>
+  </ul>
 </div> 
 
 <div class="slide">
-  <h1>Moose's <code>handles</code> Parameter</h1>
+  <h1 class="en">Moose's <code>handles</code> Parameter</h1>
+  <h1 class="ja">Mooseの<code>handles</code>パラメーター</h1>
 
-  <ul>
+  <ul class="en">
     <li>Accepts many arguments ...
-      <ul>
+      <ul class="en">
         <li>Array reference - list of methods to delegate as-is</li>
         <li>Hash reference - map of method names</li>
         <li>Regex - delegates all matching methods</li>
@@ -3240,91 +4191,132 @@ has lungs =&gt; (
       </ul>
     </li>
   </ul>
+  <ul class="ja">
+    <li>多くの引数を受容します……
+      <ul class="ja">
+        <li>配列リファレンス - 列挙したメソッド名をそのまま委譲します</li>
+        <li>ハッシュリファレンス - メソッド名をマッピングできます</li>
+        <li>正規表現 - マッチした全てのメソッドを委譲します</li>
+        <li>ロール名 - ロールにある全てのメソッドを委譲します</li>
+        <li>サブルーチンリファレンス - 何か複雑なことをしたい場合にどうぞ</li>
+      </ul>
+    </li>
+  </ul>
 </div>      
 
 <div class="slide">
-  <h1>Array Reference</h1>
+  <h1 class="en">Array Reference</h1>
+  <h1 class="ja">配列リファレンス</h1>
 
-  <ul>
+  <ul class="en">
     <li>Takes each method name and creates a simple delegation from the delegating class to the delegatee attribute</li>
+  </ul>
+  <ul class="ja">
+    <li>列挙したそれぞれのメソッド名を受け容れ、委譲するクラスから委譲されるアトリビュートへの単純な委譲メソッドを作成します</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Hash Reference</h1>
+  <h1 class="en">Hash Reference</h1>
+  <h1 class="ja">ハッシュリファレンス</h1>
 
-  <ul>
+  <ul class="en">
     <li>Mapping of names in the delegating class to the delegatee class</li>
   </ul>
+  <ul class="ja">
+    <li>委譲するクラスから委譲されるクラスへのメソッドをマッピングします</li>
+  </ul>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人クラス</span>
 use Moose;
-has account =&gt; (
+has account =&gt; (<span class="ja"> # 口座アトリビュート</span>
     is      =&gt; 'ro',
-    isa     =&gt; 'BankAccount',
+    isa     =&gt; 'BankAccount',<span class="ja"> # 銀行口座オブジェクト</span>
     <span class="highlight">handles =&gt; {
-        receive_money =&gt; 'deposit',
-        give_money    =&gt; 'withdraw',
+        receive_money =&gt; 'deposit',<span class="ja">  # 金を受け取る =&gt; 預金する</span>
+        give_money    =&gt; 'withdraw',<span class="ja"> # 金を与える =&gt; 引き出し</span>
     },</span>
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Hash Reference Detailed</h1>
+  <h1 class="en">Hash Reference Detailed</h1>
+  <h1 class="jan">ハッシュリファレンス指定時の詳細</h1>
 
   <pre><code>    handles =&gt; {
-        receive_money =&gt; 'deposit',
-        give_money    =&gt; 'withdraw',
+        receive_money =&gt; 'deposit',<span class="ja">  # 金を受け取る =&gt; 預金する</span>
+        give_money    =&gt; 'withdraw',<span class="ja"> # 金を与える =&gt; 引き出し</span>
     },</code></pre>
 
-  <ul>
+  <ul class="en">
     <li><code>$person-&gt;receive_money</code> = <code>$person-&gt;account-&gt;deposit</code></li>
     <li><code>$person-&gt;give_money</code> = <code>$person-&gt;account-&gt;withdraw</code></li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Regex</h1>
-
-  <pre><code>package Person;
-use Moose;
-
-has name =&gt; (
-    is      =&gt; 'ro',
-    isa     =&gt; 'Name',
-    handles =&gt; qr/.*/,
-);</code></pre>
-
-  <ul>
-    <li>Creates a delegation for every method in the Name class</li>
-    <li>Excludes <code>meta</code> and methods inherited from <code>Moose::Object</code></li>
+  <ul class="ja">
+    <li><code>$person-&gt;receive_money</code> = <code>$person-&gt;account-&gt;deposit</code></li>
+    <li><code>$person-&gt;give_money</code> = <code>$person-&gt;account-&gt;withdraw</code></li>
+    <li class="ja">（人が）金を受け取る = （その人が口座へ）預金する</li>
+    <li class="ja">（人へ）金を与える = （その人が口座から）引き出す</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Role Name</h1>
+  <h1 class="en">Regex</h1>
+  <h1 class="ja">正規表現</h1>
 
-  <pre><code>package Auditor;
-use Moose::Role;
-sub record_change  { ... }
-sub change_history { ... }
-
-package Account;
+  <pre><code>package Person;<span class="ja"> # 人クラス</span>
 use Moose;
 
-has history =&gt; (
+has name =&gt; (<span class="ja"> # 名前アトリビュート</span>
     is      =&gt; 'ro',
-    does    =&gt; 'Auditor',
-    <span class="highlight">handles =&gt; 'Auditor',</span>
+    isa     =&gt; 'Name',<span class="ja"> # 名前オブジェクト</span>
+    handles =&gt; qr/.*/,
+);</code></pre>
+
+  <ul class="en">
+    <li>Creates a delegation for every method in the Name class</li>
+    <li>Excludes <code>meta</code> and methods inherited from <code>Moose::Object</code></li>
+  </ul>
+  <ul class="ja">
+    <li><span class="annotation">（訳注：上記の<code>qr/.*/</code>パターンでは）</span>Nameクラスにある全てのメソッドへの委譲メソッドを作成します</li>
+    <li>ただし<code>meta</code>メソッドと<code>Moose::Object</code>から継承したメソッドは除きます</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Role Name</h1>
+  <h1 class="ja">ロール名</h1>
+
+  <pre><code>package Auditor;<span class="ja"> # 監査役ロール</span>
+use Moose::Role;
+sub record_change  { ... }<span class="ja"> # 記録変更</span>
+sub change_history { ... }<span class="ja"> # 履歴変更</span>
+
+package Account;<span class="ja"> # 口座クラス</span>
+use Moose;
+
+has history =&gt; (<span class="ja"> # 履歴アトリビュート</span>
+    is      =&gt; 'ro',
+    does    =&gt; 'Auditor',<span class="ja"> # 監査役をこなすべき</span>
+    <span class="highlight">handles =&gt; 'Auditor',<span class="ja"> # 監査役ロールのメソッド全て</span></span>
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Role Name Detailed</h1>
+  <h1 class="en">Role Name Detailed</h1>
+  <h1 class="ja">ロール名指定時の詳細</h1>
 
-  <ul>
+  <ul class="en">
     <li>Account gets delegate methods for each method in the <code>Auditor</code> role
-      <ul>
+      <ul class="en">
+        <li>record_history</li>
+        <li>change_history</li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="ja">
+    <li>Account（口座）アトリビュートは<code>Auditor</code>（監査役）ロールにあるそれぞれのメソッドへの委譲メソッドを得ます
+      <ul class="ja">
         <li>record_history</li>
         <li>change_history</li>
       </ul>
@@ -3333,23 +4325,33 @@ has history =&gt; (
 </div>
 
 <div class="slide">
-  <h1>Native Delegation</h1>
+  <h1 class="en">Native Delegation</h1>
+  <h1 class="ja">ネイティブな委譲(native delegation)</h1>
 
-  <ul>
+  <ul class="en">
     <li>Delegate to <em>unblessed</em> Perl types</li>
     <li>Scalar, array or hash ref, etc</li>
     <li>Treat Perl types as objects</li>
     <li>Still uses <code>handles</code></li>
     <li>Pretend that native Perl types have methods</li>
   </ul>
+  <ul class="ja">
+    <li><em>ブレスされていない</em>Perlの型へ委譲します</li>
+    <li>スカラー, 配列リファレンス, ハッシュリファレンスなどを操作できます</li>
+    <li class="annotation">訳注：これらは<code>MooseX::AttributeHelpers</code>がバージョン0.90以降のMooseコアに取り込まれたものです</li>
+    <li>Perlのデータ型をオブジェクトのように扱います</li>
+    <li>これもまた<code>handles</code>で使います</li>
+    <li>Perlのネイティブなデータ型がメソッドを持っているかのように見せかけます</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Native Delegation - Array(Ref)</h1>
+  <h1 class="en">Native Delegation - Array(Ref)</h1>
+  <h1 class="ja">ネイティブな委譲 - 配列（のリファレンス）</h1>
 
-  <ul>
+  <ul class="en">
     <li>Methods include:
-      <ul>
+      <ul class="en">
         <li><code>push</code></li>
         <li><code>shift</code></li>
         <li><code>elements</code> - returns all elements</li>
@@ -3359,30 +4361,44 @@ has history =&gt; (
       </ul>
     </li>
   </ul>
+  <ul class="ja">
+    <li>これらのメソッドを含みます……
+      <ul class="ja">
+        <li><code>push</code></li>
+        <li><code>shift</code></li>
+        <li><code>elements</code> - 全ての要素を返します</li>
+        <li><code>count</code></li>
+        <li><code>is_empty</code></li>
+        <li>さらに多くのものがあります</li>
+      </ul>
+    </li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Native Delegation - Array(Ref)</h1>
+  <h1 class="en">Native Delegation - Array</h1>
+  <h1 class="ja">ネイティブな委譲 - 配列（のリファレンス）</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人クラス</span>
 use Moose;
-has _favorite_numbers =&gt; (
+has _favorite_numbers =&gt; (<span class="ja"> # 好きな値アトリビュート（内部使用）</span>
     traits   =&gt; [ 'Array' ],
     is       =&gt; 'ro',
     isa      =&gt; 'ArrayRef[Int]',
     default  =&gt; sub { [] },
     init_arg =&gt; undef,
     <span class="highlight">handles  =&gt;
-      { favorite_numbers    =&gt; 'elements',
-        add_favorite_number =&gt; 'push',
+      { favorite_numbers    =&gt; 'elements',<span class="ja"> # 値の一覧</span>
+        add_favorite_number =&gt; 'push',<span class="ja"> # 値の追加</span>
       },</span>
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Native Delegation - Array(Ref)</h1>
+  <h1 class="en">Native Delegation - Array(Ref)</h1>
+  <h1 class="ja">ネイティブな委譲 - 配列（のリファレンス）</h1>
 
-  <pre><code>my $person = Person-&gt;new();
+  <pre><code>my $person = Person-&gt;new();<span class="ja"> # 人間</span>
 
 $person-&gt;add_favorite_number(7);
 $person-&gt;add_favorite_number(42);
@@ -3395,11 +4411,12 @@ print "$_\n"
 </div>
 
 <div class="slide">
-  <h1>Native Delegation</h1>
+  <h1 class="en">Native Delegation</h1>
+  <h1 class="ja">ネイティブな委譲</h1>
 
-  <ul>
+  <ul class="en">
     <li>Native types are ...
-      <ul>
+      <ul class="en">
         <li>Number - <code>add</code>, <code>mul</code>, ...</li>
         <li>String - <code>append</code>, <code>chop</code>, ...</li>
         <li>Counter - <code>inc</code>, <code>dec</code>, ...</li>
@@ -3410,175 +4427,251 @@ print "$_\n"
       </ul>
     </li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Curried Delegation</h1>
-
-  <ul>
-    <li>A delegation with some preset arguments</li>
-    <li>Works with object or Native delegation</li>
+  <ul class="ja">
+    <li>ネイティブな型とは……
+      <ul class="ja">
+        <li><code>Number</code> - <code>add</code>, <code>mul</code>, ...</li>
+        <li><code>String</code> - <code>append</code>, <code>chop</code>, ...</li>
+        <li><code>Counter</code> - <code>inc</code>, <code>dec</code>, ...</li>
+        <li><code>Bool</code> - <code>set</code>, <code>toggle</code>, ...</li>
+        <li><code>Hash</code> - <code>get</code>, <code>set</code>, ...</li>
+        <li><code>Array</code> - 前のスライドに出てきました</li>
+        <li><code>Code</code> - <code>execute</code>（まさにそれを実行します）</li>
+      </ul>
+    </li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Curried Delegation</h1>
+  <h1 class="en">Curried Delegation</h1>
+  <h1 class="ja">カリー化された(curried)委譲</h1>
 
-  <pre><code>package Person;
+  <ul class="en">
+    <li>A delegation with some preset arguments</li>
+    <li>Works with object or Native delegation</li>
+  </ul>
+  <ul class="ja">
+    <li>いくつかの引数を予め設定した状態で委譲します</li>
+    <li>オブジェクトへの、またはネイティブな型への移譲時に稼働します</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Curried Delegation</h1>
+  <h1 class="ja">カリー化された(curried)委譲</h1>
+
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
-has account =&gt; (
+has account =&gt; (<span class="ja"> # 口座</span>
     is      =&gt; 'ro',
-    isa     =&gt; 'BankAccount',
+    isa     =&gt; 'BankAccount',<span class="ja"> # 銀行口座であるべき</span>
     handles =&gt; {
-        receive_100 =&gt;
-            <span class="highlight">[ 'deposit', 100 ]</span>
-        give_100    =&gt;
-            <span class="highlight">[ 'withdraw', 100 ]</span>
+        receive_100 =&gt;<span class="ja"> # 100受け取る</span>
+            <span class="highlight">[ 'deposit', 100 ]<span class="ja"> # 預金メソッドに引数100を与える</span></span>
+        give_100    =&gt;<span class="ja"> # 100与える</span>
+            <span class="highlight">[ 'withdraw', 100 ]<span class="ja"> # 引き出しメソッドに引数100を与える</span></span>
     },
 );</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Curried Delegation</h1>
+  <h1 class="en">Curried Delegation</h1>
+  <h1 class="ja">カリー化された(curried)委譲</h1>
 
   <pre><code>$person-&gt;receive_100;
-# really is
+<span class="en"># really is</span><span class="ja"># 実は以下のように動きます</span>
 $person-&gt;account-&gt;deposit(100);</code></pre>
 </div>
 
 <div class="slide">
-  <h1>Traits and Metaclasses</h1>
+  <h1 class="en">Traits and Metaclasses</h1>
+  <h1 class="ja">トレート(trait)とメタクラス(metaclass)</h1>
 
-  <ul>
+  <ul class="en">
     <li>The ultimate in customization</li>
     <li>Per attribute metaclasses</li>
     <li>Per attribute roles applied to the attribute metaclass</li>
     <li>Change the meta-level behavior</li>
   </ul>
+  <ul class="ja">
+    <li>カスタマイズの究極到達点</li>
+    <li>アトリビュートごとにメタクラスを設定します</li>
+    <li>アトリビュート向けにメタクラスを適用するロールをアトリビュートごとに設定します<span class="memorandum">＜★かなり怪しげ＞</span></li>
+    <li>メタクラスの水準の振る舞いを変更します</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Traits and Metaclasses</h1>
+  <h1 class="en">Traits and Metaclasses</h1>
+  <h1 class="ja">トレート(trait)とメタクラス(metaclass)</h1>
 
-  <ul>
+  <ul class="en">
     <li>The default metaclass is <code>Moose::Meta::Attribute</code></li>
     <li>Controls accessor generation, defaults, delegation, etc.</li>
     <li>Adding a role to this metaclass (or replacing it) allows for infinite customization</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>Traits and Metaclasses</h1>
-
-  <ul>
-    <li>Can add/alter/remove attribute parameter (from <code>has</code>)</li>
-    <li>Can change behavior of created attribute</li>
+  <ul class="ja">
+    <li>無指定時のメタクラスは<code>Moose::Meta::Attribute</code>です</li>
+    <li>これはアクセッサーの生成や、デフォルト値の設定や、委譲などを制御しています</li>
+    <li>ロールをそのメタクラスに追加する（またはそのメタクラスを置き換える）ことで、果てしないカスタマイズを行えるようになります</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>Simple Trait Example</h1>
+  <h1 class="en">Traits and Metaclasses</h1>
+  <h1 class="ja">トレート(trait)とメタクラス(metaclass)</h1>
 
-  <pre><code>package Person;
+  <ul class="en">
+    <li>Can add/alter/remove attribute parameter (from <code>has</code>)</li>
+    <li>Can change behavior of created attribute</li>
+  </ul>
+  <ul class="ja">
+    <li>（<code>has</code>によって定義する）アトリビュートのパラメーターを加えたり、作り替えたり、取り除いたりできます</li>
+    <li>作成されたアトリビュートの振る舞いを変えることができます</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">Simple Trait Example</h1>
+  <h1 class="ja">単純なトレートの例</h1>
+
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
-use MooseX::LabeledAttributes;
+use MooseX::LabeledAttributes;<span class="ja"> # ラベル付きアトリビュート</span>
 
 has ssn =&gt; (
-    <span class="highlight">traits =&gt; [ 'Labeled' ],</span>
+    <span class="highlight">traits =&gt; [ 'Labeled' ],<span class="ja"> # ラベル付きというトレート</span></span>
     is     =&gt; 'ro',
     isa    =&gt; 'Str',
-    <span class="highlight">label  =&gt; 'Social Security Number',</span>
+    <span class="highlight">label  =&gt; 'Social Security Number',<span class="ja"> # 社会保障番号</span></span>
 );
 print <span class="highlight">Person-&gt;meta
             -&gt;get_attribute('ssn')-&gt;label;</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Simple Metaclass Example</h1>
+  <h1 class="en">Simple Metaclass Example</h1>
+  <h1 class="ja">単純なメタクラスの例</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
-use MooseX::LabeledAttributes;
+use MooseX::LabeledAttributes;<span class="ja"> # ラベル付きアトリビュート</span>
 
 has ssn =&gt; (
-    <span class="highlight">metaclass =&gt;
+    <span class="highlight">metaclass =&gt;<span class="ja"> # ラベル付きアトリビュートというメタクラス</span>
         'MooseX::Meta::Attribute::Labeled',</span>
     is        =&gt; 'ro',
     isa       =&gt; 'Str',
-    <span class="highlight">label     =&gt; 'Social Security Number',</span>
+    <span class="highlight">label     =&gt; 'Social Security Number',<span class="ja"> # 社会保障番号</span></span>
 );
 print <span class="highlight">Person-&gt;meta
             -&gt;get_attribute('ssn')-&gt;label;</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Traits vs Metaclass</h1>
+  <h1 class="en">Traits vs Metaclass</h1>
+  <h1 class="ja">トレートかメタクラスか</h1>
 
-  <ul>
+  <ul class="en">
     <li>Can apply any mix of traits to an attribute</li>
     <li>But just one metaclass</li>
     <li>Traits (aka roles) can cooperate</li>
     <li>Metaclasses require you to pick just one</li>
   </ul>
+  <ul class="ja">
+    <li>複数のトレートを混ぜてアトリビュートに適用できます</li>
+    <li>しかしメタクラスは1つだけしか適用できません</li>
+    <li>トレート（またの名はロールです）は複数で協調できます</li>
+    <li>複数のメタクラスがあったらその中の一つを選び出さなければなりません</li>
+    <li class="annotation">訳注：複数のメタクラスをうまく継承したサブクラスを作るよりは、ロールと同様に複数のトレートをまとめて適用した方が楽です</li>
+    <li class="annotation">訳注：従って、基本的にはトレートを使う方がよいです</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Advanced Attributes Summary</h1>
+  <h1 class="en">Advanced Attributes Summary</h1>
+  <h1 class="ja">高度なアトリビュートの概要（おさらい）</h1>
 
-  <ul>
+  <ul class="en">
     <li>Use <code>weak_ref</code> to avoid circular references</li>
     <li>Use trigger to do an action post-attribute write</li>
     <li>Use delegations to hide "internal" objects</li>
     <li>Traits and metaclasses let you extend Moose's core attribute features</li>
   </ul>
+  <ul class="ja">
+    <li>循環参照(circular reference)を避けるために<code>weak_ref</code>を使いましょう</li>
+    <li>アトリビュートへの書き込み後に何かを行うためにトリガー(<code>trigger</code>)を使いましょう</li>
+    <li>「内部的な」オブジェクトを隠蔽するために、委譲を使いましょう</li>
+    <li>トレート(trait)やメタクラス(metaclass)によってMooseコアのアトリビュート機能を拡張できます</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Questions?</h1>
+  <h1 class="en">Questions?</h1>
+  <h1 class="ja">質問はありますか？</h1>
 </div>  
 
 <div class="slide">
-  <h1>Exercises</h1>
+  <h1 class="en">Exercises</h1>
+  <h1 class="ja">演習</h1>
 
   <pre># cd exercises
 # perl bin/prove -lv \
       t/06-advanced-attributes.t
 
-Iterate til this passes all its tests</pre>
+Iterate til this passes all its tests
+<span class="ja">全てのテストにパスするまで繰り返してください</span></pre>
 </div>
 
 <div class="slide fake-slide0">
-  <h1>Part 7: Introspection</h1>
+  <h1 class="en">Part 7: Introspection</h1>
+  <h1 class="ja">Part 7: 内観(イントロスペクション, introspection)</h1>
 </div>
 
 <div class="slide fake-slide0">
-  <h1>Part 8: A Brief Tour of MooseX</h1>
+  <h1 class="en">Part 8: A Brief Tour of MooseX</h1>
+  <h1 class="ja">Part 8: MooseX拡張モジュールへの簡単なツアー</h1>
 </div>
 
 <div class="slide">
-  <h1>Notable MX Modules on CPAN</h1>
+  <h1 class="en">Notable MX Modules on CPAN</h1>
+  <h1 class="ja">CPAN上の重要なMXモジュール</h1>
 
-  <ul>
+  <ul class="en">
     <li><strong>Not comprehensive</strong></li>
     <li>128 MooseX distributions on CPAN as of 09/24/2009</li>
     <li>Some of them are crap</li>
   </ul>
+  <ul class="ja">
+    <li>ここで紹介するものは<strong>すべてを含むものではありません</strong></li>
+    <li>MooseXディストリビューションは2009年9月24日現在で128個あります</li>
+    <li>いくつかのディストリビューションはばかげたものです</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>Already Mentioned Several</h1>
+  <h1 class="en">Already Mentioned Several</h1>
+  <h1 class="ja">いくつかは既に紹介しました</h1>
 
-  <ul>
+  <ul class="en">
     <li>MooseX::NonMoose - best solution for subclassing non-Moose parents</li>
     <li>MooseX::Declare - <em>real</em> Perl 5 OO</li>
     <li>MooseX::FollowPBP and MooseX::SemiAffordanceAccessor</li>
     <li>MooseX::Params::Validate and MooseX::Method::Signatures</li>
     <li>MooseX::Types</li>
   </ul>
+  <ul class="ja">
+    <li><code>MooseX::NonMoose</code> - 非Mooseクラスを親クラスにしてサブクラスを作るための最適解です</li>
+    <li><code>MooseX::Declare</code> - <em>真の</em> Perl 5オブジェクト指向を実現します</li>
+    <li><code>MooseX::FollowPBP</code>と<code>MooseX::SemiAffordanceAccessor</code></li>
+    <li><code>MooseX::Params::Validate</code>と<code>MooseX::Method::Signatures</code></li>
+    <li><code>MooseX::Types</code></li>
+  </ul>
 </div>    
 
 <div class="slide">
-  <h1>MooseX::Declare</h1>
+  <h1 class="en">MooseX::Declare</h1>
+  <h1 class="ja"><code>MooseX::Declare</code></h1>
 
 <pre><code>use MooseX::Declare;
 use 5.10.0; # for say
@@ -3594,26 +4687,38 @@ class Person {
 </div>
 
 <div class="slide">
-  <h1>MooseX::Declare</h1>
+  <h1 class="en">MooseX::Declare</h1>
+  <h1 class="ja"><code>MooseX::Declare</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Still experimental-ish, but seeing more and more use</li>
     <li><strong>Not</strong> a source filter!</li>
     <li>Hooks into the Perl parser rather than filtering all your code</li>
   </ul>
-</div>
-
-<div class="slide">
-  <h1>MooseX::StrictConstructor</h1>
-
-  <ul>
-    <li>By default, unknown constructor arguments are ignore</li>
-    <li>MX::StrictConstructor turns these into an error</li>
+  <ul class="ja">
+    <li>まだ実験的なものですが、次第に実用的にになってきました</li>
+    <li>ソースフィルターでは<strong>ありません</strong></li>
+    <li>あなたのコードをフィルタリングするよりはむしろ、Perlの構文解析器にフックするものです</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>MooseX::StrictConstructor</h1>
+  <h1 class="en">MooseX::StrictConstructor</h1>
+  <h1 class="ja"><code>MooseX::StrictConstructor</code></h1>
+
+  <ul class="en">
+    <li>By default, unknown constructor arguments are ignore</li>
+    <li>MX::StrictConstructor turns these into an error</li>
+  </ul>
+  <ul class="ja">
+    <li>無指定時には、未知のコンストラクター引数は無視されます</li>
+    <li>MX::StrictConstructorはこの場合にエラーを出すようにします</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1 class="en">MooseX::StrictConstructor</h1>
+  <h1 class="ja"><code>MooseX::StrictConstructor</code></h1>
 
   <pre><code>package Person;
 
@@ -3623,22 +4728,28 @@ use Moose;
 has name =&gt; ( is =&gt; 'ro' );
 
 Person-&gt;new
-    ( na<span class="wrong">n</span>e =&gt; 'Ringo Shiina' ); # kaboom</code></pre>
+    ( na<span class="wrong">n</span>e =&gt; 'Ringo Shiina' ); <span class="en"># kaboom</span><span class="ja"># どっかーん！</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>MooseX::Traits</h1>
+  <h1 class="en">MooseX::Traits</h1>
+  <h1 class="ja"><code>MooseX::Traits</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Combines object construction and role application</li>
     <li>Makes it easy to create one-off customized objects</li>
+  </ul>
+  <ul class="ja">
+    <li>ロールの適用とオブジェクトの生成を結合します</li>
+    <li>オブジェクトを一度限りでちょっとカスタマイズして作ることが簡単になります</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>MooseX::Traits</h1>
+  <h1 class="en">MooseX::Traits</h1>
+  <h1 class="ja"><code>MooseX::Traits</code></h1>
 
-  <pre><code>package MyApp::Thingy;
+  <pre><code>package MyApp::Thingy;<span class="ja"> # ナントカクラス</span>
 use Moose;
 
 <span class="highlight">with 'MooseX::Traits';</span>
@@ -3650,16 +4761,22 @@ my $thing =
 </div>
 
 <div class="slide">
-  <h1>MooseX::Getopt</h1>
+  <h1 class="en">MooseX::Getopt</h1>
+  <h1 class="ja"><code>MooseX::Getopt</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Makes command-line interface programs easy!</li>
     <li>Construct an object from CLI arguments</li>
+  </ul>
+  <ul class="ja">
+    <li>コマンドラインインターフェース(CLI)のプログラムを簡単に作れます！</li>
+    <li>コマンドライン引数からオブジェクトを生成できます</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>MooseX::Getopt</h1>
+  <h1 class="en">MooseX::Getopt</h1>
+  <h1 class="ja"><code>MooseX::Getopt</code></h1>
 
   <pre><code>package App::CLI;
 use Moose;
@@ -3675,10 +4792,14 @@ sub run { ... }</code></pre>
 </div>
 
 <div class="slide">
-  <h1>MooseX::Getopt</h1>
+  <h1 class="en">MooseX::Getopt</h1>
+  <h1 class="ja"><code>MooseX::Getopt</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Then call it like this:</li>
+  </ul>
+  <ul class="ja">
+    <li>これで、以下のように呼べるようになりました……</li>
   </ul>
 
 <pre><code>#!/usr/bin/perl
@@ -3694,9 +4815,10 @@ use App::CLI;
 </div>
 
 <div class="slide">
-  <h1>MooseX::Clone</h1>
+  <h1 class="en">MooseX::Clone</h1>
+  <h1 class="ja"><code>MooseX::Clone</code></h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 
 use Moose;
 <span class="highlight">with 'MooseX::Clone';</span>
@@ -3706,19 +4828,25 @@ my $clone  = <span class="highlight">$person-&gt;clone;</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>MooseX::NonMoose</h1>
+  <h1 class="en">MooseX::NonMoose</h1>
+  <h1 class="ja"><code>MooseX::NonMoose</code></h1>
 
-  <ul>
+  <ul class="en">
     <li>Highly recommended for subclassing non-Moose parents</li>
     <li>Gets all the little annoying details right</li>
+  </ul>
+  <ul class="ja">
+    <li>非Mooseクラスを親クラスにしてサブクラスを作る際にとてもお勧めです</li>
+    <li>些細でうっとうしい細かなことの全てを解決します</li>
   </ul>
 </div>
 
 <div class="slide">
-  <h1>MooseX::Role::Parameterized</h1>
+  <h1 class="en">MooseX::Role::Parameterized</h1>
+  <h1 class="ja"><code>MooseX::Role::Parameterized</code></h1>
 
-  <pre><code>package HasCollection;
-<span class="current incremental">use MooseX::Role::Parameterized;</span>
+  <pre><code>package HasCollection;<span class="ja"> # （何かの）集まりを持つ</span>
+<span class="current incremental">use MooseX::Role::Parameterized;<span class="ja"> # パラメーター化されたロール</span></span>
 <span class="incremental">parameter type =&gt; ( isa     =&gt; 'Str',
                     default =&gt; 'Item' );</span>
 <span class="incremental">role {
@@ -3726,37 +4854,42 @@ my $clone  = <span class="highlight">$person-&gt;clone;</span></code></pre>
 
     my $type =
         'ArrayRef[' . $p-&gt;type() . ']';
-    has collection =&gt;
+    has collection =&gt;<span class="ja"> # （何かの）集まり</span>
         ( is  =&gt; 'ro',
           isa =&gt; $type );
 };</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>MooseX::Role::Parameterized</h1>
+  <h1 class="en">MooseX::Role::Parameterized</h1>
+  <h1 class="ja"><code>MooseX::Role::Parameterized</code></h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 
 use Moose;
-with HasCollection =&gt; { type =&gt; 'Int' };</code></pre>
+with HasCollection =&gt; { type =&gt; 'Int' };<span class="ja"> # 「整数の」集まりを持つ</span></code></pre>
 </div>
 
 <div class="slide">
-  <h1>Questions?</h1>
+  <h1 class="en">Questions?</h1>
+  <h1 class="ja">質問はありますか？</h1>
 </div>  
 
 <div class="slide fake-slide0">
-  <h1>Part 9: Writing Moose Extensions</h1>
+  <h1 class="en">Part 9: Writing Moose Extensions</h1>
+  <h1 class="ja">Part 9: Moose拡張の書き方</h1>
 </div>
 
 <div class="slide fake-slide0">
-  <h1>The End</h1>
+  <h1 class="en">The End</h1>
+  <h1 class="ja">完</h1>
 </div>
 
 <div class="slide">
-  <h1>More Information</h1>
+  <h1 class="en">More Information</h1>
+  <h1 class="ja">さらなる情報</h1>
 
-  <ul>
+  <ul class="en">
     <li><a href="http://moose.perl.org/">http://moose.perl.org/</a></li>
     <li><a href="http://search.cpan.org/dist/Moose/lib/Moose/Manual.pod">Moose::Manual</a> and <a href="http://search.cpan.org/dist/Moose/lib/Moose/Cookbook.pod">Moose::Cookbook</a></li>
     <li><a href="irc://irc.perl.org/#moose">irc://irc.perl.org/#moose</a></li>
@@ -3764,6 +4897,21 @@ with HasCollection =&gt; { type =&gt; 'Int' };</code></pre>
     <li>Slides and exercises are in Moose's git repo:
         <br />
         <span style="white-space: nowrap">git://jules.scsys.co.uk/gitmo/moose-presentations</span></li>
+  </ul>
+  <ul class="ja">
+    <li><a href="http://moose.perl.org/">http://moose.perl.org/</a></li>
+    <li><a href="http://search.cpan.org/dist/Moose/lib/Moose/Manual.pod">Moose::Manual</a>および<a href="http://search.cpan.org/dist/Moose/lib/Moose/Cookbook.pod">Moose::Cookbook</a></li>
+    <li class="annotation">訳注：日本語版のマニュアルとクックブックはGitHubにあります:
+        <br />
+        <span style="white-space: nowrap">git://github.com/jpa/Moose-Doc-JA.git</span></li>
+    <li><a href="irc://irc.perl.org/#moose">irc://irc.perl.org/#moose</a></li>
+    <li>メーリングリスト - <a href="mailto:moose@perl.org">moose@perl.org</a></li>
+    <li>この研修のスライドと演習はMooseのgitリポジトリにあります:
+        <br />
+        <span style="white-space: nowrap">git://jules.scsys.co.uk/gitmo/moose-presentations</span></li>
+    <li class="annotation">訳注：日本語版のスライドと演習はGitHubにあります:
+        <br />
+        <span style="white-space: nowrap">git://github.com/gardejo/moose-presentations.git</span></li>
   </ul>
 </div>
 
@@ -3774,6 +4922,12 @@ with HasCollection =&gt; { type =&gt; 'Int' };</code></pre>
 <!--
 
 Copyright 2009 David Rolsky. All Rights Reserved.
+
+This work is licensed under a Creative Commons Attribution-Share Alike
+3.0 United States License See
+http://creativecommons.org/licenses/by-sa/3.0/us/ for details.
+
+Translatied by MORIYA Masaki (gardejo).
 
 This work is licensed under a Creative Commons Attribution-Share Alike
 3.0 United States License See
