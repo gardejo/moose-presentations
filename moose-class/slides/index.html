@@ -4498,9 +4498,9 @@ has account =&gt; (<span class="ja"> # 口座</span>
     isa     =&gt; 'BankAccount',<span class="ja"> # 銀行口座であるべき</span>
     handles =&gt; {
         receive_100 =&gt;<span class="ja"> # 100受け取る</span>
-            <span class="highlight">[ 'deposit', 100 ]<span class="ja"> # 預金メソッドに引数100を与える</span></span>
+            <span class="highlight">[ 'deposit', 100 ]<span class="ja"> # 預金, 100</span></span>
         give_100    =&gt;<span class="ja"> # 100与える</span>
-            <span class="highlight">[ 'withdraw', 100 ]<span class="ja"> # 引き出しメソッドに引数100を与える</span></span>
+            <span class="highlight">[ 'withdraw', 100 ]<span class="ja"> # 引き出し, 100</span></span>
     },
 );</code></pre>
 </div>
@@ -4509,9 +4509,9 @@ has account =&gt; (<span class="ja"> # 口座</span>
   <h1 class="en">Curried Delegation</h1>
   <h1 class="ja">カリー化された(curried)委譲</h1>
 
-  <pre><code>$person-&gt;receive_100;
+  <pre><code>$person-&gt;receive_100;<span class="ja"> # 100（ドル）受け取る</span>
 <span class="en"># really is</span><span class="ja"># 実際は以下のように動きます</span>
-$person-&gt;account-&gt;deposit(100);</code></pre>
+$person-&gt;account-&gt;deposit(100);<span class="ja"> # 銀行口座へ100（ドル）預金する</span></code></pre>
 </div>
 
 <div class="slide">
