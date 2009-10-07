@@ -286,7 +286,7 @@ use Moose;
   <h1 class="en">Role Example</h1>
   <h1 class="ja">ロールの例</h1>
 
-<pre><code>package HasPermissions;<span class="ja"> # 権限を持つ</span>
+<pre><code>package HasPermissions;<span class="ja"> # アクセス権を持つ</span>
 <span class="highlight">use Moose::Role;</span>
 
 has is_admin =&gt; ( is =&gt; 'rw' );<span class="ja"> # 管理者であるか</span></code></pre>
@@ -306,7 +306,7 @@ has is_admin =&gt; ( is =&gt; 'rw' );<span class="ja"> # 管理者であるか</
 <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-<span class="highlight">with 'HasPermissions';<span class="ja"> # 権限を持つ</span></span></code></pre>
+<span class="highlight">with 'HasPermissions';<span class="ja"> # アクセス権を持つ</span></span></code></pre>
 </div>
 
 <div class="slide">
