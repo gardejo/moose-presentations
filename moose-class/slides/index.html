@@ -4,6 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
 
 <head>
+<!--
+<title>Introduction to Moose</title>
+-->
 <title>Moose入門（日本語版）</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
@@ -79,9 +82,9 @@ img#me05 {top: 43px;left: 36px;}
     <li>Why you're here today (optional)</li>
   </ul>
   <ul class="ja">
-    <li>名前</li>
-    <li>Perlで何をしているか</li>
-    <li>（任意で）なぜ研修を受講したか</li>
+    <li>お名前</li>
+    <li>Perlでどんなことをしていますか</li>
+    <li>（任意で）この研修の受講理由</li>
   </ul>
 </div>
 
@@ -95,9 +98,9 @@ img#me05 {top: 43px;left: 36px;}
     <li>Extensible (MooseX::* on CPAN)</li>
   </ul>
   <ul class="ja">
-    <li><strong>宣言型の(declarative)</strong>オブジェクト指向シュガー（構文糖）です</li>
+    <li><strong>宣言的な(declarative)</strong>オブジェクト指向シュガー（構文糖）があります<span class="annotation">（訳注：ドメイン特化言語(DSL)を使って、わかりやすいソースを記述できます）</span></li>
     <li>内観<span class="annotation">（訳注：introspect, イントロスペクト。プログラム実行時にオブジェクトの中の情報を参照すること）</span>可能です</li>
-    <li>拡張可能です (CPANにあるMooseX::*モジュールによります）</li>
+    <li>拡張可能です (CPANにはMooseX::*名前空間に拡張モジュールがあります）</li>
   </ul>
 </div>
 
@@ -162,7 +165,7 @@ img#me05 {top: 43px;left: 36px;}
   <h1 class="en">Class Example</h1>
   <h1 class="ja">クラスの例</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person; # 人間
 <span class="highlight">use Moose;</span></code></pre>
 
   <ul class="en">
@@ -228,7 +231,7 @@ img#me05 {top: 43px;left: 36px;}
   <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-<span class="highlight">has first_name =&gt; ( is =&gt; 'rw' );<span class="ja"> # 名</span></span></code></pre>
+<span class="highlight">has first_name =&gt; ( is =&gt; 'rw' );<span class="ja"> # 名前（ファーストネーム）</span></span></code></pre>
 
 </div>
 
@@ -246,7 +249,7 @@ use Moose;
   <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-<span class="highlight">sub greet { ... }<span class="ja"> # 挨拶する</span></span></code></pre>
+<span class="highlight">sub greet { ... }</span><span class="ja"> # 挨拶する</span></code></pre>
 </div>
 
 <div class="slide">
@@ -283,7 +286,7 @@ use Moose;
   <h1 class="en">Role Example</h1>
   <h1 class="ja">ロールの例</h1>
 
-<pre><code>package HasPermissions;<span class="ja"> # 許可（パーミッション）を持つ</span>
+<pre><code>package HasPermissions;<span class="ja"> # 権限を持つ</span>
 <span class="highlight">use Moose::Role;</span>
 
 has is_admin =&gt; ( is =&gt; 'rw' );<span class="ja"> # 管理者であるか</span></code></pre>
@@ -303,7 +306,7 @@ has is_admin =&gt; ( is =&gt; 'rw' );<span class="ja"> # 管理者であるか</
 <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-<span class="highlight">with 'HasPermissions';<span class="ja"> # 許可（パーミッション）を持つ</span></span></code></pre>
+<span class="highlight">with 'HasPermissions';<span class="ja"> # 権限を持つ</span></span></code></pre>
 </div>
 
 <div class="slide">
@@ -385,10 +388,10 @@ use Moose;
 
 has weight =&gt; (<span class="ja"> # 体重</span>
     is  =&gt; 'ro',
-    <span class="highlight">isa =&gt; 'Int'<span class="ja"> # 整数であること</span></span>,
+    <span class="highlight">isa =&gt; 'Int'</span>,<span class="ja"> # 整数であるべき</span>
 );
 
-# <span class="en">kaboom</span><span class="ja">どっかーん！　これは実行時エラー</span>
+# <span class="en">kaboom</span><span class="ja">どっかーん！（これは実行時エラー）</span>
 Person-&gt;new( weight =&gt; 'fat' );<span class="ja"> # 体重 =&gt; 太め</span></code></pre>
 </div>
 
@@ -403,8 +406,8 @@ Person-&gt;new( weight =&gt; 'fat' );<span class="ja"> # 体重 =&gt; 太め</sp
   </ul>
   <ul class="ja">
     <li>アトリビュート(attribute)は委譲(delegation)を定義できます</li>
-    <li>それによって実装(implementation)の詳細を隠せます</li>
-    <li>中身を利用者が知らなければならないオブジェクトを少なくできます</li>
+    <li>実装(implementation)の詳細を隠せます</li>
+    <li>クラス利用者が知っておかなければならないオブジェクトを少なくします</li>
   </ul>
 </div>
 
@@ -417,12 +420,12 @@ use Moose;
 
 has blog_uri =&gt; (<span class="ja"> # ブログURI</span>
     is      =&gt; 'rw',
-    isa     =&gt; 'URI',<span class="ja"> # URIクラス型</span>
-    <span class="highlight">handles =&gt; { 'blog_host' =&gt; 'host' },</span>
+    isa     =&gt; 'URI',<span class="ja"> # URIクラスであるべき</span>
+    <span class="highlight">handles =&gt; { 'blog_host' =&gt; 'host' },</span><span class="ja"> # ブログのホスト名</span>
 );
 
 <span class="highlight">$person-&gt;blog_host;</span>
-# <span class="en">really calls $person-&gt;log_uri-&gt;host</span><span class="ja">これは実際には$person-&gt;blog_uri-&gt;hostが呼ばれます</span></code></pre>
+<span class="en"># really calls $person-&gt;log_uri-&gt;host</span><span class="ja"># これは実際には$person-&gt;blog_uri-&gt;hostが呼ばれます</span></code></pre>
 </div>
 
 <div class="slide">
@@ -431,7 +434,7 @@ has blog_uri =&gt; (<span class="ja"> # ブログURI</span>
 
   <ul class="en">
     <li>Moose creates <code>new()</code> for you</li>
-    <li>Provide an optional <code>BUIDARGS()</code> and <code>BUILD()</code></li>
+    <li>Provide an optional <code>BUILDARGS()</code> and <code>BUILD()</code></li>
   </ul>
   <ul class="ja">
     <li>Mooseは<code>new()</code>メソッドを作ります</li>
@@ -467,7 +470,7 @@ has blog_uri =&gt; (<span class="ja"> # ブログURI</span>
     </li>
   </ul>
   <ul class="ja">
-    <li>以下のような疑問に答えます……
+    <li>メタAPIは以下のような疑問に答えます……
       <ul class="ja">
         <li>このクラスにはどんなメソッドが生えている？</li>
         <li>このクラスの親<span class="annotation">（訳注：親クラス。スーパークラス。基底クラス）</span>は何？</li>
@@ -503,7 +506,7 @@ has blog_uri =&gt; (<span class="ja"> # ブログURI</span>
 
 <div class="slide">
   <h1 class="en">Why Moose?</h1>
-  <h1 class="ja">なぜMooseを使うのでしょうか？</h1>
+  <h1 class="ja">Mooseを使うべき理由</h1>
 
   <ul class="en">
     <li>A quick bit of propaganda ...</li>
@@ -570,7 +573,7 @@ sub last_name {
     <h1 class="en">Side by side</h1>
     <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side" summary="comparison of Moose class and common class">
+    <table class="side-by-side">
         <tr>
           <td>
             <pre><code>package Person;
@@ -625,7 +628,7 @@ sub last_name {
     <h1 class="en">Side by side</h1>
     <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side" summary="comparison of Moose class and common class">
+    <table class="side-by-side">
         <tr>
             <td>
                 <pre><code><span class="match-moose">package Person;</span>
@@ -679,7 +682,7 @@ sub last_name {
     <h1 class="en">Side by side</h1>
     <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side" summary="comparison of Moose class and common class">
+    <table class="side-by-side">
         <tr>
             <td>
                 <pre><code>package Person;
@@ -733,7 +736,7 @@ sub last_name {
     <h1 class="en">Side by side</h1>
     <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side" summary="comparison of Moose class and common class">
+    <table class="side-by-side">
         <tr>
             <td>
                 <pre><code>package Person;
@@ -787,7 +790,7 @@ sub last_name {
     <h1 class="en">Side by side</h1>
     <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side" summary="comparison of Moose class and common class">
+    <table class="side-by-side">
         <tr>
             <td>
                 <pre><code>package Person;
@@ -841,7 +844,7 @@ sub new {
     <h1 class="en">Side by side</h1>
     <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side" summary="comparison of Moose class and common class">
+    <table class="side-by-side">
         <tr>
             <td>
                 <pre><code>package Person;
@@ -895,7 +898,7 @@ sub last_name {
     <h1 class="en">Side by side</h1>
     <h1 class="ja">並べて比較してみましょう</h1>
 
-    <table class="side-by-side" summary="comparison of Moose class and common class">
+    <table class="side-by-side">
         <tr class="incremental">
             <td>5 lines</td>
             <td>21 lines</td>
@@ -1000,7 +1003,7 @@ sub last_name {
 
 <div class="slide">
     <h1 class="en">Why Moose?</h1>
-    <h1 class="ja">誤植がある？</h1>
+    <h1 class="ja">Mooseを使うべき理由</h1>
 
     <pre><code>package Person;
 use Moose;
@@ -1008,27 +1011,43 @@ use Moose;
 has last_name =&gt; (
     is  =&gt; 'rw',
     isa =&gt; 'Str',
-);
-<span class="annotation"># Mooseなら間違えにくいですし、
-# 間違えても気付きやすいです</span>
-<span class="annotation"># コーディング量にかかわらずバグ発生率はほぼ一定なので、
-# コーディング量が減ればバグも自ずと減ります</span></code></pre>
+);</code></pre>
+
+    <ul class="annotation">
+        <li>訳注：ハッシュキーをあちこちで書く必要がないので、誤記しようがありません</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h1 class="en">More Why Moose?</h1>
+    <h1 class="ja">Mooseを使うべきさらなる理由</h1>
+
+    <ul class="en">
+      <li>Less code == fewer bugs</li>
+      <li>Moose is well-tested, test your own code, not Moose</li>
+      <li>Focus on <strong>what</strong>, not <strong>how</strong></li>
+    </ul>
+    <ul class="ja">
+      <li>少ないコード == 少ないバグ</li>
+      <li>Mooseは十分にテストされていますので、Moose以外のあなたのコードをテストするだけでよいです<span class="annotation">（訳注：コンストラクターやアクセッサーメソッドなどの定型処理は書かずに済むので、それらをテストしなくて済みます）</span></li>
+      <li>Mooseを使って、<strong>どのように</strong>コードを書くかという点ではなく、コードで<strong>何をするか</strong>という点に注力してください</li>
+    </ul>
 </div>
 
 <div class="slide fake-slide0">
   <h1 class="en">Part 1: Moose Classes</h1>
-  <h1 class="ja">Part 1: Mooseのクラス(class)</h1>
+  <h1 class="ja">Part 1: Mooseクラス(class)</h1>
 </div>
 
 <div class="slide">
   <h1 class="en">Moose Classes</h1>
-  <h1 class="ja">Mooseのクラス(class)</h1>
+  <h1 class="ja">Mooseクラス(class)</h1>
 
   <ul class="en">
     <li>Moose classes are Perl packages which <code>use Moose</code></li>
   </ul>
   <ul class="ja">
-    <li>Mooseのクラスとは<code>use Moose</code>したPerlパッケージ(package)のことです</li>
+    <li>Mooseクラスとは<code>use Moose</code>したPerlパッケージ(package)のことです</li>
   </ul>
 </div>
 
@@ -1098,7 +1117,7 @@ sub BUILDARGS {
     my $class = shift;
 
     if ( @_ == 1 &amp;&amp; ! ref $_[0] ) {
-        <span class="highlight">return { ssn =&gt; $_[0] };<span class="ja"> # 社会保障番号</span></span>
+        <span class="highlight">return { ssn =&gt; $_[0] };</span><span class="ja"> # 社会保障番号</span>
     }
     <span class="highlight">return $class-&gt;SUPER::BUILDARGS(@_)</span>;
 }
@@ -1136,10 +1155,10 @@ sub BUILD {
 
     if ( $self-&gt;country_of_residence<span class="ja"> # 居住国</span>
          eq 'USA' ) {<span class="ja">                # が米国である</span>
-        <span class="ja"># 「米国の全居住者は社会保障番号を持たねばならない」</span>
         die 'All US residents'
             . ' must have an SSN'
             unless $self-&gt;has_ssn;<span class="ja"> # 社会保障番号がない</span>
+            <span class="ja"># 「米国の全居住者は社会保障番号を持つべきです」</span>
     }
 }</code></pre>
 </div>
@@ -1179,7 +1198,7 @@ sub BUILD {
   <ul class="ja">
     <li><span class="annotation">（訳注：Mooseクラスのオブジェクトは）</span>技術的にはハッシュリファレンスであるに過ぎません</li>
     <li><span class="wrong">このオブジェクトをハッシュリファレンスとして<em>常に</em>透過的に取り扱うのは、<strong>悪い使い方です！</strong></span></li>
-    <li class="annotation">訳注：（例えば、配列リファレンスの実装がサポートされるかもしれませんので）内部がハッシュであることを前提とした<code>$person-&gt;{last_name}</code>のようなアクセスはせずに、カプセル化の原則に従って必ずメソッドを使ってアクセスしてください</li>
+    <li class="annotation">訳注：内部がハッシュであることを前提とした<code>$person-&gt;{last_name}</code>のようなアクセスはせずに、カプセル化の原則に従って、必ずメソッドを使ってアクセスしてください（例えば、今はまだありませんが、配列リファレンスにブレスされたMooseクラスを作れるようになるかもしれません）</li>
   </ul>
 </div>
 
@@ -1214,7 +1233,7 @@ sub BUILD {
 
   <pre><code>package Employee;<span class="ja"> # 従業員</span>
 use Moose;
-<span class="highlight">extends 'Person';<span class="ja"> # 人間クラスを継承</span></span></code></pre>
+<span class="highlight">extends 'Person';<span class="ja"> # 人間を継承</span></span></code></pre>
 </div>
 
 <div class="slide">
@@ -1225,21 +1244,23 @@ use Moose;
     <li>Each call to <code>extends</code> <strong>resets</strong> your parents</li>
   </ul>
   <ul class="ja">
-    <li><code>extends</code>を別々に呼ぶと、親クラスが<strong>リセット</strong> されてしまいます</li>
+    <li><code>extends</code>を別々に呼ぶと、親クラスが<strong>再設定（リセット）</strong> されてしまいます</li>
   </ul>
 
-  <h2 class="wrong"><span class="en">Wrong</span><span class="ja">悪い例</span></h2>
+  <h2 class="wrong en">Wrong</h2>
+  <h2 class="wrong ja">悪い例</h2>
 
   <pre><code>package EvilEmployee;<span class="ja"> # 邪悪な従業員</span>
 use Moose;
 extends 'Person';<span class="ja"> # 人間を継承</span>
-extends 'Thief';<span class="ja">  # 泥棒を継承（人間の継承は無効）</span></code></pre>
+extends 'Thief';<span class="ja">  # 泥棒を継承（人間は継承されない）</span></code></pre>
 
-  <h2 class="right"><span class="en">Right</span><span class="ja">良い例</span></h2>
+  <h2 class="right en">Right</h2>
+  <h2 class="right ja">良い例</h2>
 
   <pre><code>package EvilEmployee;<span class="ja"> # 邪悪な従業員</span>
 use Moose;
-extends 'Person', 'Thief';<span class="ja"> # 人間と泥棒を継承</span></code></pre>
+extends 'Person', 'Thief';<span class="ja"> # 人間と泥棒を多重継承</span></code></pre>
 </div>
 
 <div class="slide">
@@ -1293,14 +1314,14 @@ extends 'LWP';<span class="ja"> # LWP(libwww-perl)を継承</span></code></pre>
   <pre><code>package Employee;<span class="ja"> # 従業員</span>
 use Moose;
 
-<span class="current incremental">extends 'Person';<span class="ja"> # 人間を拡張</span></span>
+<span class="current incremental">extends 'Person';<span class="ja"> # 人間を継承</span></span>
 
 <span class="incremental">override</span> work =&gt; sub {<span class="ja"> # 「働かせる」をオーバーライド</span>
     my $self = shift;
 
-    <span class="ja"># 「私を働かせる前に賃金を払って！」</span>
     die "Pay me first"
         unless $self-&gt;got_paid;<span class="ja"> # 未払い</span>
+    <span class="ja"># 「私を働かせる前に賃金を払って！」</span>
     <span class="incremental">super();</span>
 }<span class="incremental">;</span><span class="annotation"> # 訳注：セミコロンをお忘れなく！</span></code></pre>
 </div>
@@ -1345,7 +1366,7 @@ use Moose;
   <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has first_name =&gt; (<span class="highlight">is =&gt; 'rw'</span> );<span class="ja"> # 名前（ファーストネーム）</span>
+has first_name =&gt; ( <span class="highlight">is =&gt; 'rw'</span> );<span class="ja"> # 名前（ファーストネーム）</span>
 
 my $person =
     Person-&gt;new( first_name =&gt; 'Dave' );
@@ -1368,7 +1389,7 @@ my $person =
     Person-&gt;new( first_name =&gt; 'Dave' );
 
 $person-&gt;first_name('Stevan');
-print $person-&gt;first_name; # Dave</code></pre>
+print $person-&gt;first_name; # Dave<span class="annotation">（のまま）</span></code></pre>
 
 </div>
 
@@ -1399,7 +1420,8 @@ Person-&gt;can('extends');</code></pre>
   </ul>
   <ul class="ja">
     <li>これはとても不衛生です</li>
-    <li class="annotation">訳注：名前空間が汚染されたままです。クラス構築時にのみ必要な<code>extends</code>という関数などを、メソッドとしてクラスの外部から呼べてしまいます</li>
+    <li class="annotation">訳注：名前空間が汚染されたままです</li>
+    <li class="annotation">訳注：クラス構築時にのみ必要な<code>extends</code>という関数などを、メソッドとしてクラスの外部から呼べてしまいます</li>
   </ul>
 </div>
 
@@ -1412,7 +1434,7 @@ use Moose;
 
 ...
 
-no Moose;<span class="ja"> # Moose関数を名前空間から除去</span>
+no Moose;<span class="annotation"> # 訳注：Moose関数を名前空間から除去</span>
 
 <span class="en"># false</span><span class="ja"># 偽</span>
 Person-&gt;can('extends');</code></pre>
@@ -1448,7 +1470,7 @@ Person-&gt;can('extends');</code></pre>
   <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-<span class="highlight">__PACKAGE__-&gt;meta-&gt;make_immutable;</span></code></pre>
+<span class="highlight">__PACKAGE__-&gt;meta-&gt;make_immutable;</span><span class="annotation"> # 不変化</span></code></pre>
 </div>
 
 <div class="slide">
@@ -1473,7 +1495,7 @@ use Moose;
 
 <div class="slide">
   <h1 class="en">When to Immutabilize?</h1>
-  <h1 class="ja">いつ不変化(immutabilize)すべきでしょうか？</h1>
+  <h1 class="ja">不変化(immutabilize)するべき場合</h1>
 
   <ul class="en">
     <li><em>Almost</em> always</li>
@@ -1555,13 +1577,13 @@ Iterate til this passes all its tests
   <h1 class="en">Roles - State <strong>and</strong> Behavior</h1>
   <h1 class="ja">ロール - 状態(state)<strong>と</strong>振る舞い(behavior)</h1>
 
-  <pre><code>package HasPermissions;<span class="ja"> # 許可を持つ</span>
+  <pre><code>package HasPermissions;<span class="ja"> # アクセス権を持つ</span>
 use Moose::Role;
-<span class="current incremental"># state<span class="ja"> / 状態</span>
+<span class="current incremental"># state<span class="ja">（状態）</span>
 has access_level =&gt; ( is =&gt; 'rw' );<span class="ja"> # アクセスレベル</span></span>
 
-<span class="incremental"># behavior<span class="ja"> / 振る舞い</span>
-sub can_access {<span class="ja"> # アクセス可能か調べる</span>
+<span class="incremental"># behavior<span class="ja">（振る舞い）</span>
+sub can_access {<span class="ja"> # アクセス可能か</span>
     my $self     = shift;
     my $required = shift;
 
@@ -1575,26 +1597,27 @@ sub can_access {<span class="ja"> # アクセス可能か調べる</span>
   <h1 class="en">Roles Can Define Interfaces</h1>
   <h1 class="ja">インターフェース(interface)も定義可能</h1>
 
-  <pre><code>package Printable;<span class="ja"> # 印刷可能</span>
+  <pre><code>package Printable;<span class="ja"> # 画面印字可能</span>
 use Moose::Role;
 
 requires 'as_string';
-<span class="ja"># 呼び元でas_stringメソッドが使えることを要求</span></code></pre>
+<span class="annotation"># 訳注：オブジェクトを文字列でダンプするas_stringメソッドを
+# クラス側で使えることを要求</span></code></pre>
 </div>
 
 <div class="slide">
   <h1 class="en">Roles Can Do All Three</h1>
   <h1 class="ja">ロールはこれら3つの全てをできます</h1>
 
-  <pre><code>package Printable;<span class="ja"> # 印刷可能</span>
+  <pre><code>package Printable;<span class="ja"> # 画面印字可能</span>
 use Moose::Role;
 
 requires 'as_string';
 <span class="ja"># 呼び元でas_stringメソッドが使えることを要求</span>
 
-has has_been_printed =&gt; ( is =&gt; 'rw'  );<span class="ja"> # 印刷済み</span>
+has has_been_printed =&gt; ( is =&gt; 'rw'  );<span class="ja"> # 画面印字済みか</span>
 
-sub print {<span class="ja"> # 印刷する</span>
+sub print {<span class="ja"> # 画面印字する</span>
     my $self = shift;
     print $self-&gt;as_string;
     $self-&gt;has_been_printed(1);
@@ -1608,7 +1631,7 @@ sub print {<span class="ja"> # 印刷する</span>
   <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-with 'HasPermissions';<span class="ja"> # 許可を持つ</span></code></pre>
+with 'HasPermissions';<span class="ja"> # アクセス権を持つ</span></code></pre>
 </div>
 
 <div class="slide">
@@ -1618,7 +1641,7 @@ with 'HasPermissions';<span class="ja"> # 許可を持つ</span></code></pre>
 <pre><code>my $person = Person-&gt;new(
     first_name   =&gt; 'Kenichi',<span class="ja"> # 名前（ファーストネーム）</span>
     last_name    =&gt; 'Asai',<span class="ja">    # 苗字（ラストネーム）</span>
-    access_level =&gt; 42,<span class="ja">        # アクセス水準</span>
+    access_level =&gt; 42,<span class="ja">        # アクセスレベル</span>
 );
 
 print $person-&gt;full_name
@@ -1647,7 +1670,7 @@ print $person-&gt;full_name
 <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-<span class="highlight">with 'Printable';<span class="ja"> # 印刷可能</span></span></code></pre>
+<span class="highlight">with 'Printable';<span class="ja"> # 画面印字可能</span></span></code></pre>
 </div>
 
 <div class="slide">
@@ -1657,11 +1680,11 @@ use Moose;
 <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-<span class="delete">with 'Printable';<span class="ja"> # 印刷可能</span></span>
+<span class="delete">with 'Printable';<span class="ja"> # 画面印字可能</span></span>
 
-<span class="highlight">has has_been_printed =&gt; ( is =&gt; 'rw'  );<span class="ja"> # 印刷済み</span>
+<span class="highlight">has has_been_printed =&gt; ( is =&gt; 'rw'  );<span class="ja"> # 画面印字済みか</span>
 
-sub print {<span class="ja"> # 印刷する</span>
+sub print {<span class="ja"> # 画面印字する</span>
     my $self = shift;
     print $self-&gt;as_string;
     $self-&gt;has_been_printed(1);
@@ -1680,10 +1703,13 @@ sub print {<span class="ja"> # 印刷する</span>
   </ul>
 
   <pre><code>if ( Person-&gt;does('Printable') ) { ... }
+<span class="ja"># 人間クラスは画面印字可能か</span>
 
-# or ...
+<span class="en"># or ...</span><span class="ja"># もしくは……</span>
 
-Person-&gt;meta-&gt;does('Printable')</code></pre>
+Person-&gt;meta-&gt;does('Printable')
+<span class="ja"># 人間クラスのメタ情報に、
+# 画面印字可能であると定義されているか</span></code></pre>
 
 </div>
 
@@ -1745,7 +1771,7 @@ use Moose;
     <li>Only one <code>with</code>!</li>
   </ul>
   <ul class="ja">
-    <li><code>with</code>は1文でのみ書いてください！</li>
+    <li><code>with</code>は1回のみ使ってください！</li>
   </ul>
 </div>
 
@@ -1987,7 +2013,7 @@ with 'HasSize';<span class="ja"> # 寸法がある</span>
 
 <div class="slide">
   <h1 class="en">Enforcing Roles</h1>
-  <h1 class="ja">ロールの強要(enforcing)</h1>
+  <h1 class="ja">ロールの強要</h1>
 
   <pre><code>package Comparison;<span class="ja"> # 比較</span>
 use Moose;
@@ -2043,7 +2069,7 @@ use Moose::Role;
 
 requires 'compare';<span class="ja"> # compareメソッドを要求</span>
 
-<span class="highlight">no Moose::Role;<span class="ja"> # Moose関数を名前空間から除去</span></span></code></pre>
+<span class="highlight">no Moose::Role;<span class="annotation"> # Moose関数を名前空間から除去</span></span></code></pre>
 
   <ul class="en">
     <li>But roles cannot be made immutable</li>
@@ -2079,7 +2105,7 @@ requires 'compare';<span class="ja"> # compareメソッドを要求</span>
     </li>
     <li>ロールはそれぞれに無関係なクラス間でも共有できます</li>
     <li>ロールはクラスが何を<em>できる</em>かを規定するもので、クラスが何<em>である</em>かは規定しません</li>
-    <li>ロールが機能性を<em>追加</em>するのに対して、継承は<em>特化</em>するものです<span class="annotation">（訳注：前者はできることの幅を抽象化によって拡げて、後者はできることの幅を具象化によって狭めます）</span></li>
+    <li>ロールが機能性を<em>追加</em>するのに対して、継承は<em>特化</em>するものです<span class="annotation">（訳注：前者はできることの幅を追加して拡げて、後者はできることの幅を具象化によって狭めます）</span></li>
   </ul>
 </div>
 
@@ -2247,7 +2273,7 @@ has first_name =&gt; (<span class="ja"> # 名前（ファーストネーム）</
 );
 
 <span class="incremental">Person-&gt;new( first_name =&gt; undef ); # ok
-Person-&gt;new(); <span class="en"># kaboom</span><span class="ja"># どっかーん！　これは実行時エラー</span></span></code></pre>
+Person-&gt;new(); <span class="en"># kaboom</span><span class="ja"># どっかーん！（これは実行時エラー）</span></span></code></pre>
 </div>
 
 <div class="slide">
@@ -2329,7 +2355,7 @@ has bank =&gt; (<span class="ja"> # 銀行</span>
 
 <div class="slide">
   <h1 class="en">Why No Other Reference Types?</h1>
-  <h1 class="ja">なぜ他のリファレンス型はだめなのでしょうか？</h1>
+  <h1 class="ja">他のリファレンス型を使えない理由</h1>
 
   <pre><code>package Person;<span class="ja"> # 人間クラス</span>
 use Moose;
@@ -2499,7 +2525,7 @@ sub _build_shoes {<span class="ja"> # 靴のデフォルト値のビルダー</s
 
     return Shoes-&gt;new(
         size =&gt; <span class="highlight">$self-&gt;shoe_size</span> );
-        <span class="ja"># 履く人の靴のサイズに合わせて靴オブジェクトを生成</span>
+        <span class="annotation"># 履く人の靴のサイズに合わせて靴オブジェクトを生成</span>
 }</code></pre>
 </div>
 
@@ -2621,7 +2647,7 @@ Person-&gt;new( <span class="wrong">shoes =&gt; Shoes-&gt;new</span> );<span cla
 
 <div class="slide">
   <h1 class="en">Why Set <code>init_arg =&gt; undef</code>?</h1>
-  <h1 class="ja">なぜ<code>init_arg =&gt; undef</code>を設定するのでしょうか？</h1>
+  <h1 class="ja"><code>init_arg =&gt; undef</code>を設定する理由</h1>
 
   <ul class="en">
     <li>Use this with a lazy default for attributes-as-cache</li>
@@ -2705,7 +2731,7 @@ has '<span class="highlight">+first_name</span>' =&gt; (<span class="ja"> # 名�
 use Moose;
 
 has first_name =&gt; (<span class="ja"> # 名前（ファーストネーム）</span>
-    <span class="highlight">accessor</span> =&gt; 'first_name',
+    <span class="highlight">accessor</span> =&gt; 'first_name',<span class="ja"> # ゲッター＆セッター</span>
 );</code></pre>
 
   <ul class="en">
@@ -2724,8 +2750,8 @@ has first_name =&gt; (<span class="ja"> # 名前（ファーストネーム）</
 use Moose;
 
 has first_name =&gt; (<span class="ja"> # 名前（ファーストネーム）</span>
-    <span class="highlight">reader</span> =&gt; 'first_name',
-    <span class="highlight">writer</span> =&gt; undef,
+    <span class="highlight">reader</span> =&gt; 'first_name',<span class="ja"> # ゲッター</span>
+    <span class="highlight">writer</span> =&gt; undef,<span class="ja">        # セッター</span>
 );</code></pre>
 
   <ul class="en">
@@ -2767,7 +2793,7 @@ has first_name =&gt; (<span class="ja"> # 名前（ファーストネーム）</
   </ul>
   <ul class="ja">
     <li><code>is</code>と明示的な<span class="annotation">（訳注：アトリビュート名そのままの）</span>名前を組み合わせることもできます</li>
-    <li class="annotation">訳注：この場合、ゲッターは<code>first_name</code>で、セッターが<code>_first_name</code>になります</li>
+    <li class="annotation">訳注：ゲッターは<code>first_name</code>で、セッターが<code>_first_name</code>になります。先頭の<code>_</code>は、慣習的にクラス内部でのみ書き換えられる値であることを意味します。真にプライベートメソッドにしたい場合には、MooseX::Accessors::ReadWritePrivateやMooseX::MethodPrivateがあります</li>
   </ul>
 </div>
 
@@ -2938,7 +2964,7 @@ before work =&gt; sub {<span class="ja"> # 働く前に</span>
     my $self = shift;
     return unless $DEBUG;
 
-    <span class="ja"># 「○○のworkは引数@_つきで呼ばれた」</span>
+    <span class="ja"># 「○○のworkは引数@_つきで呼ばれました」</span>
     warn "Called work on ",
          $self-&gt;full_name,
          "with the arguments: [@_]\n";
@@ -2963,7 +2989,7 @@ use Moose;
 
 after work =&gt; sub {<span class="ja"> # 働いた後に</span>
     my $self = shift;
-    $self-&gt;work_count(<span class="ja"> # 勤務回数を1追加</span>
+    $self-&gt;work_count(<span class="ja"> # 勤務回数を1回追加する</span>
         $self-&gt;work_count + 1 );
 };</code></pre>
 </div>
@@ -3268,7 +3294,7 @@ extends 'Report';
     <li><code>augment</code>と<code>inner</code>は通常のサブクラス化の手順を以下のように逆転させます……
       <ul class="ja">
         <li>汎用クラスから専用クラスへ（親から子へ）</li>
-        <li>「挿入されるように」メソッドを取り囲みます（メソッドの「真ん中」に処理を突っ込みます）</li>
+        <li>「挿入されるように」メソッドに組み込まれます（メソッドの「真ん中」に処理を突っ込みます）</li>
       </ul>
     </li>
     <li>最も具象的なクラスでも、今後の拡張のために、常に<code>inner</code>を呼んでください</li>
@@ -3566,7 +3592,7 @@ subtype 'DateTime',
   <h1 class="ja">サブタイプ化のショートカット - <code>role_type</code></h1>
 
   <pre><code>use Moose::Util::TypeConstraints;
-role_type 'Printable';<span class="ja"> # 「印刷可能」ロール型</span>
+role_type 'Printable';<span class="ja"> # 「画面印字可能」ロール型</span>
 <span class="annotation"># 上記は下記の記述と同じです</span>
 subtype 'Printable',
     as      'Object',
@@ -3596,7 +3622,7 @@ subtype 'Car',
   <h1 class="ja">サブタイプ化のショートカット - <code>enum</code></h1>
 
   <pre><code>use Moose::Util::TypeConstraints;
-enum Color =&gt; qw( red blue green ) );<span class="ja"> # 色（赤か青か緑）</span>
+enum Color =&gt; qw( red blue green ) );<span class="ja"> # 色の列挙型（赤青緑）</span>
 <span class="annotation"># 上記は下記の記述と同じです</span>
 my %ok = map { $_ =&gt; 1 }
              qw( red blue green );
@@ -3613,12 +3639,12 @@ subtype 'Color'
 
   <pre><code>package Person;<span class="ja"> # 人間</span>
 
-<span class="highlight">my $posint =<span class="ja"> # 匿名型を変数に代入</span>
-    subtype as 'Int', where { $_ &gt; 0 };</span>
+<span class="highlight">my $posint =
+    subtype as 'Int', where { $_ &gt; 0 };</span><span class="ja"> # 匿名型を変数に代入</span>
 
 has size =&gt; (<span class="ja"> # 寸法</span>
     is  =&gt; 'ro',
-    <span class="highlight">isa =&gt; $posint,<span class="ja"> # それを使用</span></span>
+    <span class="highlight">isa =&gt; $posint,</span><span class="ja"> # それを使用</span>
 );</code></pre>
 
   <ul class="en">
@@ -3669,8 +3695,7 @@ coerce 'My::DateTime',
 
 coerce 'My::DateTime',
     from 'Int',
-    via  { DateTime-&gt;from_epoch(
-               epoch =&gt; $_ ) };</code></pre>
+    via  { DateTime-&gt;from_epoch( epoch =&gt; $_ ) };</code></pre>
 
   <ul class="en">
     <li>Use coercion to inflate a value</li>
@@ -3687,7 +3712,7 @@ coerce 'My::DateTime',
 
   <pre><code>coerce 'ArrayRef[Int]',<span class="ja"> # 要素が整数である配列リファレンス</span>
     from 'Int',<span class="ja">         # 単独の整数が入ってきたら</span>
-    via  { [ $_ ] };<span class="ja">    # それを単一要素とする配列リファレンスへ</span></code></pre>
+    via  { [ $_ ] };<span class="ja">    # その要素のみを持つ配列リファレンスへ</span></code></pre>
 
   <ul class="en">
     <li>Coerce instead of a union like <code style="white-space: nowrap">Int | ArrayRef[Int]</code></li>
@@ -3734,7 +3759,7 @@ use Moose::Util::TypeConstraints;
 subtype ...;
 
 no Moose;
-<span class="highlight">no Moose::Util::TypeConstraints;<span class="ja"> # Moose関数を名前空間から除去</span></span></code></pre>
+<span class="highlight">no Moose::Util::TypeConstraints;<span class="annotation"> # Moose関数を名前空間から除去</span></span></code></pre>
 </div>
 
 <div class="slide">
@@ -3785,13 +3810,13 @@ sub work {
   </ul>
   <ul class="ja">
     <li>型というのは実は<code>Moose::Meta::TypeConstraints</code>の<em>オブジェクト</em>です</li>
-    <li>perlインタープリター内でグローバルな登録簿(registry)へ、名前でマッピングされた状態でオブジェクトが格納されます</li>
+    <li>perlインタープリター内でグローバルな登録簿(registry)へ、名前によってマッピングされた状態でオブジェクトが格納されます</li>
   </ul>
 </div>
 
 <div class="slide">
   <h1 class="en">Danger!</h1>
-  <h1 class="ja">危険！</h1>
+  <h1 class="ja">危険です！</h1>
 
   <ul class="en">
     <li>Coercions are attached to type objects</li>
@@ -3959,8 +3984,7 @@ has transaction_history =&gt; (<span class="ja"> # 取引履歴</span>
     <li><code>MooseX::Types</code>を使ってください</li>
     <li>コンパイル時のエラー発見と自動的な名前空間紐付けの利点は大きいです</li>
     <li>いずれにせよ、<code>Moose::Util::TypeConstraints</code>のドキュメントは<code>MooseX::Types</code>に98%の互換性があります</li>
-    <li>
-    A function exported by a type library works wherever a type name would</li>
+    <li>型ライブラリーからエクスポートされる関数は型名として作用します</li>
   </ul>
 </div>
 
@@ -3996,6 +4020,7 @@ Iterate til this passes all its tests
   <ul class="ja">
     <li>「弱い」リファレンス(weak reference)は循環参照(circular reference)を回避してくれます</li>
     <li>「弱い」リファレンスはリファレンスカウント(reference count)を増加させません</li>
+    <li class="annotation">訳注：perl処理系はメモリー管理にリファレンスカウントを使っています（スコープ内でどこからも参照されていないリファレントはメモリーから解放されます）</li>
   </ul>
 </div>
 
@@ -4012,8 +4037,8 @@ $foo-&gt;{bar} = $bar;</code></pre>
         (until the program exits)</li>
   </ul>
   <ul class="ja">
-    <li><code>$foo</code>も<code>$bar</code>もスコープから外れません<br />
-        （プログラムが終了するまでの間）</li>
+    <li>このスコープから外れても、<code>$foo</code>も<code>$bar</code>も解放されません<br />
+        （プログラムが終了するまでずっと）</li>
   </ul>
 </div>
 
@@ -4032,7 +4057,7 @@ weaken $foo-&gt;{bar}</code></pre>
     <li>When <code>$bar</code> goes out of scope, <code>$foo-&gt;{bar}</code> becomes <code>undef</code></li>
   </ul>
   <ul class="ja">
-    <li><code>$bar</code>がスコープから外れるとき、<code>$foo-&gt;{bar}</code>は<code>undef</code>になります</li>
+    <li><code>$bar</code>がスコープから外れるとき、<code>$foo-&gt;{bar}</code>は<code>undef</code>になります（解放されます）</li>
   </ul>
 </div>
 
@@ -4040,11 +4065,11 @@ weaken $foo-&gt;{bar}</code></pre>
   <h1 class="en">Circular References in Attributes</h1>
   <h1 class="ja">アトリビュートにおける循環参照</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has name   =&gt; ( is =&gt; 'ro' );
-has friend =&gt; ( is =&gt; 'rw' );
+has name   =&gt; ( is =&gt; 'ro' );<span class="ja"> # 名前</span>
+has friend =&gt; ( is =&gt; 'rw' );<span class="ja"> # 友達</span>
 
 my $alice = Person-&gt;new( name =&gt; 'Alice' );
 my $bob   = Person-&gt;new( name =&gt; 'Bob' );
@@ -4056,11 +4081,11 @@ $alice-&gt;friend($bob);</code></pre>
   <h1 class="en">The Fix</h1>
   <h1 class="ja">調整法</h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
 
-has name   =&gt; ( is =&gt; 'ro' );
-has friend =&gt; ( is       =&gt; 'rw',
+has name   =&gt; ( is =&gt; 'ro' );<span class="ja">     # 名前</span>
+has friend =&gt; ( is       =&gt; 'rw',<span class="ja"> # 友達</span>
                 <span class="highlight">weak_ref =&gt; 1</span> );
 
 my $alice = Person-&gt;new( name =&gt; 'Alice' );
@@ -4104,7 +4129,8 @@ $alice-&gt;friend($bob);</code></pre>
     <li><code>after</code>モディファイヤーと同様ですが、<code>clearer</code>の意図を込めて使えます</li>
   </ul>
 
-  <h2 class="wrong"><span class="en">Gross</span><span class="ja">粗い処理</span></h2>
+  <h2 class="wrong en">Gross</h2>
+  <h2 class="wrong ja">粗い処理</h2>
 
   <pre><code>after salary_level =&gt; {
     my $self = shift;
@@ -4117,7 +4143,8 @@ $alice-&gt;friend($bob);</code></pre>
   <h1 class="en">Use a Trigger Instead</h1>
   <h1 class="ja">トリガーを代わりに使ってください</h1>
 
-  <h2 class="right"><span class="en">Cleaner</span><span class="ja">きれいな処理</span></h2>
+  <h2 class="right en">Cleaner</h2>
+  <h2 class="right ja">きれいな処理</h2>
 
   <pre><code>has salary_level =&gt; (
     is      =&gt; 'rw',
@@ -4134,8 +4161,8 @@ $alice-&gt;friend($bob);</code></pre>
     <li>Delegation transparently calls methods on those objects</li>
   </ul>
   <ul class="ja">
-    <li>アトリビュートはオブジェクトであることができます</li>
-    <li>委譲によってそれらのオブジェクトのメソッドを透過的に呼び出せます</li>
+    <li>オブジェクトをアトリビュートにすることもできます</li>
+    <li>アトリビュートであるオブジェクトから生えているメソッドを、委譲によって透過的に呼び出せます</li>
   </ul>
 </div>
 
@@ -4148,8 +4175,9 @@ $alice-&gt;friend($bob);</code></pre>
 has lungs =&gt;<span class="ja"> # 「肺」アトリビュート</span>
     is      =&gt; 'ro',
     isa     =&gt; 'Lungs',<span class="ja"> # 「肺」オブジェクト</span>
-    <span class="highlight">handles =&gt; [ 'inhale', 'exhale' ],</span>
-);<span class="ja"> # 「吸い込む」「吐き出す」メソッド</span></code></pre>
+    <span class="highlight">handles =&gt; [ 'inhale', 'exhale' ],</span><span class="ja">
+               # 「吸い込む」「吐き出す」メソッド</span>
+);</code></pre>
 
   <ul class="en">
     <li>Creates <code>$person-&gt;inhale</code> and <code>-&gt;exhale</code> methods</li>
@@ -4163,7 +4191,7 @@ has lungs =&gt;<span class="ja"> # 「肺」アトリビュート</span>
 
 <div class="slide">
   <h1 class="en">Why Delegation?</h1>
-  <h1 class="ja">なぜ委譲するのでしょうか？</h1>
+  <h1 class="ja">委譲する理由</h1>
 
   <ul class="en">
     <li>Reduce the number of classes exposed</li>
@@ -4174,7 +4202,7 @@ has lungs =&gt;<span class="ja"> # 「肺」アトリビュート</span>
   <ul class="ja">
     <li>外部に曝すクラスの数を減らせます</li>
     <li>クラス内部を再整理します - メソッドを、委譲されたアトリビュートへ向けられます</li>
-    <li>便利なメソッドを提供できます</li>
+    <li>「便利メソッド」<span class="annotation">（訳注：オブジェクトが絡み合うような内部構成を気にせずに、一発で呼べるメソッド）</span>を提供できます</li>
   </ul>
 </div> 
 
@@ -4236,7 +4264,7 @@ has account =&gt; (<span class="ja"> # 口座アトリビュート</span>
     isa     =&gt; 'BankAccount',<span class="ja"> # 銀行口座オブジェクト</span>
     <span class="highlight">handles =&gt; {
         receive_money =&gt; 'deposit',<span class="ja">  # 金を受け取る =&gt; 預金する</span>
-        give_money    =&gt; 'withdraw',<span class="ja"> # 金を与える =&gt; 引き出し</span>
+        give_money    =&gt; 'withdraw',<span class="ja"> # 金を与える =&gt; 引き出す</span>
     },</span>
 );</code></pre>
 </div>
@@ -4247,7 +4275,7 @@ has account =&gt; (<span class="ja"> # 口座アトリビュート</span>
 
   <pre><code>    handles =&gt; {
         receive_money =&gt; 'deposit',<span class="ja">  # 金を受け取る =&gt; 預金する</span>
-        give_money    =&gt; 'withdraw',<span class="ja"> # 金を与える =&gt; 引き出し</span>
+        give_money    =&gt; 'withdraw',<span class="ja"> # 金を与える =&gt; 引き出す</span>
     },</code></pre>
 
   <ul class="en">
@@ -4383,7 +4411,7 @@ has history =&gt; (<span class="ja"> # 履歴アトリビュート</span>
 
   <pre><code>package Person;<span class="ja"> # 人クラス</span>
 use Moose;
-has _favorite_numbers =&gt; (<span class="ja"> # 好きな値アトリビュート（内部使用）</span>
+has _favorite_numbers =&gt; (<span class="ja"> # 好きな値アトリビュート</span>
     traits   =&gt; [ 'Array' ],
     is       =&gt; 'ro',
     isa      =&gt; 'ArrayRef[Int]',
@@ -4393,7 +4421,8 @@ has _favorite_numbers =&gt; (<span class="ja"> # 好きな値アトリビュー�
       { favorite_numbers    =&gt; 'elements',<span class="ja"> # 値の一覧</span>
         add_favorite_number =&gt; 'push',<span class="ja"> # 値の追加</span>
       },</span>
-);</code></pre>
+);<span class="annotation">
+# 訳注：アトリビュートは非公開とし、APIとして公開メソッドを提供する</span></code></pre>
 </div>
 
 <div class="slide">
@@ -4632,7 +4661,7 @@ Iterate til this passes all its tests
 
 <div class="slide fake-slide0">
   <h1 class="en">Part 8: A Brief Tour of MooseX</h1>
-  <h1 class="ja">Part 8: MooseX拡張モジュールへの簡単なツアー</h1>
+  <h1 class="ja">Part 8: MooseX拡張モジュールへの簡易ツアー</h1>
 </div>
 
 <div class="slide">
@@ -4648,6 +4677,8 @@ Iterate til this passes all its tests
     <li>ここで紹介するものは<strong>すべてを含むものではありません</strong></li>
     <li>MooseXディストリビューションは2009年9月24日現在で128個あります</li>
     <li>いくつかのディストリビューションはばかげたものです</li>
+    <li class="annotation">訳注：拡張モジュールはMooseとは別の名前空間であるMooseX（Moose eXtentionの略）を使う方針となっています</li>
+    <li class="annotation">訳注：MooseXはしばしばMXと略されます（DBIx::ClassがDBICと略されるように）</li>
   </ul>
 </div>
 
@@ -4678,11 +4709,11 @@ Iterate til this passes all its tests
 <pre><code>use MooseX::Declare;
 use 5.10.0; # for say
 
-class Person {
+class Person {<span class="ja"> # 人「クラス」</span>
     has greeting
         =&gt; ( is =&gt; 'ro', isa =&gt; 'Str' );
 
-    method speak {
+    method speak {<span class="ja"> # 話す「メソッド」</span>
         say $self-&gt;greeting;
     }
 }</code></pre>
@@ -4698,9 +4729,9 @@ class Person {
     <li>Hooks into the Perl parser rather than filtering all your code</li>
   </ul>
   <ul class="ja">
-    <li>まだ実験的なものですが、次第に実用的にになってきました</li>
+    <li>まだ実験的なものですが、次第に実用的になってきました</li>
     <li>ソースフィルターでは<strong>ありません</strong></li>
-    <li>あなたのコードをフィルタリングするよりはむしろ、Perlの構文解析器にフックするものです</li>
+    <li>あなたのコードをフィルタリングするよりはむしろ、Perlの構文解析器をフックするものです</li>
   </ul>
 </div>
 
@@ -4713,7 +4744,7 @@ class Person {
     <li>MX::StrictConstructor turns these into an error</li>
   </ul>
   <ul class="ja">
-    <li>無指定時には、未知のコンストラクター引数は無視されます</li>
+    <li>通常は、未知のコンストラクター引数は無視されます</li>
     <li>MX::StrictConstructorはこの場合にエラーを出すようにします</li>
   </ul>
 </div>
@@ -4722,12 +4753,12 @@ class Person {
   <h1 class="en">MooseX::StrictConstructor</h1>
   <h1 class="ja"><code>MooseX::StrictConstructor</code></h1>
 
-  <pre><code>package Person;
+  <pre><code>package Person;<span class="ja"> # 人間</span>
 
 use Moose;
 <span class="highlight">use MooseX::StrictConstructor;</span>
 
-has name =&gt; ( is =&gt; 'ro' );
+has name =&gt; ( is =&gt; 'ro' );<span class="ja"> # 名前</span>
 
 Person-&gt;new
     ( na<span class="wrong">n</span>e =&gt; 'Ringo Shiina' ); <span class="en"># kaboom</span><span class="ja"># どっかーん！</span></code></pre>
@@ -4742,8 +4773,8 @@ Person-&gt;new
     <li>Makes it easy to create one-off customized objects</li>
   </ul>
   <ul class="ja">
-    <li>ロールの適用とオブジェクトの生成を結合します</li>
-    <li>オブジェクトを一度限りでちょっとカスタマイズして作ることが簡単になります</li>
+    <li>オブジェクトの生成時にロールを適用できます</li>
+    <li>ちょっとカスタマイズしたオブジェクトを<span class="annotation">（わざわざ個別のクラスに定義せずに）</span>作ることが簡単になります</li>
   </ul>
 </div>
 
@@ -4755,7 +4786,7 @@ Person-&gt;new
 use Moose;
 
 <span class="highlight">with 'MooseX::Traits';</span>
-
+<span class="annotation"># 上記クラスを使うときに……</span>
 my $thing =
     MyApp::Thingy-&gt;<span class="highlight">new_with_traits</span>
         ( <span class="highlight">traits =&gt; [ 'Foo', 'Bar' ],</span>
@@ -4785,12 +4816,12 @@ use Moose;
 
 <span class="highlight">with 'MooseX::Getopt';</span>
 
-has file    =&gt;
+has file    =&gt;<span class="ja"> # ファイル</span>
     ( is =&gt; 'ro', required =&gt; 1 );
-has filters =&gt;
+has filters =&gt;<span class="ja"> # フィルター</span>
     ( is =&gt; 'ro', isa =&gt; 'Str' );
 
-sub run { ... }</code></pre>
+sub run { ... }<span class="ja"> # 実行</span></code></pre>
 </div>
 
 <div class="slide">
@@ -4801,14 +4832,14 @@ sub run { ... }</code></pre>
     <li>Then call it like this:</li>
   </ul>
   <ul class="ja">
-    <li>これで、以下のように呼べるようになりました……</li>
+    <li>スクリプトにこう書くと、コマンドライン引数を使って呼べるようになります……</li>
   </ul>
 
 <pre><code>#!/usr/bin/perl
 
 use App::CLI;
 
-<span class="highlight">App::CLI->new_with_options()</span>->run();</code></pre>
+<span class="highlight">App::CLI-&gt;new_with_options()</span>-&gt;run();</code></pre>
 
 <pre>$ myapp-cli \
    --file foo \
@@ -4826,7 +4857,7 @@ use Moose;
 <span class="highlight">with 'MooseX::Clone';</span>
 
 my $person = Person-&gt;new;
-my $clone  = <span class="highlight">$person-&gt;clone;</span></code></pre>
+my $clone  = <span class="highlight">$person-&gt;clone;</span><span class="ja"> # オブジェクトの複製</span></code></pre>
 </div>
 
 <div class="slide">
@@ -4884,7 +4915,7 @@ with HasCollection =&gt; { type =&gt; 'Int' };<span class="ja"> # 「整数の�
 
 <div class="slide fake-slide0">
   <h1 class="en">The End</h1>
-  <h1 class="ja">完</h1>
+  <h1 class="ja">終わり</h1>
 </div>
 
 <div class="slide">
