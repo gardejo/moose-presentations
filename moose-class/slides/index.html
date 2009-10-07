@@ -3809,7 +3809,7 @@ sub work {
     <li>Stored in an interpreter-global registry mapping names to objects</li>
   </ul>
   <ul class="ja">
-    <li>型というのは実は<code>Moose::Meta::TypeConstraints</code>の<em>オブジェクト</em>です</li>
+    <li>型は実際には<code>Moose::Meta::TypeConstraints</code>の<em>オブジェクト</em>です</li>
     <li>perlインタープリター内でグローバルな登録簿(registry)へ、名前によってマッピングされた状態でオブジェクトが格納されます</li>
   </ul>
 </div>
@@ -4254,7 +4254,7 @@ has lungs =&gt;<span class="ja"> # 「肺」アトリビュート</span>
     <li>Mapping of names in the delegating class to the delegatee class</li>
   </ul>
   <ul class="ja">
-    <li>委譲するクラスから委譲されるクラスへのメソッドをマッピングします</li>
+    <li>委譲するクラスから委譲されるクラスへメソッド名をマッピングします</li>
   </ul>
 
   <pre><code>package Person;<span class="ja"> # 人クラス</span>
@@ -4483,7 +4483,7 @@ print "$_\n"
   </ul>
   <ul class="ja">
     <li>いくつかの引数を予め設定した状態で委譲します</li>
-    <li>オブジェクトへの、またはネイティブな型への移譲時に稼働します</li>
+    <li>オブジェクトへの、またはネイティブな型への委譲時に稼働します</li>
   </ul>
 </div>
 
@@ -4510,7 +4510,7 @@ has account =&gt; (<span class="ja"> # 口座</span>
   <h1 class="ja">カリー化された(curried)委譲</h1>
 
   <pre><code>$person-&gt;receive_100;
-<span class="en"># really is</span><span class="ja"># 実は以下のように動きます</span>
+<span class="en"># really is</span><span class="ja"># 実際は以下のように動きます</span>
 $person-&gt;account-&gt;deposit(100);</code></pre>
 </div>
 
