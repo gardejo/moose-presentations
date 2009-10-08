@@ -90,6 +90,8 @@ use lib 't/lib';
 
 use MooseClass::Tests;
 
+use Document;
+use Resort;
 use TPSReport;
 
 MooseClass::Tests::tests04();

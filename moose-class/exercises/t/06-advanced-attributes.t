@@ -23,6 +23,9 @@
 # "history"が空の場合にはデフォルト値として0を使って、
 # "history"が初めて記録される際の警告を回避してください。
 #
+# トリガー(trigger)を使って、預金残高が変更される度に、その「以前の値」を
+# 記録するようにしてください。
+#
 # "BankAccount"クラスで"BUILD"メソッドを使い、残高の初期値を履歴へ
 # 記録してください。
 #
@@ -53,11 +56,8 @@
 # Finally, add a read-only history attribute. This will be an ArrayRef
 # of Int's. This should default to an empty array reference.
 #
-# Use a trigger to record the _difference_ after each change to the
-# balance. The previous balance is the sum of all the previous
-# changes. You can use List::Util's sum function to calculate this. To
-# avoid warnings the first time history is recorded, default to 0 if
-# history is empty.
+# Use a trigger to record the _old value_ of the balance each time it
+# changes.
 #
 # Use a BUILD method in BankAccount to record the original balance in
 # the history.
@@ -82,5 +82,6 @@ use MooseClass::Tests;
 
 use Person;
 use Employee;
+use BankAccount;
 
 MooseClass::Tests::tests06();
