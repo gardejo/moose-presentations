@@ -212,7 +212,7 @@ img#me05 {top: 43px;left: 36px;}
     <li>
       アトリビュートは以下の機能を備えています……
       <ul class="ja">
-        <li>変異性 (読み込み専用、または読み書き両用)</li>
+        <li>変異性 (読み取り専用、または読み書き両用)</li>
         <li>任意の型(type)</li>
         <li>アクセッサー(accessor)メソッド</li>
         <li>委譲(delegation)メソッド</li>
@@ -1378,7 +1378,7 @@ print $person-&gt;first_name; # Stevan</code></pre>
 
 <div class="slide">
   <h1 class="en">Read-only attributes</h1>
-  <h1 class="ja">読み込み専用なアトリビュート</h1>
+  <h1 class="ja">読み取り専用なアトリビュート</h1>
 
   <pre><code>package Person;<span class="ja"> # 人間</span>
 use Moose;
@@ -2236,7 +2236,7 @@ Iterate til this passes all its tests
   </ul>
   <ul class="ja">
     <li><code>has</code>によるアトリビュートの宣言</li>
-    <li>読み込み専用、または読み書き両用</li>
+    <li>読み取り専用、または読み書き両用</li>
   </ul>
 
   <pre><code>package Shirt;<span class="ja"> # シャツ</span>
@@ -2539,7 +2539,7 @@ sub _build_shoes {<span class="ja"> # 靴のデフォルト値のビルダー</s
     <li>Still need to watch out for circular laziness</li>
   </ul>
   <ul class="ja">
-    <li>遅延設定される(<code>lazy</code>な)デフォルト値は、そのアトリビュートが読み込みされる時点で決定されます</li>
+    <li>遅延設定される(<code>lazy</code>な)デフォルト値は、そのアトリビュートが読み込まれる時点で決定されます</li>
     <li>オブジェクトの他のアトリビュートを使うことができます</li>
     <li>ただし循環参照(circular laziness)には注意が必要です<span class="annotation">（訳注：AがBを、BがAを参照する場合など）</span></li>
   </ul>
